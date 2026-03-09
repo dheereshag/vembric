@@ -36,6 +36,7 @@
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "react-syntax-highlighter": "^15.6.1",
+    "simple-icons": "^16.11.0",
     "tailwind-merge": "^3.3.1"
   },
   "devDependencies": {
