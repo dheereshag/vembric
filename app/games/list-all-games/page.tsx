@@ -1,14 +1,51 @@
 'use client';
 
 import { listAllGamesApiData as data } from './list-all-games-api';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Badge } from '@/components/ui/badge';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Separator } from '@/components/ui/separator';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import {
+  Snippet,
+  SnippetHeader,
+  SnippetTabsList,
+  SnippetTabsTrigger,
+  SnippetTabsContent,
+  SnippetCopyButton,
+} from "@/components/kibo-ui/snippet";
+import {siCurl, siJavascript} from 'simple-icons'
+import { useState } from "react";
 
 export default function ListAllGamesPage() {
+  const CurlIcon = () => (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill='currentColor'>
+      <path d={siCurl.path} />
+    </svg>
+  );
+
+  const JavaScriptIcon = () => (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill='currentColor'>
+      <path d={siJavascript.path} />
+    </svg>
+  );
+
+  const commands = [
+    {
+      label: "curl",
+      icon: CurlIcon,
+      code: data.curl,
+    },
+    {
+      label: "javascript",
+      icon: JavaScriptIcon,
+      code: data.js,
+    },
+  ];
+
+  const [value, setValue] = useState(commands[0].label);
+  const activeCommand = commands.find((command) => command.label === value);
+
   return (
     <ScrollArea className="p-6">
       {/* Title */}
@@ -62,22 +99,40 @@ export default function ListAllGamesPage() {
         </div>
 
         {/* Code Tabs */}
-        <Tabs defaultValue="curl" className="w-full">
-          <TabsList className="mb-2">
-            <TabsTrigger value="curl">cURL</TabsTrigger>
-            <TabsTrigger value="js">JavaScript</TabsTrigger>
-          </TabsList>
-          <TabsContent value="curl">
-            <SyntaxHighlighter language="bash" style={vscDarkPlus} wrapLongLines className="rounded-md text-sm">
-              {data.curl}
-            </SyntaxHighlighter>
-          </TabsContent>
-          <TabsContent value="js">
-            <SyntaxHighlighter language="javascript" style={vscDarkPlus} wrapLongLines className="rounded-md text-sm">
-              {data.js}
-            </SyntaxHighlighter>
-          </TabsContent>
-        </Tabs>
+        <Snippet onValueChange={setValue} value={value}>
+          <SnippetHeader>
+            <SnippetTabsList>
+              {commands.map((command) => (
+                <SnippetTabsTrigger key={command.label} value={command.label}>
+                  <span>
+                    <command.icon />
+                  </span>
+                  <span>{command.label}</span>
+                </SnippetTabsTrigger>
+              ))}
+            </SnippetTabsList>
+            {activeCommand && (
+              <SnippetCopyButton
+                onCopy={() =>
+                  console.log(`Copied "${activeCommand.code}" to clipboard`)
+                }
+                onError={() =>
+                  console.error(
+                    `Failed to copy "${activeCommand.code}" to clipboard`
+                  )
+                }
+                value={activeCommand.code}
+              />
+            )}
+          </SnippetHeader>
+          {commands.map((command) => (
+            <SnippetTabsContent key={command.label} value={command.label}>
+              <SyntaxHighlighter language={command.label === 'curl' ? 'bash' : 'javascript'} style={vscDarkPlus} wrapLongLines className="rounded-md text-sm">
+                {command.code}
+              </SyntaxHighlighter>
+            </SnippetTabsContent>
+          ))}
+        </Snippet>
       </section>
 
       <Separator className="my-6" />
