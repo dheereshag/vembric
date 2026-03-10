@@ -14,7 +14,7 @@ import {
   SnippetTabsContent,
   SnippetCopyButton,
 } from "@/components/kibo-ui/snippet";
-import {siCurl, siJavascript} from 'simple-icons'
+import {siCurl, siJavascript, siJson} from 'simple-icons'
 import { useState } from "react";
 
 export default function ListAllGamesPage() {
@@ -29,6 +29,11 @@ export default function ListAllGamesPage() {
       <path d={siJavascript.path} />
     </svg>
   );
+  const JsonIcon = () => (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill='currentColor'>
+    <path d={siJson.path} />
+  </svg>
+);
 
   const commands = [
     {
@@ -139,10 +144,10 @@ export default function ListAllGamesPage() {
 
       {/* Sample Response */}
       <section>
-        <h4 className="text-base font-medium mb-2 flex items-center gap-2">
-          Response
-          <img src="/images/logo.svg" alt="JSON" className="w-5 h-5" />
-        </h4>
+       <h4 className="text-base font-medium mb-2 flex items-center gap-2">
+  <JsonIcon />
+  Response
+</h4>
         <SyntaxHighlighter language="json" style={vscDarkPlus} wrapLongLines className="rounded-md text-sm">
           {JSON.stringify(data.response, null, 2)}
         </SyntaxHighlighter>
