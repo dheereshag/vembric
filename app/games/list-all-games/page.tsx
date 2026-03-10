@@ -144,13 +144,22 @@ export default function ListAllGamesPage() {
 
       {/* Sample Response */}
       <section>
-       <h4 className="text-base font-medium mb-2 flex items-center gap-2">
-  <JsonIcon />
-  Response
-</h4>
-        <SyntaxHighlighter language="json" style={vscDarkPlus} wrapLongLines className="rounded-md text-sm">
-          {JSON.stringify(data.response, null, 2)}
-        </SyntaxHighlighter>
+        <div className="group w-full gap-0 overflow-hidden rounded-md border">
+          <div className="flex flex-row items-center justify-between border-b bg-secondary p-1">
+            <h4 className="text-base font-medium flex items-center gap-2 px-2">
+              <JsonIcon />
+              Response
+            </h4>
+            <SnippetCopyButton
+              value={JSON.stringify(data.response, null, 2)}
+              onCopy={() => console.log('Copied response to clipboard')}
+              onError={() => console.error('Failed to copy response to clipboard')}
+            />
+          </div>
+          <SyntaxHighlighter language="json" style={vscDarkPlus} wrapLongLines className="!rounded-none !m-0 text-sm">
+            {JSON.stringify(data.response, null, 2)}
+          </SyntaxHighlighter>
+        </div>
       </section>
     </ScrollArea>
   );
