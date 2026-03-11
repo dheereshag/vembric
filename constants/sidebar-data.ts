@@ -68,7 +68,7 @@ export const sidebarData = {
         },
         {
           title: "SDKs",
-          url: "#",
+          url: "/sdks",
         },
         {
           title: "Examples",
