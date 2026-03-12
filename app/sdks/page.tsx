@@ -5,27 +5,27 @@ export default function SDKPage() {
     {
       name: "Node.js",
       description: "Official JavaScript SDK to interact with the API.",
-      icon: <SiNodedotjs className="text-green-500 text-3xl" />,
+     <i class="ci ci-nodejs"></i>,
     },
-    {
+    { 
       name: "Python",
       description: "Python SDK for easy API integration.",
-      icon: <SiPython className="text-yellow-500 text-3xl" />,
+      <i class="ci ci-python"></i>,
     },
-    {
+    { 
       name: "PHP",
       description: "PHP SDK for backend services.",
-      icon: <SiPhp className="text-indigo-500 text-3xl" />,
+      <i class="ci ci-php"></i>,
     },
-    {
+    { 
       name: "Ruby",
       description: "Ruby SDK for fast development.",
-      icon: <SiRuby className="text-red-500 text-3xl" />,
+      <i class="ci ci-ruby"></i>,
     },
-    {
+    { 
       name: "Go",
       description: "High performance SDK built in Go.",
-      icon: <SiGo className="text-cyan-500 text-3xl" />,
+      <i class="ci ci-golang-wordmark"></i>,
     },
   ];
 
