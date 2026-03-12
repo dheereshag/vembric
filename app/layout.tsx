@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { fontSans, fontMono } from "@/lib/fonts";
 import { AppSidebar } from "@/components/app-sidebar";
-import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar"; // ✅ context provider
+import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar"; // ✅ context >
 import "./globals.css";
 import { AppHeader } from "@/components/app-header";
 
@@ -18,13 +18,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
+     <head>
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/dheereshag/coloured-icons@1.9.7/app/ci.min.>
+        />
+      </head>
       <body
         className={`${fontSans.variable} ${fontMono.variable} font-sans antialiased`}
       >
         <SidebarProvider>
           <AppSidebar />
           <SidebarInset className="flex-1 flex flex-col overflow-auto">
-            <AppHeader /> 
+            <AppHeader />
             <main className="flex-1 p-4">{children}</main>
           </SidebarInset>
         </SidebarProvider>
@@ -32,3 +38,4 @@ export default function RootLayout({
     </html>
   );
 }
+
