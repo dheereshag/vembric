@@ -1,31 +1,29 @@
-import { SiNodedotjs, SiPython, SiPhp, SiRuby, SiGo } from "react-icons/si";
-
 export default function SDKPage() {
   const sdks = [
     {
       name: "Node.js",
       description: "Official JavaScript SDK to interact with the API.",
-     <i class="ci ci-nodejs"></i>,
+      icon: <i className="ci ci-nodejs"></i>,
     },
-    { 
+    {
       name: "Python",
       description: "Python SDK for easy API integration.",
-      <i class="ci ci-python"></i>,
+      icon: <i className="ci ci-python"></i>,
     },
-    { 
+    {
       name: "PHP",
       description: "PHP SDK for backend services.",
-      <i class="ci ci-php"></i>,
+      icon: <i className="ci ci-php"></i>,
     },
-    { 
+    {
       name: "Ruby",
       description: "Ruby SDK for fast development.",
-      <i class="ci ci-ruby"></i>,
+      icon: <i className="ci ci-ruby"></i>,
     },
-    { 
+    {
       name: "Go",
       description: "High performance SDK built in Go.",
-      <i class="ci ci-golang-wordmark"></i>,
+      icon: <i className="ci ci-golang-wordmark"></i>,
     },
   ];
 
