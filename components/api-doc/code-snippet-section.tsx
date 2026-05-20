@@ -3,6 +3,14 @@
 import { useMemo, useState } from 'react';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import {
@@ -63,19 +71,34 @@ export function CodeSnippetSection({
         <p className="text-muted-foreground mb-4">{description}</p>
 
         {optionalAttributes && optionalAttributes.length > 0 && (
-          <div className="mb-6">
-            <h4 className="font-medium text-base mb-2">Optional Attributes</h4>
-            <ul className="list-disc list-inside space-y-1">
-              {optionalAttributes.map((attribute) => (
-                <li key={attribute.name}>
-                  <span className="font-medium">{attribute.name}</span>{" "}
-                  <code className="text-sm text-muted-foreground">
-                    ({attribute.type})
-                  </code>
-                  : {attribute.description}
-                </li>
-              ))}
-            </ul>
+          <div className="mb-6 space-y-3">
+            <h4 className="font-semibold text-lg tracking-tight">Optional Attributes</h4>
+            <div className="border rounded-lg overflow-hidden bg-card">
+              <Table>
+                <TableHeader>
+                  <TableRow className="hover:bg-transparent">
+                    <TableHead className="w-[180px] font-semibold">Attribute</TableHead>
+                    <TableHead className="w-[120px] font-semibold">Type</TableHead>
+                    <TableHead className="font-semibold">Description</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {optionalAttributes.map((attribute) => (
+                    <TableRow key={attribute.name} className="hover:bg-muted/30">
+                      <TableCell className="font-mono font-semibold text-sm">
+                        {attribute.name}
+                      </TableCell>
+                      <TableCell className="font-mono text-xs text-muted-foreground">
+                        {attribute.type}
+                      </TableCell>
+                      <TableCell className="text-sm text-muted-foreground whitespace-normal">
+                        {attribute.description}
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </div>
           </div>
         )}
 
