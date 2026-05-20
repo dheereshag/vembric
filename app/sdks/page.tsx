@@ -1,6 +1,4 @@
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { SdkCard } from "@/components/sdk-card";
 
 export default function SDKPage() {
   const sdks = [
@@ -41,22 +39,12 @@ export default function SDKPage() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {sdks.map((sdk) => (
-          <Card key={sdk.name} className="hover:border-foreground/30 transition-all duration-300 group flex flex-col justify-between">
-            <CardHeader className="pb-4">
-              <div className="mb-2 text-primary">{sdk.icon}</div>
-              <CardTitle className="text-lg font-semibold group-hover:text-primary transition-colors">{sdk.name}</CardTitle>
-            </CardHeader>
-            <CardContent className="pb-4">
-              <p className="text-sm text-muted-foreground">
-                {sdk.description}
-              </p>
-            </CardContent>
-            <CardFooter className="pt-0">
-              <Button variant="link" className="p-0 text-blue-500 dark:text-blue-400 gap-1 group/btn hover:no-underline">
-                View SDK <ArrowRight className="size-4 transition-transform group-hover/btn:translate-x-1" />
-              </Button>
-            </CardFooter>
-          </Card>
+          <SdkCard
+            key={sdk.name}
+            name={sdk.name}
+            description={sdk.description}
+            icon={sdk.icon}
+          />
         ))}
       </div>
     </div>
