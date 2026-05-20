@@ -1,3 +1,4 @@
+import { PageHeader } from "@/components/doc/page-header";
 import { SdkCard } from "@/components/sdk-card";
 
 export default function SDKPage() {
@@ -31,11 +32,11 @@ export default function SDKPage() {
 
   return (
     <div className="p-6">
-      <h1 className="text-3xl font-bold tracking-tight">Vembric SDKs</h1>
-
-      <p className="text-muted-foreground mt-2 mb-8">
-        Use our official SDKs to integrate faster with the API.
-      </p>
+      <PageHeader
+        path="// sdks"
+        title="Vembric SDKs"
+        description="Use our official SDKs to integrate faster with the API."
+      />
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {sdks.map((sdk) => (

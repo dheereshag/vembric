@@ -1,5 +1,6 @@
 import { Separator } from '@/components/ui/separator';
 import type { ApiActionDoc } from '@/constants/api-docs';
+import { DocSection } from '@/components/doc/doc-section';
 import { SchemaTable } from './schema-table';
 
 type ModelSectionProps = {
@@ -10,12 +11,9 @@ export function ModelSection({ model }: ModelSectionProps) {
   return (
     <>
       <Separator className="my-6" />
-      <section className="space-y-4">
-        <h2 className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
-          model schema
-        </h2>
+      <DocSection title="model schema" className="mb-0 space-y-4">
         <SchemaTable items={model} nameHeader="Field" />
-      </section>
+      </DocSection>
     </>
   );
 }

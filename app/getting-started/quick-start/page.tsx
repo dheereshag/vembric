@@ -1,10 +1,9 @@
+import { PageHeader } from "@/components/doc/page-header";
+import { DocSection } from "@/components/doc/doc-section";
+import { InfoBox } from "@/components/doc/info-box";
 import {
-  Snippet,
-  SnippetCopyButton,
-  SnippetHeader,
-  SnippetTabsContent,
-  SnippetTabsList,
-  SnippetTabsTrigger,
+  Snippet, SnippetCopyButton, SnippetHeader,
+  SnippetTabsContent, SnippetTabsList, SnippetTabsTrigger,
 } from "@/components/kibo-ui/snippet";
 
 const curlExample = `curl https://api.vembric.io/v1/games \\
@@ -28,36 +27,22 @@ const responseExample = `{
 export default function QuickStartPage() {
   return (
     <div className="p-6">
-      <div className="mb-8">
-        <p className="font-mono text-xs text-muted-foreground uppercase tracking-widest mb-1">
-          // getting-started / quick-start
-        </p>
-        <h1 className="font-mono text-3xl font-bold tracking-tight">Quick Start</h1>
-        <p className="text-muted-foreground mt-2">
-          Get up and running with the Vembric API in under 5 minutes.
-        </p>
-      </div>
+      <PageHeader
+        path="// getting-started / quick-start"
+        title="Quick Start"
+        description="Get up and running with the Vembric API in under 5 minutes."
+      />
 
-      <div className="border-b mb-10" />
-
-      <section className="mb-10">
-        <h2 className="font-mono text-xs uppercase tracking-widest text-muted-foreground mb-4">
-          step 1 — get your api key
-        </h2>
+      <DocSection title="step 1 — get your api key">
         <p className="text-sm leading-relaxed mb-4">
           Log into the Vembric dashboard and navigate to{" "}
           <code className="font-mono bg-muted px-1.5 py-0.5 text-xs">Settings → API Keys</code>{" "}
           to generate your key.
         </p>
-        <div className="border p-4 bg-muted/30 font-mono text-xs text-muted-foreground">
-          // keep your API key secret — never expose it in client-side code
-        </div>
-      </section>
+        <InfoBox>// keep your API key secret — never expose it in client-side code</InfoBox>
+      </DocSection>
 
-      <section className="mb-10">
-        <h2 className="font-mono text-xs uppercase tracking-widest text-muted-foreground mb-4">
-          step 2 — make your first request
-        </h2>
+      <DocSection title="step 2 — make your first request">
         <p className="text-sm leading-relaxed mb-4">Fetch a list of games from the API.</p>
         <Snippet defaultValue="curl">
           <SnippetHeader>
@@ -70,12 +55,9 @@ export default function QuickStartPage() {
           <SnippetTabsContent value="curl">{curlExample}</SnippetTabsContent>
           <SnippetTabsContent value="node">{nodeExample}</SnippetTabsContent>
         </Snippet>
-      </section>
+      </DocSection>
 
-      <section>
-        <h2 className="font-mono text-xs uppercase tracking-widest text-muted-foreground mb-4">
-          step 3 — read the response
-        </h2>
+      <DocSection title="step 3 — read the response" className="mb-0">
         <p className="text-sm leading-relaxed mb-4">A successful response looks like this:</p>
         <Snippet defaultValue="json">
           <SnippetHeader>
@@ -86,7 +68,7 @@ export default function QuickStartPage() {
           </SnippetHeader>
           <SnippetTabsContent value="json">{responseExample}</SnippetTabsContent>
         </Snippet>
-      </section>
+      </DocSection>
     </div>
   );
 }

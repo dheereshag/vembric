@@ -1,55 +1,43 @@
+import { PageHeader } from "@/components/doc/page-header";
+import { DocSection } from "@/components/doc/doc-section";
+import { ArrowList } from "@/components/doc/arrow-list";
+
 export default function IntroductionPage() {
   return (
     <div className="p-6">
-      <div className="mb-8">
-        <p className="font-mono text-xs text-muted-foreground uppercase tracking-widest mb-1">
-          // getting-started / introduction
-        </p>
-        <h1 className="font-mono text-3xl font-bold tracking-tight">Introduction</h1>
-        <p className="text-muted-foreground mt-2">
-          Welcome to the Vembric API — a developer-first interface for accessing games and order data.
-        </p>
-      </div>
+      <PageHeader
+        path="// getting-started / introduction"
+        title="Introduction"
+        description="Welcome to the Vembric API — a developer-first interface for accessing games and order data."
+      />
 
-      <div className="border-b mb-10" />
-
-      <section className="mb-10">
-        <h2 className="font-mono text-xs uppercase tracking-widest text-muted-foreground mb-4">
-          what is vembric
-        </h2>
+      <DocSection title="what is vembric">
         <p className="text-sm leading-relaxed">
-          Vembric is a RESTful API that gives you programmatic access to resources like games and orders.
-          It is designed around standard HTTP conventions and returns JSON responses.
+          Vembric is a RESTful API that gives you programmatic access to resources like games and
+          orders. It is designed around standard HTTP conventions and returns JSON responses.
         </p>
-      </section>
+      </DocSection>
 
-      <section className="mb-10">
-        <h2 className="font-mono text-xs uppercase tracking-widest text-muted-foreground mb-4">
-          key features
-        </h2>
-        <ul className="space-y-2 text-sm font-mono">
-          <li><span className="text-muted-foreground">→</span> REST-based with predictable resource URLs</li>
-          <li><span className="text-muted-foreground">→</span> JSON request and response bodies</li>
-          <li><span className="text-muted-foreground">→</span> Bearer token authentication</li>
-          <li><span className="text-muted-foreground">→</span> Cursor-based pagination</li>
-          <li><span className="text-muted-foreground">→</span> Webhook support for real-time events</li>
-          <li><span className="text-muted-foreground">→</span> Official SDKs for Node, Python, PHP, Ruby and Go</li>
-        </ul>
-      </section>
+      <DocSection title="key features">
+        <ArrowList
+          items={[
+            "REST-based with predictable resource URLs",
+            "JSON request and response bodies",
+            "Bearer token authentication",
+            "Cursor-based pagination",
+            "Webhook support for real-time events",
+            "Official SDKs for Node, Python, PHP, Ruby and Go",
+          ]}
+        />
+      </DocSection>
 
-      <section className="mb-10">
-        <h2 className="font-mono text-xs uppercase tracking-widest text-muted-foreground mb-4">
-          base url
-        </h2>
+      <DocSection title="base url">
         <div className="border p-4 bg-muted/30">
           <code className="font-mono text-sm">https://api.vembric.io/v1</code>
         </div>
-      </section>
+      </DocSection>
 
-      <section>
-        <h2 className="font-mono text-xs uppercase tracking-widest text-muted-foreground mb-4">
-          next steps
-        </h2>
+      <DocSection title="next steps" className="mb-0">
         <ul className="space-y-2 text-sm font-mono">
           <li>
             <span className="text-muted-foreground">1.</span>{" "}
@@ -67,7 +55,7 @@ export default function IntroductionPage() {
             {" "}— secure your requests
           </li>
         </ul>
-      </section>
+      </DocSection>
     </div>
   );
 }

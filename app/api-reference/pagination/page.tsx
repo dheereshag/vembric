@@ -1,98 +1,84 @@
+import { PageHeader } from "@/components/doc/page-header";
+import { DocSection } from "@/components/doc/doc-section";
+import { ArrowList } from "@/components/doc/arrow-list";
+import { InfoBox } from "@/components/doc/info-box";
 import {
-  Snippet,
-  SnippetCopyButton,
-  SnippetHeader,
-  SnippetTabsContent,
-  SnippetTabsList,
-  SnippetTabsTrigger,
+  Snippet, SnippetCopyButton, SnippetHeader,
+  SnippetTabsContent, SnippetTabsList, SnippetTabsTrigger,
 } from "@/components/kibo-ui/snippet";
 
-const requestExample = `curl "https://api.vembric.io/v1/games?limit=20&cursor=cursor_abc" \\
+const curlExample = `curl "https://api.vembric.io/v1/games?limit=20&cursor=cursor_xyz" \\
   -H "Authorization: Bearer YOUR_API_KEY"`;
 
 const responseExample = `{
-  "data": [ ... ],
-  "next_cursor": "cursor_xyz",
+  "data": [...],
+  "next_cursor": "cursor_abc",
   "has_more": true
 }`;
 
 export default function PaginationPage() {
   return (
     <div className="p-6">
-      <div className="mb-8">
-        <p className="font-mono text-xs text-muted-foreground uppercase tracking-widest mb-1">
-          // api-reference / pagination
-        </p>
-        <h1 className="font-mono text-3xl font-bold tracking-tight">Pagination</h1>
-        <p className="text-muted-foreground mt-2">
-          List endpoints use cursor-based pagination for consistent, efficient traversal.
-        </p>
-      </div>
+      <PageHeader
+        path="// api-reference / pagination"
+        title="Pagination"
+        description="Vembric uses cursor-based pagination for all list endpoints."
+      />
 
-      <div className="border-b mb-10" />
-
-      <section className="mb-10">
-        <h2 className="font-mono text-xs uppercase tracking-widest text-muted-foreground mb-4">
-          how it works
-        </h2>
+      <DocSection title="how it works">
         <p className="text-sm leading-relaxed mb-4">
-          Each list response includes a <code className="font-mono bg-muted px-1.5 py-0.5 text-xs">next_cursor</code> field.
-          Pass it as the <code className="font-mono bg-muted px-1.5 py-0.5 text-xs">cursor</code> query parameter on your next
-          request to retrieve the following page. When <code className="font-mono bg-muted px-1.5 py-0.5 text-xs">has_more</code> is{" "}
-          <code className="font-mono bg-muted px-1.5 py-0.5 text-xs">false</code>, you have reached the end.
+          List endpoints return a <code className="font-mono bg-muted px-1.5 py-0.5 text-xs">data</code> array,
+          a <code className="font-mono bg-muted px-1.5 py-0.5 text-xs">next_cursor</code> string, and a
+          <code className="font-mono bg-muted px-1.5 py-0.5 text-xs"> has_more</code> boolean.
+          Pass <code className="font-mono bg-muted px-1.5 py-0.5 text-xs">cursor</code> as a query param to
+          fetch the next page.
         </p>
-      </section>
+        <InfoBox>// cursor values are opaque strings — do not parse or construct them manually</InfoBox>
+      </DocSection>
 
-      <section className="mb-10">
-        <h2 className="font-mono text-xs uppercase tracking-widest text-muted-foreground mb-4">
-          query parameters
-        </h2>
+      <DocSection title="query parameters">
         <div className="border divide-y font-mono text-sm">
-          <div className="grid grid-cols-12 bg-muted/50 px-4 py-2 text-xs uppercase tracking-widest text-muted-foreground">
+          <div className="grid grid-cols-12 bg-muted/50 px-4 py-2 text-xs uppercase tracking-widest">
             <span className="col-span-3">param</span>
             <span className="col-span-2">type</span>
             <span className="col-span-7">description</span>
           </div>
-          <div className="grid grid-cols-12 px-4 py-3">
-            <code className="col-span-3 text-xs">limit</code>
-            <span className="col-span-2 text-xs text-muted-foreground">integer</span>
-            <span className="col-span-7 text-xs text-muted-foreground">Items per page. Default 20, max 100.</span>
-          </div>
-          <div className="grid grid-cols-12 px-4 py-3">
-            <code className="col-span-3 text-xs">cursor</code>
-            <span className="col-span-2 text-xs text-muted-foreground">string</span>
-            <span className="col-span-7 text-xs text-muted-foreground">Opaque cursor from previous response.</span>
-          </div>
+          {[
+            ["limit",  "integer", "Number of items per page (default 20, max 100)"],
+            ["cursor", "string",  "Cursor returned from the previous response"],
+          ].map(([p, t, d]) => (
+            <div key={p} className="grid grid-cols-12 px-4 py-3 items-start">
+              <code className="col-span-3 text-xs">{p}</code>
+              <span className="col-span-2 text-muted-foreground text-xs">{t}</span>
+              <span className="col-span-7 text-muted-foreground text-xs">{d}</span>
+            </div>
+          ))}
         </div>
-      </section>
+      </DocSection>
 
-      <section className="mb-10">
-        <h2 className="font-mono text-xs uppercase tracking-widest text-muted-foreground mb-4">
-          example
-        </h2>
-        <Snippet defaultValue="request">
+      <DocSection title="example">
+        <Snippet defaultValue="curl">
           <SnippetHeader>
             <SnippetTabsList>
-              <SnippetTabsTrigger value="request">request</SnippetTabsTrigger>
+              <SnippetTabsTrigger value="curl">curl</SnippetTabsTrigger>
               <SnippetTabsTrigger value="response">response</SnippetTabsTrigger>
             </SnippetTabsList>
-            <SnippetCopyButton value={requestExample} />
+            <SnippetCopyButton value={curlExample} />
           </SnippetHeader>
-          <SnippetTabsContent value="request">{requestExample}</SnippetTabsContent>
+          <SnippetTabsContent value="curl">{curlExample}</SnippetTabsContent>
           <SnippetTabsContent value="response">{responseExample}</SnippetTabsContent>
         </Snippet>
-      </section>
+      </DocSection>
 
-      <section>
-        <h2 className="font-mono text-xs uppercase tracking-widest text-muted-foreground mb-4">
-          notes
-        </h2>
-        <ul className="space-y-2 text-sm font-mono">
-          <li><span className="text-muted-foreground">→</span> Cursors are opaque — do not decode or construct them manually</li>
-          <li><span className="text-muted-foreground">→</span> Cursors expire after 24 hours</li>
-          <li><span className="text-muted-foreground">→</span> Results are always ordered by creation time, descending</li>
-        </ul>
-      </section>
+      <DocSection title="best practices" className="mb-0">
+        <ArrowList
+          items={[
+            "Always check has_more before making another request",
+            "Store cursors temporarily — they may expire after 24 hours",
+            "Use a consistent limit per session for predictable UX",
+          ]}
+        />
+      </DocSection>
     </div>
   );
 }

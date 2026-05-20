@@ -1,69 +1,45 @@
-export default function ContactPage() {
-  const channels = [
-    {
-      label: "Email support",
-      value: "support@vembric.io",
-      note: "Response within 1 business day",
-    },
-    {
-      label: "GitHub issues",
-      value: "github.com/vembric",
-      note: "Bug reports and feature requests",
-    },
-    {
-      label: "Discord community",
-      value: "discord.gg/vembric",
-      note: "Real-time help from the community",
-    },
-    {
-      label: "Enterprise",
-      value: "enterprise@vembric.io",
-      note: "SLAs, dedicated support, custom contracts",
-    },
-  ];
+import { PageHeader } from "@/components/doc/page-header";
+import { DocSection } from "@/components/doc/doc-section";
+import { ArrowList } from "@/components/doc/arrow-list";
 
+export default function ContactPage() {
   return (
     <div className="p-6">
-      <div className="mb-8">
-        <p className="font-mono text-xs text-muted-foreground uppercase tracking-widest mb-1">
-          // support / contact
-        </p>
-        <h1 className="font-mono text-3xl font-bold tracking-tight">Contact</h1>
-        <p className="text-muted-foreground mt-2">
-          Get in touch with the Vembric team.
-        </p>
-      </div>
+      <PageHeader
+        path="// support / contact"
+        title="Contact"
+        description="Get in touch with the Vembric team."
+      />
 
-      <div className="border-b mb-10" />
+      <DocSection title="channels">
+        <ArrowList
+          items={[
+            <>Email — <a href="mailto:support@vembric.io" className="underline underline-offset-4">support@vembric.io</a></>,
+            <>GitHub — <a href="https://github.com/vembric" className="underline underline-offset-4">github.com/vembric</a> (open an issue or discussion)</>,
+            "Dashboard — submit a support ticket from the Help menu",
+            "Discord — join the community server for real-time help",
+          ]}
+        />
+      </DocSection>
 
-      <section className="mb-10">
-        <h2 className="font-mono text-xs uppercase tracking-widest text-muted-foreground mb-4">
-          channels
-        </h2>
-        <div className="border divide-y">
-          {channels.map(({ label, value, note }) => (
-            <div key={label} className="px-4 py-4">
-              <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground mb-1">
-                {label}
-              </p>
-              <code className="font-mono text-sm">{value}</code>
-              <p className="text-xs text-muted-foreground mt-1">{note}</p>
+      <DocSection title="response times" className="mb-0">
+        <div className="border divide-y font-mono text-sm">
+          <div className="grid grid-cols-12 bg-muted/50 px-4 py-2 text-xs uppercase tracking-widest">
+            <span className="col-span-4">plan</span>
+            <span className="col-span-8">response sla</span>
+          </div>
+          {[
+            ["Free",       "Best effort (community)"],
+            ["Pro",        "1 business day"],
+            ["Enterprise", "4 hours"],
+          ].map(([plan, sla]) => (
+            <div key={plan} className="grid grid-cols-12 px-4 py-3 items-start">
+              <span className="col-span-4 text-xs">{plan}</span>
+              <span className="col-span-8 text-muted-foreground text-xs">{sla}</span>
             </div>
           ))}
         </div>
-      </section>
-
-      <section>
-        <h2 className="font-mono text-xs uppercase tracking-widest text-muted-foreground mb-4">
-          before reaching out
-        </h2>
-        <ul className="space-y-2 text-sm font-mono">
-          <li><span className="text-muted-foreground">→</span> Check the <a href="/support/faq" className="underline underline-offset-4">FAQ</a> for common questions</li>
-          <li><span className="text-muted-foreground">→</span> Include the <code className="bg-muted px-1">request-id</code> header value from the failing response</li>
-          <li><span className="text-muted-foreground">→</span> Describe the exact request and response you received</li>
-          <li><span className="text-muted-foreground">→</span> Check the <a href="/support/status" className="underline underline-offset-4">Status page</a> for known incidents</li>
-        </ul>
-      </section>
+      </DocSection>
     </div>
   );
 }

@@ -1,44 +1,34 @@
+import { PageHeader } from "@/components/doc/page-header";
+import { DocSection } from "@/components/doc/doc-section";
+import { ArrowList } from "@/components/doc/arrow-list";
+import { InfoBox } from "@/components/doc/info-box";
 import {
-  Snippet,
-  SnippetCopyButton,
-  SnippetHeader,
-  SnippetTabsContent,
-  SnippetTabsList,
-  SnippetTabsTrigger,
+  Snippet, SnippetCopyButton, SnippetHeader,
+  SnippetTabsContent, SnippetTabsList, SnippetTabsTrigger,
 } from "@/components/kibo-ui/snippet";
 
 const curlExample = `curl https://api.vembric.io/v1/games \\
-  -H "Authorization: Bearer sk_live_xxxxxxxxxxxx"`;
+  -H "Authorization: Bearer YOUR_API_KEY"`;
 
 const nodeExample = `import Vembric from '@vembric/sdk';
 
-const client = new Vembric({
-  apiKey: process.env.VEMBRIC_API_KEY,
-});`;
+const client = new Vembric({ apiKey: 'YOUR_API_KEY' });`;
 
 export default function AuthenticationPage() {
   return (
     <div className="p-6">
-      <div className="mb-8">
-        <p className="font-mono text-xs text-muted-foreground uppercase tracking-widest mb-1">
-          // api-reference / authentication
-        </p>
-        <h1 className="font-mono text-3xl font-bold tracking-tight">Authentication</h1>
-        <p className="text-muted-foreground mt-2">
-          All API requests must include a valid API key.
-        </p>
-      </div>
+      <PageHeader
+        path="// api-reference / authentication"
+        title="Authentication"
+        description="Secure your API requests using Bearer tokens."
+      />
 
-      <div className="border-b mb-10" />
-
-      <section className="mb-10">
-        <h2 className="font-mono text-xs uppercase tracking-widest text-muted-foreground mb-4">
-          bearer token
-        </h2>
+      <DocSection title="bearer tokens">
         <p className="text-sm leading-relaxed mb-4">
-          Pass your API key as a Bearer token in the{" "}
-          <code className="font-mono bg-muted px-1.5 py-0.5 text-xs">Authorization</code>{" "}
-          header on every request.
+          All API requests must include your API key as a{" "}
+          <code className="font-mono bg-muted px-1.5 py-0.5 text-xs">Bearer</code>{" "}
+          token in the{" "}
+          <code className="font-mono bg-muted px-1.5 py-0.5 text-xs">Authorization</code> header.
         </p>
         <Snippet defaultValue="curl">
           <SnippetHeader>
@@ -51,42 +41,40 @@ export default function AuthenticationPage() {
           <SnippetTabsContent value="curl">{curlExample}</SnippetTabsContent>
           <SnippetTabsContent value="node">{nodeExample}</SnippetTabsContent>
         </Snippet>
-      </section>
+      </DocSection>
 
-      <section className="mb-10">
-        <h2 className="font-mono text-xs uppercase tracking-widest text-muted-foreground mb-4">
-          api key types
-        </h2>
+      <DocSection title="key types">
         <div className="border divide-y font-mono text-sm">
-          <div className="grid grid-cols-3 bg-muted/50 px-4 py-2 text-xs uppercase tracking-widest text-muted-foreground">
-            <span>prefix</span>
-            <span>type</span>
-            <span>use</span>
+          <div className="grid grid-cols-12 bg-muted/50 px-4 py-2 text-xs uppercase tracking-widest">
+            <span className="col-span-4">type</span>
+            <span className="col-span-8">description</span>
           </div>
-          <div className="grid grid-cols-3 px-4 py-3">
-            <code className="text-xs">sk_live_</code>
-            <span className="text-sm">Live</span>
-            <span className="text-sm text-muted-foreground">Production requests</span>
-          </div>
-          <div className="grid grid-cols-3 px-4 py-3">
-            <code className="text-xs">sk_test_</code>
-            <span className="text-sm">Test</span>
-            <span className="text-sm text-muted-foreground">Development &amp; testing</span>
-          </div>
+          {[
+            ["test_", "Sandbox key — no real data affected"],
+            ["live_", "Production key — use with care"],
+          ].map(([k, v]) => (
+            <div key={k} className="grid grid-cols-12 px-4 py-3 items-start">
+              <code className="col-span-4 text-xs">{k}</code>
+              <span className="col-span-8 text-muted-foreground text-xs">{v}</span>
+            </div>
+          ))}
         </div>
-      </section>
+      </DocSection>
 
-      <section>
-        <h2 className="font-mono text-xs uppercase tracking-widest text-muted-foreground mb-4">
-          security
-        </h2>
-        <ul className="space-y-2 text-sm font-mono">
-          <li><span className="text-muted-foreground">→</span> Store keys in environment variables, never in source code</li>
-          <li><span className="text-muted-foreground">→</span> Rotate keys immediately if compromised</li>
-          <li><span className="text-muted-foreground">→</span> Use test keys during development</li>
-          <li><span className="text-muted-foreground">→</span> Requests without a valid key return <code className="bg-muted px-1">401 Unauthorized</code></li>
-        </ul>
-      </section>
+      <DocSection title="security best practices" className="mb-0">
+        <ArrowList
+          items={[
+            "Never expose keys in client-side code",
+            "Rotate keys regularly",
+            "Use environment variables to store keys",
+            "Restrict key permissions to required scopes only",
+          ]}
+        />
+      </DocSection>
+
+      <InfoBox className="mt-6">
+        // keys can be managed from the Vembric dashboard under Settings → API Keys
+      </InfoBox>
     </div>
   );
 }

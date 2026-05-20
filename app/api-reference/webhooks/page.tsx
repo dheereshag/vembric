@@ -1,116 +1,72 @@
+import { PageHeader } from "@/components/doc/page-header";
+import { DocSection } from "@/components/doc/doc-section";
+import { ArrowList } from "@/components/doc/arrow-list";
+import { InfoBox } from "@/components/doc/info-box";
 import {
-  Snippet,
-  SnippetCopyButton,
-  SnippetHeader,
-  SnippetTabsContent,
-  SnippetTabsList,
-  SnippetTabsTrigger,
+  Snippet, SnippetCopyButton, SnippetHeader,
+  SnippetTabsContent, SnippetTabsList, SnippetTabsTrigger,
 } from "@/components/kibo-ui/snippet";
 
 const payloadExample = `{
-  "id": "evt_01abc",
+  "id": "evt_01",
   "type": "order.created",
-  "created_at": "2026-05-20T10:00:00Z",
+  "created_at": "2024-01-15T10:30:00Z",
   "data": {
-    "id": "ord_01xyz",
+    "id": "ord_01",
     "status": "pending",
-    "total": 4200
+    "amount": 2999
   }
 }`;
 
 const verifyExample = `import crypto from 'crypto';
 
 const signature = req.headers['x-vembric-signature'];
-const payload   = req.rawBody;
-const secret    = process.env.VEMBRIC_WEBHOOK_SECRET;
-
+const body = JSON.stringify(req.body);
 const expected = crypto
-  .createHmac('sha256', secret)
-  .update(payload)
+  .createHmac('sha256', process.env.WEBHOOK_SECRET)
+  .update(body)
   .digest('hex');
 
-if (signature !== expected) {
-  return res.status(401).send('Invalid signature');
-}`;
+if (signature !== expected) throw new Error('Invalid signature');`;
 
 export default function WebhooksPage() {
   return (
     <div className="p-6">
-      <div className="mb-8">
-        <p className="font-mono text-xs text-muted-foreground uppercase tracking-widest mb-1">
-          // api-reference / webhooks
-        </p>
-        <h1 className="font-mono text-3xl font-bold tracking-tight">Webhooks</h1>
-        <p className="text-muted-foreground mt-2">
-          Receive real-time event notifications via HTTP POST to your endpoint.
-        </p>
-      </div>
+      <PageHeader
+        path="// api-reference / webhooks"
+        title="Webhooks"
+        description="Receive real-time event notifications via HTTP POST callbacks."
+      />
 
-      <div className="border-b mb-10" />
+      <DocSection title="supported events">
+        <ArrowList
+          items={[
+            <><code className="font-mono bg-muted px-1.5 py-0.5 text-xs">order.created</code> — a new order was placed</>,
+            <><code className="font-mono bg-muted px-1.5 py-0.5 text-xs">order.updated</code> — an order status changed</>,
+            <><code className="font-mono bg-muted px-1.5 py-0.5 text-xs">order.cancelled</code> — an order was cancelled</>,
+            <><code className="font-mono bg-muted px-1.5 py-0.5 text-xs">game.published</code> — a game went live</>,
+            <><code className="font-mono bg-muted px-1.5 py-0.5 text-xs">game.archived</code> — a game was archived</>,
+          ]}
+        />
+      </DocSection>
 
-      <section className="mb-10">
-        <h2 className="font-mono text-xs uppercase tracking-widest text-muted-foreground mb-4">
-          setup
-        </h2>
-        <p className="text-sm leading-relaxed mb-4">
-          Register your endpoint URL in the Vembric dashboard under{" "}
-          <code className="font-mono bg-muted px-1.5 py-0.5 text-xs">Settings → Webhooks</code>.
-          Vembric will send a <code className="font-mono bg-muted px-1.5 py-0.5 text-xs">POST</code> request
-          to your URL whenever a subscribed event occurs.
-        </p>
-        <ul className="space-y-2 text-sm font-mono mb-4">
-          <li><span className="text-muted-foreground">→</span> Your endpoint must return <code className="bg-muted px-1">2xx</code> within 10 seconds</li>
-          <li><span className="text-muted-foreground">→</span> Failed deliveries are retried up to 5 times with exponential backoff</li>
-        </ul>
-      </section>
-
-      <section className="mb-10">
-        <h2 className="font-mono text-xs uppercase tracking-widest text-muted-foreground mb-4">
-          event types
-        </h2>
-        <div className="border divide-y font-mono text-sm">
-          <div className="grid grid-cols-12 bg-muted/50 px-4 py-2 text-xs uppercase tracking-widest text-muted-foreground">
-            <span className="col-span-5">event</span>
-            <span className="col-span-7">description</span>
-          </div>
-          {[
-            ["order.created",   "A new order was created"],
-            ["order.updated",   "An order was updated"],
-            ["order.completed", "An order reached completed status"],
-            ["game.created",    "A new game was created"],
-            ["game.updated",    "A game was updated"],
-          ].map(([event, desc]) => (
-            <div key={event} className="grid grid-cols-12 px-4 py-3">
-              <code className="col-span-5 text-xs">{event}</code>
-              <span className="col-span-7 text-xs text-muted-foreground">{desc}</span>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section className="mb-10">
-        <h2 className="font-mono text-xs uppercase tracking-widest text-muted-foreground mb-4">
-          payload structure
-        </h2>
-        <Snippet defaultValue="payload">
+      <DocSection title="payload structure">
+        <Snippet defaultValue="json">
           <SnippetHeader>
             <SnippetTabsList>
-              <SnippetTabsTrigger value="payload">payload</SnippetTabsTrigger>
+              <SnippetTabsTrigger value="json">payload</SnippetTabsTrigger>
             </SnippetTabsList>
             <SnippetCopyButton value={payloadExample} />
           </SnippetHeader>
-          <SnippetTabsContent value="payload">{payloadExample}</SnippetTabsContent>
+          <SnippetTabsContent value="json">{payloadExample}</SnippetTabsContent>
         </Snippet>
-      </section>
+      </DocSection>
 
-      <section>
-        <h2 className="font-mono text-xs uppercase tracking-widest text-muted-foreground mb-4">
-          verifying signatures
-        </h2>
+      <DocSection title="signature verification">
         <p className="text-sm leading-relaxed mb-4">
-          Every request includes a{" "}
-          <code className="font-mono bg-muted px-1.5 py-0.5 text-xs">x-vembric-signature</code>{" "}
-          header — an HMAC-SHA256 hex digest of the raw request body signed with your webhook secret.
+          Each webhook includes an{" "}
+          <code className="font-mono bg-muted px-1.5 py-0.5 text-xs">X-Vembric-Signature</code>{" "}
+          header. Verify it against your webhook secret before processing.
         </p>
         <Snippet defaultValue="node">
           <SnippetHeader>
@@ -121,7 +77,18 @@ export default function WebhooksPage() {
           </SnippetHeader>
           <SnippetTabsContent value="node">{verifyExample}</SnippetTabsContent>
         </Snippet>
-      </section>
+      </DocSection>
+
+      <DocSection title="retry policy" className="mb-0">
+        <ArrowList
+          items={[
+            "Retries on non-2xx responses",
+            "Up to 5 attempts with exponential backoff",
+            "Events expire after 72 hours if undelivered",
+          ]}
+        />
+        <InfoBox className="mt-4">// respond with 2xx within 10 seconds to acknowledge delivery</InfoBox>
+      </DocSection>
     </div>
   );
 }
