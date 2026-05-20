@@ -54,7 +54,19 @@ export const sidebarData = {
           url: "#",
         },
         {
+          title: "Pagination",
+          url: "#",
+        },
+        {
+          title: "Webhooks",
+          url: "#",
+        },
+        {
           title: "Rate Limiting",
+          url: "#",
+        },
+        {
+          title: "Error Handling",
           url: "#",
         },
       ],
@@ -66,10 +78,6 @@ export const sidebarData = {
       items: [
         {
           title: "Best Practices",
-          url: "#",
-        },
-        {
-          title: "Error Handling",
           url: "#",
         },
         {
@@ -110,7 +118,6 @@ export const sidebarData = {
     title: resource.title,
     url: "#",
     icon: resourceIcons[resource.key as keyof typeof resourceIcons],
-    isActive: resource.key === "games",
     items: resource.actions.map((action) => ({
       title: action.title,
       url: `/${resource.key}/${action.slug}`,
