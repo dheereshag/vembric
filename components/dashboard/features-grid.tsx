@@ -30,7 +30,7 @@ export function FeaturesGrid() {
       <h2 className="text-2xl font-bold tracking-tight">Template Features</h2>
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {defaultFeatures.map((feature) => (
-          <div key={feature.title} className="flex gap-4 p-4 border rounded-2xl bg-card/50">
+          <div key={feature.title} className="flex gap-4 p-4 rounded-2xl bg-muted/30">
             <div className="p-2 rounded-lg bg-primary/5 text-primary h-fit">
               <feature.icon className="size-4" />
             </div>

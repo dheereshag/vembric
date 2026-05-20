@@ -4,9 +4,9 @@ import Link from "next/link";
 
 export function HeroSection() {
   return (
-    <div className="relative overflow-hidden rounded-3xl border bg-gradient-to-b from-muted/50 to-muted/20 px-6 py-12 md:px-12 md:py-20">
+    <div className="relative overflow-hidden rounded-3xl bg-gradient-to-b from-muted/50 to-muted/20 px-6 py-12 md:px-12 md:py-20">
       <div className="absolute top-4 right-4">
-        <span className="inline-flex items-center gap-1.5 rounded-full border bg-background px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 text-muted-foreground">
+        <span className="inline-flex items-center gap-1.5 rounded-full bg-muted/50 px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 text-muted-foreground">
           <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
           Beta v0.1.0
         </span>

@@ -13,7 +13,7 @@ interface NavCardProps {
 
 export function NavCard({ title, description, icon: Icon, actionText, actionHref }: NavCardProps) {
   return (
-    <Card className="hover:border-foreground/30 transition-all duration-300 group flex flex-col justify-between">
+    <Card className="border-none shadow-none bg-muted/30 hover:bg-muted/50 transition-all duration-300 group flex flex-col justify-between">
       <CardHeader>
         <div className="p-2 w-10 h-10 rounded-lg bg-primary/10 text-primary mb-3 flex items-center justify-center">
           <Icon className="size-5" />

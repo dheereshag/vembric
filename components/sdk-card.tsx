@@ -9,7 +9,7 @@ interface SdkCardProps {
 
 export function SdkCard({ name, description, icon }: SdkCardProps) {
   return (
-    <Card className="hover:border-foreground/30 transition-all duration-300 group flex flex-row items-start gap-4 p-6 bg-card text-card-foreground shadow-sm">
+    <Card className="border-none shadow-none bg-muted/30 hover:bg-muted/50 transition-all duration-300 group flex flex-row items-start gap-4 p-6">
       <div className="flex-shrink-0 mt-1">
         {icon}
       </div>
