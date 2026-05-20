@@ -2,7 +2,7 @@ export default function SDKPage() {
   const sdks = [
     {
       name: "Node.js",
-      description: "Official JavaScript SDK to interact with the API.",
+      description: "Official JS SDK to interact with the API.",
       icon: <i className="ci ci-nodejs ci-2x"></i>,
     },
     {
