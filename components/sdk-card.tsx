@@ -1,6 +1,3 @@
-import { Card } from "@/components/ui/card";
-import { ArrowRight } from "lucide-react";
-
 interface SdkCardProps {
   name: string;
   description: string;
@@ -9,25 +6,17 @@ interface SdkCardProps {
 
 export function SdkCard({ name, description, icon }: SdkCardProps) {
   return (
-    <Card className="border-none shadow-none bg-muted/30 hover:bg-muted/50 transition-all duration-300 group flex flex-row items-start gap-4 p-6">
-      <div className="flex-shrink-0 mt-1">
-        {icon}
-      </div>
-      <div className="flex-1 space-y-2">
-        <h3 className="text-lg font-semibold tracking-tight text-foreground leading-none">
-          {name}
-        </h3>
-        <p className="text-sm text-muted-foreground/80 leading-relaxed">
+    <div className="border p-5 flex items-start gap-4 hover:bg-muted/20 transition-colors">
+      <div className="shrink-0 mt-0.5">{icon}</div>
+      <div className="space-y-2">
+        <h3 className="font-mono text-sm font-semibold">{name}</h3>
+        <p className="text-xs text-muted-foreground leading-relaxed">
           {description}
         </p>
-        <div className="pt-2">
-          <button
-            className="inline-flex items-center gap-1 text-emerald-500 dark:text-emerald-400 hover:text-emerald-400 dark:hover:text-emerald-300 font-semibold text-sm transition-colors group/btn cursor-pointer bg-transparent border-0 p-0 outline-none"
-          >
-            Read more <ArrowRight className="size-4 transition-transform group-hover/btn:translate-x-1" />
-          </button>
-        </div>
+        <button className="font-mono text-xs underline underline-offset-4">
+          → Read more
+        </button>
       </div>
-    </Card>
+    </div>
   );
 }

@@ -44,13 +44,17 @@ export function AppHeader() {
             {sectionTitle && (
               <>
                 <BreadcrumbItem className="hidden md:block">
-                  <BreadcrumbLink href="#">{sectionTitle}</BreadcrumbLink>
+                  <BreadcrumbLink href="#" className="font-mono text-xs">
+                    {sectionTitle}
+                  </BreadcrumbLink>
                 </BreadcrumbItem>
                 <BreadcrumbSeparator className="hidden md:block" />
               </>
             )}
             <BreadcrumbItem>
-              <BreadcrumbPage>{pageTitle || "Documentation"}</BreadcrumbPage>
+              <BreadcrumbPage className="font-mono text-xs">
+                {pageTitle || "Documentation"}
+              </BreadcrumbPage>
             </BreadcrumbItem>
           </BreadcrumbList>
         </Breadcrumb>

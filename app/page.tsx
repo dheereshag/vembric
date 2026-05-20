@@ -16,7 +16,7 @@ export default function Page() {
           description="Get up and running with Vembric in under 5 minutes."
           icon={BookOpen}
           actionText="Read Guide"
-          actionHref="#"
+          actionHref="/getting-started/quick-start"
         />
         <NavCard
           title="API Reference"

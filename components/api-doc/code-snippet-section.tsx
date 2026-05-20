@@ -57,7 +57,7 @@ export function CodeSnippetSection({
           >
             {method}
           </Badge>
-          <code className="text-sm font-mono bg-muted px-2 py-1 rounded">
+          <code className="text-sm font-mono bg-muted px-2 py-1">
             {endpoint}
           </code>
         </div>
@@ -65,7 +65,9 @@ export function CodeSnippetSection({
 
         {optionalAttributes && optionalAttributes.length > 0 && (
           <div className="mb-6 space-y-3">
-            <h4 className="font-semibold text-lg tracking-tight">Optional Attributes</h4>
+            <h4 className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
+              optional attributes
+            </h4>
             <SchemaTable items={optionalAttributes} nameHeader="Attribute" />
           </div>
         )}

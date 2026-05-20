@@ -25,7 +25,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             height={32}
             className="size-8"
           />
-          <span className="truncate font-semibold">Vembric</span>
+          <span className="truncate font-mono font-bold">Vembric</span>
         </Link>
       </SidebarHeader>
       <SidebarContent>

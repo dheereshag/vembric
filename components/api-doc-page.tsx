@@ -11,7 +11,9 @@ type ApiDocPageProps = {
 export function ApiDocPage({ data }: ApiDocPageProps) {
   return (
     <ScrollArea className="p-6">
-      <h1 className="text-3xl font-bold mb-2">{data.title}</h1>
+      <h1 className="font-mono text-3xl font-bold tracking-tight mb-2">
+        {data.title}
+      </h1>
       <p className="text-muted-foreground max-w-3xl">{data.description}</p>
 
       <ModelSection model={data.model} />

@@ -18,11 +18,11 @@ export function ResponseSection({ response }: ResponseSectionProps) {
     <>
       <Separator className="my-6" />
       <section>
-        <div className="group w-full gap-0 overflow-hidden rounded-md border">
+        <div className="group w-full gap-0 overflow-hidden border">
           <div className="flex flex-row items-center justify-between border-b bg-secondary p-1">
-            <h4 className="text-base font-medium flex items-center gap-2 px-2">
+            <h4 className="font-mono text-xs uppercase tracking-widest text-muted-foreground flex items-center gap-2 px-2">
               <JsonIcon />
-              Response
+              response
             </h4>
             <SnippetCopyButton
               value={formatted}

@@ -1,35 +1,40 @@
-import { Button } from "@/components/ui/button";
-import { ArrowRight, Code2 } from "lucide-react";
 import Link from "next/link";
 
 export function HeroSection() {
   return (
-    <div className="relative overflow-hidden rounded-3xl bg-gradient-to-b from-muted/50 to-muted/20 px-6 py-12 md:px-12 md:py-20">
-      <div className="absolute top-4 right-4">
-        <span className="inline-flex items-center gap-1.5 rounded-full bg-muted/50 px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 text-muted-foreground">
+    <div className="border p-8 md:p-12">
+      <div className="flex items-center justify-between mb-6">
+        <p className="font-mono text-xs text-muted-foreground uppercase tracking-widest">
+          // vembric / api-docs
+        </p>
+        <span className="font-mono text-xs border px-2 py-0.5 flex items-center gap-1.5">
           <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
-          Beta v0.1.0
+          beta v0.1.0
         </span>
       </div>
-      <div className="max-w-2xl space-y-4">
-        <h1 className="text-4xl md:text-5xl font-bold tracking-tight bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
-          Welcome to Vembric
-        </h1>
-        <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
-          Create stunning, developer-friendly API documentation with this modern Next.js template.
-        </p>
-        <div className="flex flex-wrap gap-3 pt-2">
-          <Button asChild size="lg" className="gap-2">
-            <Link href="/games/list-all-games">
-              Explore APIs <ArrowRight className="size-4" />
-            </Link>
-          </Button>
-          <Button asChild variant="outline" size="lg" className="gap-2">
-            <Link href="/sdks">
-              View SDKs <Code2 className="size-4" />
-            </Link>
-          </Button>
-        </div>
+      <h1 className="font-mono text-4xl md:text-5xl font-bold tracking-tight mb-4">
+        Welcome to Vembric
+      </h1>
+      <p className="text-muted-foreground leading-relaxed max-w-xl mb-8">
+        Developer-friendly API documentation for games and orders. Browse
+        endpoints, try requests, and integrate with official SDKs.
+      </p>
+      <div className="flex flex-wrap gap-6 font-mono text-sm">
+        <Link
+          href="/getting-started/introduction"
+          className="underline underline-offset-4"
+        >
+          → Get Started
+        </Link>
+        <Link
+          href="/api-reference/endpoints"
+          className="underline underline-offset-4"
+        >
+          → API Reference
+        </Link>
+        <Link href="/sdks" className="underline underline-offset-4">
+          → View SDKs
+        </Link>
       </div>
     </div>
   );

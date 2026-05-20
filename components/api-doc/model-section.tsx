@@ -11,12 +11,9 @@ export function ModelSection({ model }: ModelSectionProps) {
     <>
       <Separator className="my-6" />
       <section className="space-y-4">
-        <div>
-          <h2 className="text-xl font-semibold tracking-tight">Model Schema</h2>
-          <p className="text-sm text-muted-foreground mt-1 max-w-3xl">
-            The schema definition of the attributes returned or used by this model.
-          </p>
-        </div>
+        <h2 className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
+          model schema
+        </h2>
         <SchemaTable items={model} nameHeader="Field" />
       </section>
     </>

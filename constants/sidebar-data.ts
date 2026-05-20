@@ -28,15 +28,15 @@ export const sidebarData = {
       items: [
         {
           title: "Introduction",
-          url: "#",
+          url: "/getting-started/introduction",
         },
         {
           title: "Quick Start",
-          url: "#",
+          url: "/getting-started/quick-start",
         },
         {
           title: "Installation",
-          url: "#",
+          url: "/getting-started/installation",
         },
       ],
     },
@@ -47,27 +47,27 @@ export const sidebarData = {
       items: [
         {
           title: "Authentication",
-          url: "#",
+          url: "/api-reference/authentication",
         },
         {
           title: "Endpoints",
-          url: "#",
+          url: "/api-reference/endpoints",
         },
         {
           title: "Pagination",
-          url: "#",
+          url: "/api-reference/pagination",
         },
         {
           title: "Webhooks",
-          url: "#",
+          url: "/api-reference/webhooks",
         },
         {
           title: "Rate Limiting",
-          url: "#",
+          url: "/api-reference/rate-limiting",
         },
         {
           title: "Error Handling",
-          url: "#",
+          url: "/api-reference/error-handling",
         },
       ],
     },
@@ -78,7 +78,7 @@ export const sidebarData = {
       items: [
         {
           title: "Best Practices",
-          url: "#",
+          url: "/guides/best-practices",
         },
         {
           title: "SDKs",
@@ -86,7 +86,7 @@ export const sidebarData = {
         },
         {
           title: "Examples",
-          url: "#",
+          url: "/guides/examples",
         },
       ],
     },
@@ -97,19 +97,19 @@ export const sidebarData = {
       items: [
         {
           title: "FAQ",
-          url: "#",
+          url: "/support/faq",
         },
         {
           title: "Contact",
-          url: "#",
+          url: "/support/contact",
         },
         {
           title: "Status",
-          url: "#",
+          url: "/support/status",
         },
         {
           title: "Changelog",
-          url: "#",
+          url: "/support/changelog",
         },
       ],
     },
