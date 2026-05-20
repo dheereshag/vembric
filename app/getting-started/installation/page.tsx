@@ -16,12 +16,14 @@ const goCmd = `go get github.com/vembric/vembric-go`;
 
 export default function InstallationPage() {
   return (
-    <div className="max-w-3xl mx-auto py-10 px-6">
+    <div className="mx-auto py-10">
       <div className="mb-8">
         <p className="font-mono text-xs text-muted-foreground uppercase tracking-widest mb-1">
           // getting-started / installation
         </p>
-        <h1 className="font-mono text-3xl font-bold tracking-tight">Installation</h1>
+        <h1 className="font-mono text-3xl font-bold tracking-tight">
+          Installation
+        </h1>
         <p className="text-muted-foreground mt-2">
           Install the official Vembric SDK for your language of choice.
         </p>
@@ -98,10 +100,18 @@ export default function InstallationPage() {
           requirements
         </h2>
         <ul className="space-y-2 text-sm font-mono">
-          <li><span className="text-muted-foreground">→</span> Node.js v18+</li>
-          <li><span className="text-muted-foreground">→</span> Python 3.8+</li>
-          <li><span className="text-muted-foreground">→</span> Ruby 3.0+</li>
-          <li><span className="text-muted-foreground">→</span> Go 1.21+</li>
+          <li>
+            <span className="text-muted-foreground">→</span> Node.js v18+
+          </li>
+          <li>
+            <span className="text-muted-foreground">→</span> Python 3.8+
+          </li>
+          <li>
+            <span className="text-muted-foreground">→</span> Ruby 3.0+
+          </li>
+          <li>
+            <span className="text-muted-foreground">→</span> Go 1.21+
+          </li>
         </ul>
       </section>
     </div>
