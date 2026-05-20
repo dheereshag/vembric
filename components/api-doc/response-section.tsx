@@ -24,8 +24,10 @@ export function ResponseSection({ response }: ResponseSectionProps) {
             </h4>
             <SnippetCopyButton
               value={formatted}
-              onCopy={() => undefined}
-              onError={() => undefined}
+              onCopy={() => console.log(`Copied "${formatted}" to clipboard`)}
+              onError={() =>
+                console.error(`Failed to copy "${formatted}" to clipboard`)
+              }
             />
           </div>
           <SyntaxHighlighter
