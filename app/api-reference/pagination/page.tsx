@@ -18,7 +18,7 @@ const responseExample = `{
 
 export default function PaginationPage() {
   return (
-    <div className="max-w-3xl mx-auto py-10 px-6">
+    <div className="p-6">
       <div className="mb-8">
         <p className="font-mono text-xs text-muted-foreground uppercase tracking-widest mb-1">
           // api-reference / pagination

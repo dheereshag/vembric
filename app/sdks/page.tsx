@@ -30,7 +30,7 @@ export default function SDKPage() {
   ];
 
   return (
-    <div className="max-w-6xl mx-auto py-10 px-6">
+    <div className="p-6">
       <h1 className="text-3xl font-bold tracking-tight">Vembric SDKs</h1>
 
       <p className="text-muted-foreground mt-2 mb-8">
