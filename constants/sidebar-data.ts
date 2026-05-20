@@ -2,10 +2,16 @@ import {
   BookOpen,
   Bot,
   Gamepad2,
+  Package,
   Settings2,
   SquareTerminal,
 } from "lucide-react";
-import { RequestType } from ".";
+import { resourceDocs } from "./api-docs";
+
+const resourceIcons = {
+  games: Gamepad2,
+  orders: Package,
+} as const;
 
 export const sidebarData = {
   user: {
@@ -100,44 +106,15 @@ export const sidebarData = {
       ],
     },
   ],
-  resources: [
-    {
-      title: "Games",
-      url: "#",
-      icon: Gamepad2,
-      isActive: true,
-      items: [
-        {
-          title: "List All Games",
-          url: "/games/list-all-games",
-          requestType: RequestType.GET,
-        },
-        {
-          title: "Create Game",
-          url: "/games/create-game",
-          requestType: RequestType.POST,
-        },
-        {
-          title: "Edit Game",
-          url: "/games/edit-game",
-          requestType: RequestType.PATCH,
-        },
-        {
-          title: "Update Game",
-          url: "/games/update-game",
-          requestType: RequestType.PUT,
-        },
-        {
-          title: "View Details",
-          url: "/games/view-details",
-          requestType: RequestType.GET,
-        },
-        {
-          title: "Delete Game",
-          url: "/games/delete-game",
-          requestType: RequestType.DELETE,
-        },
-      ],
-    },
-  ],
+  resources: resourceDocs.map((resource) => ({
+    title: resource.title,
+    url: "#",
+    icon: resourceIcons[resource.key as keyof typeof resourceIcons],
+    isActive: resource.key === "games",
+    items: resource.actions.map((action) => ({
+      title: action.title,
+      url: `/${resource.key}/${action.slug}`,
+      requestType: action.method,
+    })),
+  })),
 };
