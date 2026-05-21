@@ -12,6 +12,8 @@ import {
   quickStartResponse,
 } from "@/constants/code-snippets";
 import { CurlIcon, JavaScriptIcon, JsonIcon } from "@/components/api-doc/icons";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 
 export default function QuickStartPage() {
   return (
@@ -54,10 +56,24 @@ export default function QuickStartPage() {
             <SnippetCopyButton value={authCurlExample} />
           </SnippetHeader>
           <SnippetTabsContent value="curl">
-            {authCurlExample}
+            <SyntaxHighlighter
+              language="bash"
+              style={vscDarkPlus}
+              wrapLongLines
+              className="rounded-md text-sm"
+            >
+              {authCurlExample}
+            </SyntaxHighlighter>
           </SnippetTabsContent>
           <SnippetTabsContent value="node">
-            {quickStartNodeExample}
+            <SyntaxHighlighter
+              language="javascript"
+              style={vscDarkPlus}
+              wrapLongLines
+              className="rounded-md text-sm"
+            >
+              {quickStartNodeExample}
+            </SyntaxHighlighter>
           </SnippetTabsContent>
         </Snippet>
       </DocSection>
@@ -77,7 +93,14 @@ export default function QuickStartPage() {
             <SnippetCopyButton value={quickStartResponse} />
           </SnippetHeader>
           <SnippetTabsContent value="json">
-            {quickStartResponse}
+            <SyntaxHighlighter
+              language="json"
+              style={vscDarkPlus}
+              wrapLongLines
+              className="rounded-md text-sm"
+            >
+              {quickStartResponse}
+            </SyntaxHighlighter>
           </SnippetTabsContent>
         </Snippet>
       </DocSection>

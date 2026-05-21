@@ -5,6 +5,8 @@ import {
   SnippetTabsContent, SnippetTabsList, SnippetTabsTrigger,
 } from "@/components/kibo-ui/snippet";
 import { JavaScriptIcon } from "@/components/api-doc/icons";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 import {
   examplesListGames,
   examplesCreateOrder,
@@ -36,7 +38,16 @@ export default function ExamplesPage() {
             </SnippetTabsList>
             <SnippetCopyButton value={listGames} />
           </SnippetHeader>
-          <SnippetTabsContent value="node">{listGames}</SnippetTabsContent>
+          <SnippetTabsContent value="node">
+            <SyntaxHighlighter
+              language="javascript"
+              style={vscDarkPlus}
+              wrapLongLines
+              className="rounded-md text-sm"
+            >
+              {listGames}
+            </SyntaxHighlighter>
+          </SnippetTabsContent>
         </Snippet>
       </DocSection>
 
@@ -51,7 +62,16 @@ export default function ExamplesPage() {
             </SnippetTabsList>
             <SnippetCopyButton value={createOrder} />
           </SnippetHeader>
-          <SnippetTabsContent value="node">{createOrder}</SnippetTabsContent>
+          <SnippetTabsContent value="node">
+            <SyntaxHighlighter
+              language="javascript"
+              style={vscDarkPlus}
+              wrapLongLines
+              className="rounded-md text-sm"
+            >
+              {createOrder}
+            </SyntaxHighlighter>
+          </SnippetTabsContent>
         </Snippet>
       </DocSection>
 
@@ -66,7 +86,16 @@ export default function ExamplesPage() {
             </SnippetTabsList>
             <SnippetCopyButton value={webhookHandler} />
           </SnippetHeader>
-          <SnippetTabsContent value="node">{webhookHandler}</SnippetTabsContent>
+          <SnippetTabsContent value="node">
+            <SyntaxHighlighter
+              language="javascript"
+              style={vscDarkPlus}
+              wrapLongLines
+              className="rounded-md text-sm"
+            >
+              {webhookHandler}
+            </SyntaxHighlighter>
+          </SnippetTabsContent>
         </Snippet>
       </DocSection>
     </div>

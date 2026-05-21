@@ -13,6 +13,8 @@ import {
   paginationResponseExample,
 } from "@/constants/code-snippets";
 import { CurlIcon, JsonIcon } from "@/components/api-doc/icons";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 
 export default function PaginationPage() {
   return (
@@ -85,10 +87,24 @@ export default function PaginationPage() {
             <SnippetCopyButton value={paginationCurlExample} />
           </SnippetHeader>
           <SnippetTabsContent value="curl">
-            {paginationCurlExample}
+            <SyntaxHighlighter
+              language="bash"
+              style={vscDarkPlus}
+              wrapLongLines
+              className="rounded-md text-sm"
+            >
+              {paginationCurlExample}
+            </SyntaxHighlighter>
           </SnippetTabsContent>
           <SnippetTabsContent value="response">
-            {paginationResponseExample}
+            <SyntaxHighlighter
+              language="json"
+              style={vscDarkPlus}
+              wrapLongLines
+              className="rounded-md text-sm"
+            >
+              {paginationResponseExample}
+            </SyntaxHighlighter>
           </SnippetTabsContent>
         </Snippet>
       </DocSection>

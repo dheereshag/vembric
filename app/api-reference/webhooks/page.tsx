@@ -12,6 +12,8 @@ import {
   webhookVerifyExample,
 } from "@/constants/code-snippets";
 import { JavaScriptIcon, JsonIcon } from "@/components/api-doc/icons";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 
 const payloadExample = webhookPayloadExample;
 const verifyExample = webhookVerifyExample;
@@ -73,7 +75,16 @@ export default function WebhooksPage() {
             </SnippetTabsList>
             <SnippetCopyButton value={payloadExample} />
           </SnippetHeader>
-          <SnippetTabsContent value="json">{payloadExample}</SnippetTabsContent>
+          <SnippetTabsContent value="json">
+            <SyntaxHighlighter
+              language="json"
+              style={vscDarkPlus}
+              wrapLongLines
+              className="rounded-md text-sm"
+            >
+              {payloadExample}
+            </SyntaxHighlighter>
+          </SnippetTabsContent>
         </Snippet>
       </DocSection>
 
@@ -95,7 +106,16 @@ export default function WebhooksPage() {
             </SnippetTabsList>
             <SnippetCopyButton value={verifyExample} />
           </SnippetHeader>
-          <SnippetTabsContent value="node">{verifyExample}</SnippetTabsContent>
+          <SnippetTabsContent value="node">
+            <SyntaxHighlighter
+              language="javascript"
+              style={vscDarkPlus}
+              wrapLongLines
+              className="rounded-md text-sm"
+            >
+              {verifyExample}
+            </SyntaxHighlighter>
+          </SnippetTabsContent>
         </Snippet>
       </DocSection>
 

@@ -10,6 +10,8 @@ import { authKeyTypes } from "@/constants/api-reference";
 import { brand } from "@/constants/brand";
 import { authCurlExample, authNodeExample } from "@/constants/code-snippets";
 import { CurlIcon, JavaScriptIcon } from "@/components/api-doc/icons";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 
 const curlExample = authCurlExample;
 const nodeExample = authNodeExample;
@@ -49,8 +51,26 @@ export default function AuthenticationPage() {
             </SnippetTabsList>
             <SnippetCopyButton value={curlExample} />
           </SnippetHeader>
-          <SnippetTabsContent value="curl">{curlExample}</SnippetTabsContent>
-          <SnippetTabsContent value="node">{nodeExample}</SnippetTabsContent>
+          <SnippetTabsContent value="curl">
+            <SyntaxHighlighter
+              language="bash"
+              style={vscDarkPlus}
+              wrapLongLines
+              className="rounded-md text-sm"
+            >
+              {curlExample}
+            </SyntaxHighlighter>
+          </SnippetTabsContent>
+          <SnippetTabsContent value="node">
+            <SyntaxHighlighter
+              language="javascript"
+              style={vscDarkPlus}
+              wrapLongLines
+              className="rounded-md text-sm"
+            >
+              {nodeExample}
+            </SyntaxHighlighter>
+          </SnippetTabsContent>
         </Snippet>
       </DocSection>
 

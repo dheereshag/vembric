@@ -10,6 +10,8 @@ import { statusCodes } from "@/constants/api-reference";
 import { brand } from "@/constants/brand";
 import { errorResponseExample } from "@/constants/code-snippets";
 import { JsonIcon } from "@/components/api-doc/icons";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 
 const errorExample = errorResponseExample;
 
@@ -33,7 +35,16 @@ export default function ErrorHandlingPage() {
             </SnippetTabsList>
             <SnippetCopyButton value={errorExample} />
           </SnippetHeader>
-          <SnippetTabsContent value="json">{errorExample}</SnippetTabsContent>
+          <SnippetTabsContent value="json">
+            <SyntaxHighlighter
+              language="json"
+              style={vscDarkPlus}
+              wrapLongLines
+              className="rounded-md text-sm"
+            >
+              {errorExample}
+            </SyntaxHighlighter>
+          </SnippetTabsContent>
         </Snippet>
       </DocSection>
 

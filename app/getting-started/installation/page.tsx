@@ -15,6 +15,8 @@ import {
   RubygemsIcon,
   GoIcon,
 } from "@/components/api-doc/icons";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 
 export default function InstallationPage() {
   return (
@@ -45,13 +47,34 @@ export default function InstallationPage() {
             <SnippetCopyButton value={installCommands.npm} />
           </SnippetHeader>
           <SnippetTabsContent value="npm">
-            {installCommands.npm}
+            <SyntaxHighlighter
+              language="bash"
+              style={vscDarkPlus}
+              wrapLongLines
+              className="rounded-md text-sm"
+            >
+              {installCommands.npm}
+            </SyntaxHighlighter>
           </SnippetTabsContent>
           <SnippetTabsContent value="yarn">
-            {installCommands.yarn}
+            <SyntaxHighlighter
+              language="bash"
+              style={vscDarkPlus}
+              wrapLongLines
+              className="rounded-md text-sm"
+            >
+              {installCommands.yarn}
+            </SyntaxHighlighter>
           </SnippetTabsContent>
           <SnippetTabsContent value="pnpm">
-            {installCommands.pnpm}
+            <SyntaxHighlighter
+              language="bash"
+              style={vscDarkPlus}
+              wrapLongLines
+              className="rounded-md text-sm"
+            >
+              {installCommands.pnpm}
+            </SyntaxHighlighter>
           </SnippetTabsContent>
         </Snippet>
       </DocSection>
@@ -68,7 +91,14 @@ export default function InstallationPage() {
             <SnippetCopyButton value={installCommands.pip} />
           </SnippetHeader>
           <SnippetTabsContent value="pip">
-            {installCommands.pip}
+            <SyntaxHighlighter
+              language="bash"
+              style={vscDarkPlus}
+              wrapLongLines
+              className="rounded-md text-sm"
+            >
+              {installCommands.pip}
+            </SyntaxHighlighter>
           </SnippetTabsContent>
         </Snippet>
       </DocSection>
@@ -85,7 +115,14 @@ export default function InstallationPage() {
             <SnippetCopyButton value={installCommands.gem} />
           </SnippetHeader>
           <SnippetTabsContent value="gem">
-            {installCommands.gem}
+            <SyntaxHighlighter
+              language="bash"
+              style={vscDarkPlus}
+              wrapLongLines
+              className="rounded-md text-sm"
+            >
+              {installCommands.gem}
+            </SyntaxHighlighter>
           </SnippetTabsContent>
         </Snippet>
       </DocSection>
@@ -102,7 +139,14 @@ export default function InstallationPage() {
             <SnippetCopyButton value={installCommands.go} />
           </SnippetHeader>
           <SnippetTabsContent value="go">
-            {installCommands.go}
+            <SyntaxHighlighter
+              language="bash"
+              style={vscDarkPlus}
+              wrapLongLines
+              className="rounded-md text-sm"
+            >
+              {installCommands.go}
+            </SyntaxHighlighter>
           </SnippetTabsContent>
         </Snippet>
       </DocSection>
