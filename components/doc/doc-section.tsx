@@ -2,7 +2,7 @@ import { cn } from "@/lib/utils";
 import type { HTMLAttributes } from "react";
 
 interface DocSectionProps extends HTMLAttributes<HTMLElement> {
-  title: string;
+  title: React.ReactNode;
   children: React.ReactNode;
 }
 

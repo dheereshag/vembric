@@ -18,7 +18,11 @@ export default function SDKPage() {
             key={sdk.name}
             name={sdk.name}
             description={sdk.description}
-            icon={<i className={sdk.iconClass} />}
+            icon={
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                <path d={sdk.iconPath} />
+              </svg>
+            }
           />
         ))}
       </div>

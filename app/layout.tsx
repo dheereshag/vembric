@@ -19,10 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <head>
-        <link
-          rel="stylesheet"
-          href="https://cdn.jsdelivr.net/gh/dheereshag/coloured-icons@master/app/ci.min.css"
-        />
+
       </head>
       <body
         className={`${fontSans.variable} ${fontMono.variable} font-sans antialiased`}

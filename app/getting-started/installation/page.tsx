@@ -12,8 +12,9 @@ import {
   YarnIcon,
   PnpmIcon,
   PythonIcon,
-  RubygemsIcon,
+  RubyIcon,
   GoIcon,
+  NodejsIcon,
 } from "@/components/api-doc/icons";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
@@ -27,7 +28,7 @@ export default function InstallationPage() {
         description={`Install the official ${brand.name} SDK for your language of choice.`}
       />
 
-      <DocSection title="node.js">
+      <DocSection title={<span className="inline-flex items-center gap-2"><NodejsIcon /><span>node.js</span></span>}>
         <Snippet defaultValue="npm">
           <SnippetHeader>
             <SnippetTabsList>
@@ -79,7 +80,7 @@ export default function InstallationPage() {
         </Snippet>
       </DocSection>
 
-      <DocSection title="python">
+      <DocSection title={<span className="inline-flex items-center gap-2"><PythonIcon /><span>python</span></span>}>
         <Snippet defaultValue="pip">
           <SnippetHeader>
             <SnippetTabsList>
@@ -103,12 +104,12 @@ export default function InstallationPage() {
         </Snippet>
       </DocSection>
 
-      <DocSection title="ruby">
+      <DocSection title={<span className="inline-flex items-center gap-2"><RubyIcon /><span>ruby</span></span>}>
         <Snippet defaultValue="gem">
           <SnippetHeader>
             <SnippetTabsList>
               <SnippetTabsTrigger value="gem">
-                <RubygemsIcon />
+                <RubyIcon />
                 <span>gem</span>
               </SnippetTabsTrigger>
             </SnippetTabsList>
@@ -127,7 +128,7 @@ export default function InstallationPage() {
         </Snippet>
       </DocSection>
 
-      <DocSection title="go">
+      <DocSection title={<span className="inline-flex items-center gap-2"><GoIcon /><span>go</span></span>}>
         <Snippet defaultValue="go">
           <SnippetHeader>
             <SnippetTabsList>
