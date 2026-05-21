@@ -1,29 +1,7 @@
 import { PageHeader } from "@/components/doc/page-header";
 import { DocSection } from "@/components/doc/doc-section";
 import { InfoBox } from "@/components/doc/info-box";
-
-const faqs = [
-  {
-    q: "Where can I find my API key?",
-    a: "Log into the Vembric dashboard and go to Settings → API Keys.",
-  },
-  {
-    q: "What happens if I exceed the rate limit?",
-    a: "You will receive a 429 response. Check the Retry-After header and wait before retrying.",
-  },
-  {
-    q: "How do I switch from test to production?",
-    a: "Replace your test_ key with a live_ key. No other code changes are required.",
-  },
-  {
-    q: "Does Vembric support IPv6?",
-    a: "Yes. The API is accessible over both IPv4 and IPv6.",
-  },
-  {
-    q: "Can I use the API without an SDK?",
-    a: "Absolutely. Any HTTP client that can set headers and parse JSON will work.",
-  },
-];
+import { faqs } from "@/constants/support";
 
 export default function FAQPage() {
   return (

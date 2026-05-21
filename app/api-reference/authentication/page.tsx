@@ -6,6 +6,7 @@ import {
   Snippet, SnippetCopyButton, SnippetHeader,
   SnippetTabsContent, SnippetTabsList, SnippetTabsTrigger,
 } from "@/components/kibo-ui/snippet";
+import { authKeyTypes } from "@/constants/api-reference";
 
 const curlExample = `curl https://api.vembric.io/v1/games \\
   -H "Authorization: Bearer YOUR_API_KEY"`;
@@ -26,9 +27,14 @@ export default function AuthenticationPage() {
       <DocSection title="bearer tokens">
         <p className="text-sm leading-relaxed mb-4">
           All API requests must include your API key as a{" "}
-          <code className="font-mono bg-muted px-1.5 py-0.5 text-xs">Bearer</code>{" "}
+          <code className="font-mono bg-muted px-1.5 py-0.5 text-xs">
+            Bearer
+          </code>{" "}
           token in the{" "}
-          <code className="font-mono bg-muted px-1.5 py-0.5 text-xs">Authorization</code> header.
+          <code className="font-mono bg-muted px-1.5 py-0.5 text-xs">
+            Authorization
+          </code>{" "}
+          header.
         </p>
         <Snippet defaultValue="curl">
           <SnippetHeader>
@@ -49,13 +55,12 @@ export default function AuthenticationPage() {
             <span className="col-span-4">type</span>
             <span className="col-span-8">description</span>
           </div>
-          {[
-            ["test_", "Sandbox key — no real data affected"],
-            ["live_", "Production key — use with care"],
-          ].map(([k, v]) => (
+          {authKeyTypes.map(([k, v]) => (
             <div key={k} className="grid grid-cols-12 px-4 py-3 items-start">
               <code className="col-span-4 text-xs">{k}</code>
-              <span className="col-span-8 text-muted-foreground text-xs">{v}</span>
+              <span className="col-span-8 text-muted-foreground text-xs">
+                {v}
+              </span>
             </div>
           ))}
         </div>
@@ -73,7 +78,8 @@ export default function AuthenticationPage() {
       </DocSection>
 
       <InfoBox className="mt-6">
-        // keys can be managed from the Vembric dashboard under Settings → API Keys
+        // keys can be managed from the Vembric dashboard under Settings → API
+        Keys
       </InfoBox>
     </div>
   );

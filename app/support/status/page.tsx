@@ -1,21 +1,7 @@
 import { PageHeader } from "@/components/doc/page-header";
 import { DocSection } from "@/components/doc/doc-section";
 import { InfoBox } from "@/components/doc/info-box";
-
-const services = [
-  { name: "API Gateway",    status: "operational" },
-  { name: "Webhooks",       status: "operational" },
-  { name: "Dashboard",      status: "operational" },
-  { name: "SDK Registry",   status: "operational" },
-  { name: "Documentation",  status: "operational" },
-];
-
-const statusColor: Record<string, string> = {
-  operational:  "text-green-400",
-  degraded:     "text-yellow-400",
-  outage:       "text-red-400",
-  maintenance:  "text-blue-400",
-};
+import { services, statusColor } from "@/constants/support";
 
 export default function StatusPage() {
   return (

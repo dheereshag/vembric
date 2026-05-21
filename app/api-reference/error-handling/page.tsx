@@ -6,6 +6,7 @@ import {
   Snippet, SnippetCopyButton, SnippetHeader,
   SnippetTabsContent, SnippetTabsList, SnippetTabsTrigger,
 } from "@/components/kibo-ui/snippet";
+import { statusCodes } from "@/constants/api-reference";
 
 const errorExample = `{
   "error": {
@@ -42,20 +43,12 @@ export default function ErrorHandlingPage() {
             <span className="col-span-2">code</span>
             <span className="col-span-10">meaning</span>
           </div>
-          {[
-            ["200", "OK — request succeeded"],
-            ["201", "Created — resource created"],
-            ["400", "Bad Request — malformed syntax"],
-            ["401", "Unauthorized — invalid or missing API key"],
-            ["403", "Forbidden — valid key but insufficient permissions"],
-            ["404", "Not Found — resource does not exist"],
-            ["422", "Unprocessable Entity — validation error"],
-            ["429", "Too Many Requests — rate limit exceeded"],
-            ["500", "Internal Server Error — try again later"],
-          ].map(([code, meaning]) => (
+          {statusCodes.map(([code, meaning]) => (
             <div key={code} className="grid grid-cols-12 px-4 py-3 items-start">
               <code className="col-span-2 text-xs">{code}</code>
-              <span className="col-span-10 text-muted-foreground text-xs">{meaning}</span>
+              <span className="col-span-10 text-muted-foreground text-xs">
+                {meaning}
+              </span>
             </div>
           ))}
         </div>
@@ -69,7 +62,9 @@ export default function ErrorHandlingPage() {
             "Never retry 400, 401, 403, 404, or 422 — fix the request first",
           ]}
         />
-        <InfoBox className="mt-4">// log the error.code field for easier debugging and support tickets</InfoBox>
+        <InfoBox className="mt-4">
+          // log the error.code field for easier debugging and support tickets
+        </InfoBox>
       </DocSection>
     </div>
   );

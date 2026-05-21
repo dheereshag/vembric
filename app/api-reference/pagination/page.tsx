@@ -6,6 +6,7 @@ import {
   Snippet, SnippetCopyButton, SnippetHeader,
   SnippetTabsContent, SnippetTabsList, SnippetTabsTrigger,
 } from "@/components/kibo-ui/snippet";
+import { paginationParams } from "@/constants/api-reference";
 
 const curlExample = `curl "https://api.vembric.io/v1/games?limit=20&cursor=cursor_xyz" \\
   -H "Authorization: Bearer YOUR_API_KEY"`;
@@ -27,13 +28,27 @@ export default function PaginationPage() {
 
       <DocSection title="how it works">
         <p className="text-sm leading-relaxed mb-4">
-          List endpoints return a <code className="font-mono bg-muted px-1.5 py-0.5 text-xs">data</code> array,
-          a <code className="font-mono bg-muted px-1.5 py-0.5 text-xs">next_cursor</code> string, and a
-          <code className="font-mono bg-muted px-1.5 py-0.5 text-xs"> has_more</code> boolean.
-          Pass <code className="font-mono bg-muted px-1.5 py-0.5 text-xs">cursor</code> as a query param to
-          fetch the next page.
+          List endpoints return a{" "}
+          <code className="font-mono bg-muted px-1.5 py-0.5 text-xs">data</code>{" "}
+          array, a{" "}
+          <code className="font-mono bg-muted px-1.5 py-0.5 text-xs">
+            next_cursor
+          </code>{" "}
+          string, and a
+          <code className="font-mono bg-muted px-1.5 py-0.5 text-xs">
+            {" "}
+            has_more
+          </code>{" "}
+          boolean. Pass{" "}
+          <code className="font-mono bg-muted px-1.5 py-0.5 text-xs">
+            cursor
+          </code>{" "}
+          as a query param to fetch the next page.
         </p>
-        <InfoBox>// cursor values are opaque strings — do not parse or construct them manually</InfoBox>
+        <InfoBox>
+          // cursor values are opaque strings — do not parse or construct them
+          manually
+        </InfoBox>
       </DocSection>
 
       <DocSection title="query parameters">
@@ -43,14 +58,15 @@ export default function PaginationPage() {
             <span className="col-span-2">type</span>
             <span className="col-span-7">description</span>
           </div>
-          {[
-            ["limit",  "integer", "Number of items per page (default 20, max 100)"],
-            ["cursor", "string",  "Cursor returned from the previous response"],
-          ].map(([p, t, d]) => (
+          {paginationParams.map(([p, t, d]) => (
             <div key={p} className="grid grid-cols-12 px-4 py-3 items-start">
               <code className="col-span-3 text-xs">{p}</code>
-              <span className="col-span-2 text-muted-foreground text-xs">{t}</span>
-              <span className="col-span-7 text-muted-foreground text-xs">{d}</span>
+              <span className="col-span-2 text-muted-foreground text-xs">
+                {t}
+              </span>
+              <span className="col-span-7 text-muted-foreground text-xs">
+                {d}
+              </span>
             </div>
           ))}
         </div>
@@ -66,7 +82,9 @@ export default function PaginationPage() {
             <SnippetCopyButton value={curlExample} />
           </SnippetHeader>
           <SnippetTabsContent value="curl">{curlExample}</SnippetTabsContent>
-          <SnippetTabsContent value="response">{responseExample}</SnippetTabsContent>
+          <SnippetTabsContent value="response">
+            {responseExample}
+          </SnippetTabsContent>
         </Snippet>
       </DocSection>
 

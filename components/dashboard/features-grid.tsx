@@ -1,23 +1,4 @@
-const defaultFeatures = [
-  {
-    label: "01",
-    title: "Interactive Playground",
-    description:
-      "Test API requests right from your browser and view syntax-highlighted responses.",
-  },
-  {
-    label: "02",
-    title: "Intuitive Navigation",
-    description:
-      "Easily browse resources and actions with the collapsible sidebar structure.",
-  },
-  {
-    label: "03",
-    title: "Production Ready",
-    description:
-      "Fully responsive, built on Next.js with Turbopack for optimal performance.",
-  },
-];
+import { features } from "@/constants/features";
 
 export function FeaturesGrid() {
   return (
@@ -26,7 +7,7 @@ export function FeaturesGrid() {
         // features
       </h2>
       <div className="border divide-y sm:divide-y-0 sm:grid sm:grid-cols-3 sm:divide-x">
-        {defaultFeatures.map(({ label, title, description }) => (
+        {features.map(({ label, title, description }) => (
           <div key={title} className="p-5 space-y-3">
             <span className="font-mono text-xs text-muted-foreground">
               {label}
