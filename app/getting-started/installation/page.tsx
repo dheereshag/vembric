@@ -12,6 +12,7 @@ import {
   YarnIcon,
   PnpmIcon,
   PythonIcon,
+  PypiIcon,
   RubyIcon,
   GoIcon,
   NodejsIcon,
@@ -28,7 +29,14 @@ export default function InstallationPage() {
         description={`Install the official ${brand.name} SDK for your language of choice.`}
       />
 
-      <DocSection title={<span className="inline-flex items-center gap-2"><NodejsIcon /><span>node.js</span></span>}>
+      <DocSection
+        title={
+          <span className="inline-flex items-center gap-2">
+            <NodejsIcon />
+            <span>node.js</span>
+          </span>
+        }
+      >
         <Snippet defaultValue="npm">
           <SnippetHeader>
             <SnippetTabsList>
@@ -80,12 +88,19 @@ export default function InstallationPage() {
         </Snippet>
       </DocSection>
 
-      <DocSection title={<span className="inline-flex items-center gap-2"><PythonIcon /><span>python</span></span>}>
+      <DocSection
+        title={
+          <span className="inline-flex items-center gap-2">
+            <PythonIcon />
+            <span>python</span>
+          </span>
+        }
+      >
         <Snippet defaultValue="pip">
           <SnippetHeader>
             <SnippetTabsList>
               <SnippetTabsTrigger value="pip">
-                <PythonIcon />
+                <PypiIcon />
                 <span>pip</span>
               </SnippetTabsTrigger>
             </SnippetTabsList>
@@ -104,7 +119,14 @@ export default function InstallationPage() {
         </Snippet>
       </DocSection>
 
-      <DocSection title={<span className="inline-flex items-center gap-2"><RubyIcon /><span>ruby</span></span>}>
+      <DocSection
+        title={
+          <span className="inline-flex items-center gap-2">
+            <RubyIcon />
+            <span>ruby</span>
+          </span>
+        }
+      >
         <Snippet defaultValue="gem">
           <SnippetHeader>
             <SnippetTabsList>
@@ -128,7 +150,14 @@ export default function InstallationPage() {
         </Snippet>
       </DocSection>
 
-      <DocSection title={<span className="inline-flex items-center gap-2"><GoIcon /><span>go</span></span>}>
+      <DocSection
+        title={
+          <span className="inline-flex items-center gap-2">
+            <GoIcon />
+            <span>go</span>
+          </span>
+        }
+      >
         <Snippet defaultValue="go">
           <SnippetHeader>
             <SnippetTabsList>

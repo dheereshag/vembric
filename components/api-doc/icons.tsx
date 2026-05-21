@@ -7,6 +7,7 @@ import {
   siNpm,
   siPhp,
   siPnpm,
+  siPypi,
   siPython,
   siRuby,
   siRubygems,
@@ -26,6 +27,7 @@ export const NpmIcon = () => <Icon path={siNpm.path} />;
 export const YarnIcon = () => <Icon path={siYarn.path} />;
 export const PnpmIcon = () => <Icon path={siPnpm.path} />;
 export const PythonIcon = () => <Icon path={siPython.path} />;
+export const PypiIcon = () => <Icon path={siPypi.path} />;
 export const RubygemsIcon = () => <Icon path={siRubygems.path} />;
 export const RubyIcon = () => <Icon path={siRuby.path} />;
 export const GoIcon = () => <Icon path={siGo.path} />;
