@@ -20,7 +20,7 @@ export function ResponseSection({ response }: ResponseSectionProps) {
       <section>
         <div className="group w-full gap-0 overflow-hidden border">
           <div className="flex flex-row items-center justify-between border-b bg-secondary p-1">
-            <h4 className="font-mono text-xs uppercase tracking-widest text-muted-foreground flex items-center gap-2 px-2">
+            <h4 className="font-mono text-xs flex items-center gap-2 px-2">
               <JsonIcon />
               response
             </h4>

@@ -2,6 +2,7 @@ import { PageHeader } from "@/components/doc/page-header";
 import { DocSection } from "@/components/doc/doc-section";
 import { InfoBox } from "@/components/doc/info-box";
 import { endpoints, methodColors } from "@/constants/api-reference";
+import { brand } from "@/constants/brand";
 
 export default function EndpointsPage() {
   return (
@@ -14,7 +15,7 @@ export default function EndpointsPage() {
 
       <DocSection title="base url">
         <div className="border p-4 bg-muted/30">
-          <code className="font-mono text-sm">https://api.vembric.io/v1</code>
+          <code className="font-mono text-sm">{brand.apiBaseUrl}</code>
         </div>
       </DocSection>
 

@@ -7,13 +7,11 @@ import {
   SnippetTabsContent, SnippetTabsList, SnippetTabsTrigger,
 } from "@/components/kibo-ui/snippet";
 import { authKeyTypes } from "@/constants/api-reference";
+import { brand } from "@/constants/brand";
+import { authCurlExample, authNodeExample } from "@/constants/code-snippets";
 
-const curlExample = `curl https://api.vembric.io/v1/games \\
-  -H "Authorization: Bearer YOUR_API_KEY"`;
-
-const nodeExample = `import Vembric from '@vembric/sdk';
-
-const client = new Vembric({ apiKey: 'YOUR_API_KEY' });`;
+const curlExample = authCurlExample;
+const nodeExample = authNodeExample;
 
 export default function AuthenticationPage() {
   return (
@@ -78,8 +76,8 @@ export default function AuthenticationPage() {
       </DocSection>
 
       <InfoBox className="mt-6">
-        // keys can be managed from the Vembric dashboard under Settings → API
-        Keys
+        // keys can be managed from the {brand.name} dashboard under{" "}
+        {brand.dashboardSettingsPath}
       </InfoBox>
     </div>
   );

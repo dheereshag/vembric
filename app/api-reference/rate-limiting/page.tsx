@@ -3,6 +3,7 @@ import { DocSection } from "@/components/doc/doc-section";
 import { ArrowList } from "@/components/doc/arrow-list";
 import { InfoBox } from "@/components/doc/info-box";
 import { rateLimitPlans } from "@/constants/api-reference";
+import { brand } from "@/constants/brand";
 
 export default function RateLimitingPage() {
   return (
@@ -10,7 +11,7 @@ export default function RateLimitingPage() {
       <PageHeader
         path="// api-reference / rate-limiting"
         title="Rate Limiting"
-        description="Understand how Vembric enforces request limits to ensure fair usage."
+        description={`Understand how ${brand.name} enforces request limits to ensure fair usage.`}
       />
 
       <DocSection title="limits by plan">

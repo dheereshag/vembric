@@ -7,14 +7,10 @@ import {
   SnippetTabsContent, SnippetTabsList, SnippetTabsTrigger,
 } from "@/components/kibo-ui/snippet";
 import { statusCodes } from "@/constants/api-reference";
+import { brand } from "@/constants/brand";
+import { errorResponseExample } from "@/constants/code-snippets";
 
-const errorExample = `{
-  "error": {
-    "code": "invalid_request",
-    "message": "The \'title\' field is required.",
-    "status": 422
-  }
-}`;
+const errorExample = errorResponseExample;
 
 export default function ErrorHandlingPage() {
   return (
@@ -22,7 +18,7 @@ export default function ErrorHandlingPage() {
       <PageHeader
         path="// api-reference / error-handling"
         title="Error Handling"
-        description="Understand Vembric error responses and how to handle them gracefully."
+        description={`Understand ${brand.name} error responses and how to handle them gracefully.`}
       />
 
       <DocSection title="error format">

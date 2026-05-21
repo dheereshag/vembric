@@ -1,5 +1,6 @@
 import { PageHeader } from "@/components/doc/page-header";
 import { SdkCard } from "@/components/sdk-card";
+import { brand } from "@/constants/brand";
 import { sdks } from "@/constants/sdks";
 
 export default function SDKPage() {
@@ -7,7 +8,7 @@ export default function SDKPage() {
     <div className="p-6">
       <PageHeader
         path="// sdks"
-        title="Vembric SDKs"
+        title={`${brand.name} SDKs`}
         description="Use our official SDKs to integrate faster with the API."
       />
 

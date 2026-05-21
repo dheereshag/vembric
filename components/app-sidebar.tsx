@@ -10,6 +10,7 @@ import {
   SidebarRail,
 } from "@/components/ui/sidebar";
 import { sidebarData } from "@/constants/";
+import { brand } from "@/constants/brand";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -20,12 +21,12 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <Link href="/" className="flex items-center gap-2 px-4 py-2">
           <Image
             src="/logo.svg"
-            alt="Vembric Logo"
+            alt={`${brand.name} Logo`}
             width={32}
             height={32}
             className="size-8"
           />
-          <span className="truncate font-mono font-bold">Vembric</span>
+          <span className="truncate font-mono font-bold">{brand.name}</span>
         </Link>
       </SidebarHeader>
       <SidebarContent>

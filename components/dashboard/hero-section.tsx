@@ -1,19 +1,20 @@
 import Link from "next/link";
+import { brand } from "@/constants/brand";
 
 export function HeroSection() {
   return (
     <div className="border p-8 md:p-12">
       <div className="flex items-center justify-between mb-6">
         <p className="font-mono text-xs text-muted-foreground uppercase tracking-widest">
-          // vembric / api-docs
+          // {brand.name} / api-docs
         </p>
         <span className="font-mono text-xs border px-2 py-0.5 flex items-center gap-1.5">
           <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
-          beta v0.1.0
+          {brand.version}
         </span>
       </div>
       <h1 className="font-mono text-4xl md:text-5xl font-bold tracking-tight mb-4">
-        Welcome to Vembric
+        Welcome to {brand.name}
       </h1>
       <p className="text-muted-foreground leading-relaxed max-w-xl mb-8">
         Developer-friendly API documentation for games and orders. Browse

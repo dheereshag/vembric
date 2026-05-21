@@ -2,6 +2,7 @@ import { PageHeader } from "@/components/doc/page-header";
 import { DocSection } from "@/components/doc/doc-section";
 import { ArrowList } from "@/components/doc/arrow-list";
 import { InfoBox } from "@/components/doc/info-box";
+import { brand } from "@/constants/brand";
 
 export default function BestPracticesPage() {
   return (
@@ -9,7 +10,7 @@ export default function BestPracticesPage() {
       <PageHeader
         path="// guides / best-practices"
         title="Best Practices"
-        description="Recommended patterns for building reliable integrations with the Vembric API."
+        description={`Recommended patterns for building reliable integrations with the ${brand.name} API.`}
       />
 
       <DocSection title="authentication">
@@ -45,13 +46,14 @@ export default function BestPracticesPage() {
       <DocSection title="webhooks" className="mb-0">
         <ArrowList
           items={[
-            "Always verify the X-Vembric-Signature header",
+            `Always verify the ${brand.signatureHeader} header`,
             "Respond with 2xx immediately, then process async",
             "Implement idempotency — the same event may be delivered more than once",
           ]}
         />
         <InfoBox className="mt-4">
-          // treat all external input as untrusted — validate payload structure before processing
+          // treat all external input as untrusted — validate payload structure
+          before processing
         </InfoBox>
       </DocSection>
     </div>

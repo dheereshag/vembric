@@ -2,6 +2,7 @@ import { PageHeader } from "@/components/doc/page-header";
 import { DocSection } from "@/components/doc/doc-section";
 import { ArrowList } from "@/components/doc/arrow-list";
 import { contactResponseTimes } from "@/constants/support";
+import { brand } from "@/constants/brand";
 
 export default function ContactPage() {
   return (
@@ -9,7 +10,7 @@ export default function ContactPage() {
       <PageHeader
         path="// support / contact"
         title="Contact"
-        description="Get in touch with the Vembric team."
+        description={`Get in touch with the ${brand.name} team.`}
       />
 
       <DocSection title="channels">
@@ -18,19 +19,19 @@ export default function ContactPage() {
             <>
               Email —{" "}
               <a
-                href="mailto:support@vembric.io"
+                href={`mailto:${brand.supportEmail}`}
                 className="underline underline-offset-4"
               >
-                support@vembric.io
+                {brand.supportEmail}
               </a>
             </>,
             <>
               GitHub —{" "}
               <a
-                href="https://github.com/vembric"
+                href={brand.githubUrl}
                 className="underline underline-offset-4"
               >
-                github.com/vembric
+                {brand.githubDisplay}
               </a>{" "}
               (open an issue or discussion)
             </>,

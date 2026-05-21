@@ -4,11 +4,11 @@ import { AppSidebar } from "@/components/app-sidebar";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar"; // ✅ context >
 import "./globals.css";
 import { AppHeader } from "@/components/app-header";
+import { brand } from "@/constants/brand";
 
 export const metadata: Metadata = {
-  title: "Vembric - API Documentation Template",
-  description:
-    "A modern, beautiful template for API documentation built with Next.js",
+  title: brand.appTitle,
+  description: brand.appDescription,
 };
 
 export default function RootLayout({

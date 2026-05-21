@@ -7,15 +7,11 @@ import {
   SnippetTabsContent, SnippetTabsList, SnippetTabsTrigger,
 } from "@/components/kibo-ui/snippet";
 import { paginationParams } from "@/constants/api-reference";
-
-const curlExample = `curl "https://api.vembric.io/v1/games?limit=20&cursor=cursor_xyz" \\
-  -H "Authorization: Bearer YOUR_API_KEY"`;
-
-const responseExample = `{
-  "data": [...],
-  "next_cursor": "cursor_abc",
-  "has_more": true
-}`;
+import { brand } from "@/constants/brand";
+import {
+  paginationCurlExample,
+  paginationResponseExample,
+} from "@/constants/code-snippets";
 
 export default function PaginationPage() {
   return (
@@ -23,7 +19,7 @@ export default function PaginationPage() {
       <PageHeader
         path="// api-reference / pagination"
         title="Pagination"
-        description="Vembric uses cursor-based pagination for all list endpoints."
+        description={`${brand.name} uses cursor-based pagination for all list endpoints.`}
       />
 
       <DocSection title="how it works">
@@ -79,11 +75,13 @@ export default function PaginationPage() {
               <SnippetTabsTrigger value="curl">curl</SnippetTabsTrigger>
               <SnippetTabsTrigger value="response">response</SnippetTabsTrigger>
             </SnippetTabsList>
-            <SnippetCopyButton value={curlExample} />
+            <SnippetCopyButton value={paginationCurlExample} />
           </SnippetHeader>
-          <SnippetTabsContent value="curl">{curlExample}</SnippetTabsContent>
+          <SnippetTabsContent value="curl">
+            {paginationCurlExample}
+          </SnippetTabsContent>
           <SnippetTabsContent value="response">
-            {responseExample}
+            {paginationResponseExample}
           </SnippetTabsContent>
         </Snippet>
       </DocSection>

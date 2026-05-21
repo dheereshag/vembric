@@ -1,22 +1,24 @@
+import { brand } from "./brand";
+
 export const services = [
-  { name: "API Gateway",   status: "operational" },
-  { name: "Webhooks",      status: "operational" },
-  { name: "Dashboard",     status: "operational" },
-  { name: "SDK Registry",  status: "operational" },
+  { name: "API Gateway", status: "operational" },
+  { name: "Webhooks", status: "operational" },
+  { name: "Dashboard", status: "operational" },
+  { name: "SDK Registry", status: "operational" },
   { name: "Documentation", status: "operational" },
 ];
 
 export const statusColor: Record<string, string> = {
   operational: "text-green-400",
-  degraded:    "text-yellow-400",
-  outage:      "text-red-400",
+  degraded: "text-yellow-400",
+  outage: "text-red-400",
   maintenance: "text-blue-400",
 };
 
 export const faqs = [
   {
     q: "Where can I find my API key?",
-    a: "Log into the Vembric dashboard and go to Settings → API Keys.",
+    a: `Log into the ${brand.name} dashboard and go to ${brand.dashboardSettingsPath}.`,
   },
   {
     q: "What happens if I exceed the rate limit?",
@@ -27,7 +29,7 @@ export const faqs = [
     a: "Replace your test_ key with a live_ key. No other code changes are required.",
   },
   {
-    q: "Does Vembric support IPv6?",
+    q: `Does ${brand.name} support IPv6?`,
     a: "Yes. The API is accessible over both IPv4 and IPv6.",
   },
   {
@@ -59,8 +61,8 @@ export const releases = [
     date: "2023-11-10",
     changes: [
       "Introduced webhooks support",
-      "Added X-Vembric-Signature verification",
-      "New SDK: Go client (vembric-go)",
+      `Added ${brand.signatureHeader} verification`,
+      `New SDK: Go client (${brand.sdk.goPackage})`,
     ],
   },
   {
@@ -74,7 +76,7 @@ export const releases = [
 ];
 
 export const contactResponseTimes: [string, string][] = [
-  ["Free",       "Best effort (community)"],
-  ["Pro",        "1 business day"],
+  ["Free", "Best effort (community)"],
+  ["Pro", "1 business day"],
   ["Enterprise", "4 hours"],
 ];

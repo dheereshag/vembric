@@ -2,6 +2,7 @@ import { PageHeader } from "@/components/doc/page-header";
 import { DocSection } from "@/components/doc/doc-section";
 import { InfoBox } from "@/components/doc/info-box";
 import { services, statusColor } from "@/constants/support";
+import { brand } from "@/constants/brand";
 
 export default function StatusPage() {
   return (
@@ -9,7 +10,7 @@ export default function StatusPage() {
       <PageHeader
         path="// support / status"
         title="Status"
-        description="Current operational status of Vembric services."
+        description={`Current operational status of ${brand.name} services.`}
       />
 
       <DocSection title="services">
@@ -19,9 +20,14 @@ export default function StatusPage() {
             <span className="col-span-6">status</span>
           </div>
           {services.map(({ name, status }) => (
-            <div key={name} className="grid grid-cols-12 px-4 py-3 items-center">
+            <div
+              key={name}
+              className="grid grid-cols-12 px-4 py-3 items-center"
+            >
               <span className="col-span-6 text-xs">{name}</span>
-              <span className={`col-span-6 text-xs font-semibold ${statusColor[status]}`}>
+              <span
+                className={`col-span-6 text-xs font-semibold ${statusColor[status]}`}
+              >
                 ● {status}
               </span>
             </div>
@@ -36,7 +42,7 @@ export default function StatusPage() {
       </DocSection>
 
       <InfoBox className="mt-6">
-        // subscribe to status updates at status.vembric.io
+        // subscribe to status updates at {brand.statusUrl}
       </InfoBox>
     </div>
   );

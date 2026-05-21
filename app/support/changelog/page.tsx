@@ -2,6 +2,7 @@ import { PageHeader } from "@/components/doc/page-header";
 import { DocSection } from "@/components/doc/doc-section";
 import { ArrowList } from "@/components/doc/arrow-list";
 import { releases } from "@/constants/support";
+import { brand } from "@/constants/brand";
 
 export default function ChangelogPage() {
   return (
@@ -9,7 +10,7 @@ export default function ChangelogPage() {
       <PageHeader
         path="// support / changelog"
         title="Changelog"
-        description="Release history and notable changes to the Vembric API."
+        description={`Release history and notable changes to the ${brand.name} API.`}
       />
 
       {releases.map(({ version, date, changes }) => (

@@ -1,0 +1,25 @@
+export const brand = {
+  name: "Vembric",
+  appTitle: "Vembric - API Documentation Template",
+  appDescription:
+    "A modern, beautiful template for API documentation built with Next.js",
+  version: "beta v0.1.0",
+  apiVersion: "v1",
+  apiBaseUrl: "https://api.vembric.io/v1",
+  apiChatUrl: "https://api.vembric.chat",
+  supportEmail: "support@vembric.io",
+  githubUrl: "https://github.com/vembric",
+  githubDisplay: "github.com/vembric",
+  statusUrl: "status.vembric.io",
+  dashboardSettingsPath: "Settings → API Keys",
+  signatureHeader: "X-Vembric-Signature",
+  webhookPath: "/webhooks/vembric",
+  sdk: {
+    npm: "@vembric/sdk",
+    pip: "vembric",
+    gem: "vembric",
+    go: "github.com/vembric/vembric-go",
+    goPackage: "vembric-go",
+    importName: "Vembric",
+  },
+};

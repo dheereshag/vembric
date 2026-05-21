@@ -19,3 +19,5 @@ export {
   releases,
   contactResponseTimes,
 } from "./support";
+export { brand } from "./brand";
+export * from "./code-snippets";

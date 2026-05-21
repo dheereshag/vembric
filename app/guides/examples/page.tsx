@@ -4,27 +4,16 @@ import {
   Snippet, SnippetCopyButton, SnippetHeader,
   SnippetTabsContent, SnippetTabsList, SnippetTabsTrigger,
 } from "@/components/kibo-ui/snippet";
+import {
+  examplesListGames,
+  examplesCreateOrder,
+  examplesWebhookHandler,
+} from "@/constants/code-snippets";
+import { brand } from "@/constants/brand";
 
-const listGames = `const games = await client.games.list({ limit: 10 });
-console.log(games.data);`;
-
-const createOrder = `const order = await client.orders.create({
-  game_id: 'gm_01',
-  quantity: 1,
-  currency: 'usd',
-});
-console.log(order.id);`;
-
-const webhookHandler = `app.post('/webhooks/vembric', (req, res) => {
-  const sig = req.headers['x-vembric-signature'];
-  verifySignature(sig, req.body, process.env.WEBHOOK_SECRET);
-
-  if (req.body.type === 'order.created') {
-    fulfillOrder(req.body.data);
-  }
-
-  res.sendStatus(200);
-});`;
+const listGames = examplesListGames;
+const createOrder = examplesCreateOrder;
+const webhookHandler = examplesWebhookHandler;
 
 export default function ExamplesPage() {
   return (
@@ -32,7 +21,7 @@ export default function ExamplesPage() {
       <PageHeader
         path="// guides / examples"
         title="Examples"
-        description="Real-world code snippets for common Vembric integration scenarios."
+        description={`Real-world code snippets for common ${brand.name} integration scenarios.`}
       />
 
       <DocSection title="list games">
@@ -63,7 +52,9 @@ export default function ExamplesPage() {
         <Snippet defaultValue="node">
           <SnippetHeader>
             <SnippetTabsList>
-              <SnippetTabsTrigger value="node">node.js (express)</SnippetTabsTrigger>
+              <SnippetTabsTrigger value="node">
+                node.js (express)
+              </SnippetTabsTrigger>
             </SnippetTabsList>
             <SnippetCopyButton value={webhookHandler} />
           </SnippetHeader>

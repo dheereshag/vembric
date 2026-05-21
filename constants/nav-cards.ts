@@ -1,4 +1,5 @@
 import { BookOpen, Terminal, Code2, type LucideIcon } from "lucide-react";
+import { brand } from "./brand";
 
 export type NavCardItem = {
   title: string;
@@ -11,7 +12,7 @@ export type NavCardItem = {
 export const navCards: NavCardItem[] = [
   {
     title: "Quick Start",
-    description: "Get up and running with Vembric in under 5 minutes.",
+    description: `Get up and running with ${brand.name} in under 5 minutes.`,
     icon: BookOpen,
     actionText: "Read Guide",
     actionHref: "/getting-started/quick-start",

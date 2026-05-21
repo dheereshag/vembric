@@ -5,13 +5,8 @@ import {
   Snippet, SnippetCopyButton, SnippetHeader,
   SnippetTabsContent, SnippetTabsList, SnippetTabsTrigger,
 } from "@/components/kibo-ui/snippet";
-
-const npmCmd  = `npm install @vembric/sdk`;
-const yarnCmd = `yarn add @vembric/sdk`;
-const pnpmCmd = `pnpm add @vembric/sdk`;
-const pipCmd  = `pip install vembric`;
-const gemCmd  = `gem install vembric`;
-const goCmd   = `go get github.com/vembric/vembric-go`;
+import { brand } from "@/constants/brand";
+import { installCommands } from "@/constants/code-snippets";
 
 export default function InstallationPage() {
   return (
@@ -19,7 +14,7 @@ export default function InstallationPage() {
       <PageHeader
         path="// getting-started / installation"
         title="Installation"
-        description="Install the official Vembric SDK for your language of choice."
+        description={`Install the official ${brand.name} SDK for your language of choice.`}
       />
 
       <DocSection title="node.js">
@@ -30,11 +25,17 @@ export default function InstallationPage() {
               <SnippetTabsTrigger value="yarn">yarn</SnippetTabsTrigger>
               <SnippetTabsTrigger value="pnpm">pnpm</SnippetTabsTrigger>
             </SnippetTabsList>
-            <SnippetCopyButton value={npmCmd} />
+            <SnippetCopyButton value={installCommands.npm} />
           </SnippetHeader>
-          <SnippetTabsContent value="npm">{npmCmd}</SnippetTabsContent>
-          <SnippetTabsContent value="yarn">{yarnCmd}</SnippetTabsContent>
-          <SnippetTabsContent value="pnpm">{pnpmCmd}</SnippetTabsContent>
+          <SnippetTabsContent value="npm">
+            {installCommands.npm}
+          </SnippetTabsContent>
+          <SnippetTabsContent value="yarn">
+            {installCommands.yarn}
+          </SnippetTabsContent>
+          <SnippetTabsContent value="pnpm">
+            {installCommands.pnpm}
+          </SnippetTabsContent>
         </Snippet>
       </DocSection>
 
@@ -44,9 +45,11 @@ export default function InstallationPage() {
             <SnippetTabsList>
               <SnippetTabsTrigger value="pip">pip</SnippetTabsTrigger>
             </SnippetTabsList>
-            <SnippetCopyButton value={pipCmd} />
+            <SnippetCopyButton value={installCommands.pip} />
           </SnippetHeader>
-          <SnippetTabsContent value="pip">{pipCmd}</SnippetTabsContent>
+          <SnippetTabsContent value="pip">
+            {installCommands.pip}
+          </SnippetTabsContent>
         </Snippet>
       </DocSection>
 
@@ -56,9 +59,11 @@ export default function InstallationPage() {
             <SnippetTabsList>
               <SnippetTabsTrigger value="gem">gem</SnippetTabsTrigger>
             </SnippetTabsList>
-            <SnippetCopyButton value={gemCmd} />
+            <SnippetCopyButton value={installCommands.gem} />
           </SnippetHeader>
-          <SnippetTabsContent value="gem">{gemCmd}</SnippetTabsContent>
+          <SnippetTabsContent value="gem">
+            {installCommands.gem}
+          </SnippetTabsContent>
         </Snippet>
       </DocSection>
 
@@ -68,14 +73,18 @@ export default function InstallationPage() {
             <SnippetTabsList>
               <SnippetTabsTrigger value="go">go</SnippetTabsTrigger>
             </SnippetTabsList>
-            <SnippetCopyButton value={goCmd} />
+            <SnippetCopyButton value={installCommands.go} />
           </SnippetHeader>
-          <SnippetTabsContent value="go">{goCmd}</SnippetTabsContent>
+          <SnippetTabsContent value="go">
+            {installCommands.go}
+          </SnippetTabsContent>
         </Snippet>
       </DocSection>
 
       <DocSection title="requirements" className="mb-0">
-        <ArrowList items={["Node.js v18+", "Python 3.8+", "Ruby 3.0+", "Go 1.21+"]} />
+        <ArrowList
+          items={["Node.js v18+", "Python 3.8+", "Ruby 3.0+", "Go 1.21+"]}
+        />
       </DocSection>
     </div>
   );

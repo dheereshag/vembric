@@ -1,4 +1,5 @@
 import { RequestType } from './enums';
+import { brand } from "./brand";
 
 type ModelField = {
   name: string;
@@ -47,24 +48,24 @@ const buildCrudActions = (resource: {
 
   return [
     {
-      key: 'list',
-      slug: 'list',
+      key: "list",
+      slug: "list",
       title: `List ${resource.title}`,
       description: `Retrieve a paginated list of ${resource.key}.`,
       method: RequestType.GET,
       endpoint: endpointBase,
       optionalAttributes: [
         {
-          name: 'limit',
-          type: 'integer',
+          name: "limit",
+          type: "integer",
           description: `Limit the number of ${resource.key} returned.`,
         },
       ],
       model: resource.model,
-      curl: `curl -G https://api.vembric.chat${endpointBase} \\
+      curl: `curl -G ${brand.apiChatUrl}${endpointBase} \\
   -H "Authorization: Bearer {token}" \\
   -d limit=10`,
-      js: `await fetch("https://api.vembric.chat${endpointBase}?limit=10", {
+      js: `await fetch("${brand.apiChatUrl}${endpointBase}?limit=10", {
   headers: {
     Authorization: "Bearer {token}",
   },
@@ -75,18 +76,18 @@ const buildCrudActions = (resource: {
       },
     },
     {
-      key: 'create',
-      slug: 'create',
+      key: "create",
+      slug: "create",
       title: `Create ${resource.singular}`,
       description: `Create a new ${resource.singular} by sending the required fields.`,
       method: RequestType.POST,
       endpoint: endpointBase,
-      model: resource.model.filter((f) => f.name !== 'id'),
-      curl: `curl -X POST https://api.vembric.chat${endpointBase} \\
+      model: resource.model.filter((f) => f.name !== "id"),
+      curl: `curl -X POST ${brand.apiChatUrl}${endpointBase} \\
   -H "Authorization: Bearer {token}" \\
   -H "Content-Type: application/json" \\
   -d '${JSON.stringify(resource.createPayload, null, 4)}'`,
-      js: `await fetch("https://api.vembric.chat${endpointBase}", {
+      js: `await fetch("${brand.apiChatUrl}${endpointBase}", {
   method: "POST",
   headers: {
     Authorization: "Bearer {token}",
@@ -97,25 +98,25 @@ const buildCrudActions = (resource: {
       response: resource.sampleEntity,
     },
     {
-      key: 'edit',
-      slug: 'edit',
+      key: "edit",
+      slug: "edit",
       title: `Edit ${resource.singular}`,
       description: `Partially update properties of an existing ${resource.singular}.`,
       method: RequestType.PATCH,
       endpoint: `${endpointBase}/:id`,
       model: [
         {
-          name: 'id',
-          type: 'string (path param)',
+          name: "id",
+          type: "string (path param)",
           description: `ID of the ${resource.singular} to edit.`,
         },
-        ...resource.model.filter((f) => f.name !== 'id'),
+        ...resource.model.filter((f) => f.name !== "id"),
       ],
-      curl: `curl -X PATCH https://api.vembric.chat${entityPath} \\
+      curl: `curl -X PATCH ${brand.apiChatUrl}${entityPath} \\
   -H "Authorization: Bearer {token}" \\
   -H "Content-Type: application/json" \\
   -d '${JSON.stringify(resource.updatePayload, null, 4)}'`,
-      js: `await fetch("https://api.vembric.chat${entityPath}", {
+      js: `await fetch("${brand.apiChatUrl}${entityPath}", {
   method: "PATCH",
   headers: {
     Authorization: "Bearer {token}",
@@ -129,25 +130,25 @@ const buildCrudActions = (resource: {
       },
     },
     {
-      key: 'update',
-      slug: 'update',
+      key: "update",
+      slug: "update",
       title: `Update ${resource.singular}`,
       description: `Replace or fully update an existing ${resource.singular}.`,
       method: RequestType.PUT,
       endpoint: `${endpointBase}/:id`,
       model: [
         {
-          name: 'id',
-          type: 'string (path param)',
+          name: "id",
+          type: "string (path param)",
           description: `ID of the ${resource.singular} to update.`,
         },
-        ...resource.model.filter((f) => f.name !== 'id'),
+        ...resource.model.filter((f) => f.name !== "id"),
       ],
-      curl: `curl -X PUT https://api.vembric.chat${entityPath} \\
+      curl: `curl -X PUT ${brand.apiChatUrl}${entityPath} \\
   -H "Authorization: Bearer {token}" \\
   -H "Content-Type: application/json" \\
   -d '${JSON.stringify(resource.sampleEntity, null, 4)}'`,
-      js: `await fetch("https://api.vembric.chat${entityPath}", {
+      js: `await fetch("${brand.apiChatUrl}${entityPath}", {
   method: "PUT",
   headers: {
     Authorization: "Bearer {token}",
@@ -158,22 +159,22 @@ const buildCrudActions = (resource: {
       response: resource.sampleEntity,
     },
     {
-      key: 'view',
-      slug: 'view',
+      key: "view",
+      slug: "view",
       title: `View ${resource.singular}`,
       description: `Retrieve details for a specific ${resource.singular}.`,
       method: RequestType.GET,
       endpoint: `${endpointBase}/:id`,
       model: [
         {
-          name: 'id',
-          type: 'string (path param)',
+          name: "id",
+          type: "string (path param)",
           description: `ID of the ${resource.singular} to retrieve.`,
         },
       ],
-      curl: `curl -X GET https://api.vembric.chat${entityPath} \\
+      curl: `curl -X GET ${brand.apiChatUrl}${entityPath} \\
   -H "Authorization: Bearer {token}"`,
-      js: `await fetch("https://api.vembric.chat${entityPath}", {
+      js: `await fetch("${brand.apiChatUrl}${entityPath}", {
   headers: {
     Authorization: "Bearer {token}",
   },
@@ -181,22 +182,22 @@ const buildCrudActions = (resource: {
       response: resource.sampleEntity,
     },
     {
-      key: 'delete',
-      slug: 'delete',
+      key: "delete",
+      slug: "delete",
       title: `Delete ${resource.singular}`,
       description: `Delete an existing ${resource.singular} by ID.`,
       method: RequestType.DELETE,
       endpoint: `${endpointBase}/:id`,
       model: [
         {
-          name: 'id',
-          type: 'string (path param)',
+          name: "id",
+          type: "string (path param)",
           description: `ID of the ${resource.singular} to delete.`,
         },
       ],
-      curl: `curl -X DELETE https://api.vembric.chat${entityPath} \\
+      curl: `curl -X DELETE ${brand.apiChatUrl}${entityPath} \\
   -H "Authorization: Bearer {token}"`,
-      js: `await fetch("https://api.vembric.chat${entityPath}", {
+      js: `await fetch("${brand.apiChatUrl}${entityPath}", {
   method: "DELETE",
   headers: {
     Authorization: "Bearer {token}",
