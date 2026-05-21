@@ -11,6 +11,7 @@ import {
   quickStartNodeExample,
   quickStartResponse,
 } from "@/constants/code-snippets";
+import { CurlIcon, JavaScriptIcon, JsonIcon } from "@/components/api-doc/icons";
 
 export default function QuickStartPage() {
   return (
@@ -41,8 +42,14 @@ export default function QuickStartPage() {
         <Snippet defaultValue="curl">
           <SnippetHeader>
             <SnippetTabsList>
-              <SnippetTabsTrigger value="curl">curl</SnippetTabsTrigger>
-              <SnippetTabsTrigger value="node">node.js</SnippetTabsTrigger>
+              <SnippetTabsTrigger value="curl">
+                <CurlIcon />
+                <span>curl</span>
+              </SnippetTabsTrigger>
+              <SnippetTabsTrigger value="node">
+                <JavaScriptIcon />
+                <span>node.js</span>
+              </SnippetTabsTrigger>
             </SnippetTabsList>
             <SnippetCopyButton value={authCurlExample} />
           </SnippetHeader>
@@ -62,7 +69,10 @@ export default function QuickStartPage() {
         <Snippet defaultValue="json">
           <SnippetHeader>
             <SnippetTabsList>
-              <SnippetTabsTrigger value="json">response</SnippetTabsTrigger>
+              <SnippetTabsTrigger value="json">
+                <JsonIcon />
+                <span>response</span>
+              </SnippetTabsTrigger>
             </SnippetTabsList>
             <SnippetCopyButton value={quickStartResponse} />
           </SnippetHeader>

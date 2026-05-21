@@ -1,19 +1,29 @@
-import { siCurl, siJavascript, siJson } from 'simple-icons';
+import {
+  siCurl,
+  siGo,
+  siJavascript,
+  siJson,
+  siNodedotjs,
+  siNpm,
+  siPnpm,
+  siPython,
+  siRubygems,
+  siYarn,
+} from "simple-icons";
 
-export const CurlIcon = () => (
+const Icon = ({ path }: { path: string }) => (
   <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-    <path d={siCurl.path} />
+    <path d={path} />
   </svg>
 );
 
-export const JavaScriptIcon = () => (
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-    <path d={siJavascript.path} />
-  </svg>
-);
-
-export const JsonIcon = () => (
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-    <path d={siJson.path} />
-  </svg>
-);
+export const CurlIcon = () => <Icon path={siCurl.path} />;
+export const JavaScriptIcon = () => <Icon path={siJavascript.path} />;
+export const JsonIcon = () => <Icon path={siJson.path} />;
+export const NpmIcon = () => <Icon path={siNpm.path} />;
+export const YarnIcon = () => <Icon path={siYarn.path} />;
+export const PnpmIcon = () => <Icon path={siPnpm.path} />;
+export const PythonIcon = () => <Icon path={siPython.path} />;
+export const RubygemsIcon = () => <Icon path={siRubygems.path} />;
+export const GoIcon = () => <Icon path={siGo.path} />;
+export const NodejsIcon = () => <Icon path={siNodedotjs.path} />;

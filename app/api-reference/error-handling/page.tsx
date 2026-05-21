@@ -9,6 +9,7 @@ import {
 import { statusCodes } from "@/constants/api-reference";
 import { brand } from "@/constants/brand";
 import { errorResponseExample } from "@/constants/code-snippets";
+import { JsonIcon } from "@/components/api-doc/icons";
 
 const errorExample = errorResponseExample;
 
@@ -25,7 +26,10 @@ export default function ErrorHandlingPage() {
         <Snippet defaultValue="json">
           <SnippetHeader>
             <SnippetTabsList>
-              <SnippetTabsTrigger value="json">response</SnippetTabsTrigger>
+              <SnippetTabsTrigger value="json">
+                <JsonIcon />
+                <span>response</span>
+              </SnippetTabsTrigger>
             </SnippetTabsList>
             <SnippetCopyButton value={errorExample} />
           </SnippetHeader>

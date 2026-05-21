@@ -12,6 +12,7 @@ import {
   paginationCurlExample,
   paginationResponseExample,
 } from "@/constants/code-snippets";
+import { CurlIcon, JsonIcon } from "@/components/api-doc/icons";
 
 export default function PaginationPage() {
   return (
@@ -72,8 +73,14 @@ export default function PaginationPage() {
         <Snippet defaultValue="curl">
           <SnippetHeader>
             <SnippetTabsList>
-              <SnippetTabsTrigger value="curl">curl</SnippetTabsTrigger>
-              <SnippetTabsTrigger value="response">response</SnippetTabsTrigger>
+              <SnippetTabsTrigger value="curl">
+                <CurlIcon />
+                <span>curl</span>
+              </SnippetTabsTrigger>
+              <SnippetTabsTrigger value="response">
+                <JsonIcon />
+                <span>response</span>
+              </SnippetTabsTrigger>
             </SnippetTabsList>
             <SnippetCopyButton value={paginationCurlExample} />
           </SnippetHeader>

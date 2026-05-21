@@ -4,6 +4,7 @@ import {
   Snippet, SnippetCopyButton, SnippetHeader,
   SnippetTabsContent, SnippetTabsList, SnippetTabsTrigger,
 } from "@/components/kibo-ui/snippet";
+import { JavaScriptIcon } from "@/components/api-doc/icons";
 import {
   examplesListGames,
   examplesCreateOrder,
@@ -28,7 +29,10 @@ export default function ExamplesPage() {
         <Snippet defaultValue="node">
           <SnippetHeader>
             <SnippetTabsList>
-              <SnippetTabsTrigger value="node">node.js</SnippetTabsTrigger>
+              <SnippetTabsTrigger value="node">
+                <JavaScriptIcon />
+                <span>node.js</span>
+              </SnippetTabsTrigger>
             </SnippetTabsList>
             <SnippetCopyButton value={listGames} />
           </SnippetHeader>
@@ -40,7 +44,10 @@ export default function ExamplesPage() {
         <Snippet defaultValue="node">
           <SnippetHeader>
             <SnippetTabsList>
-              <SnippetTabsTrigger value="node">node.js</SnippetTabsTrigger>
+              <SnippetTabsTrigger value="node">
+                <JavaScriptIcon />
+                <span>node.js</span>
+              </SnippetTabsTrigger>
             </SnippetTabsList>
             <SnippetCopyButton value={createOrder} />
           </SnippetHeader>
@@ -53,7 +60,8 @@ export default function ExamplesPage() {
           <SnippetHeader>
             <SnippetTabsList>
               <SnippetTabsTrigger value="node">
-                node.js (express)
+                <JavaScriptIcon />
+                <span>node.js (express)</span>
               </SnippetTabsTrigger>
             </SnippetTabsList>
             <SnippetCopyButton value={webhookHandler} />

@@ -9,6 +9,7 @@ import {
 import { authKeyTypes } from "@/constants/api-reference";
 import { brand } from "@/constants/brand";
 import { authCurlExample, authNodeExample } from "@/constants/code-snippets";
+import { CurlIcon, JavaScriptIcon } from "@/components/api-doc/icons";
 
 const curlExample = authCurlExample;
 const nodeExample = authNodeExample;
@@ -37,8 +38,14 @@ export default function AuthenticationPage() {
         <Snippet defaultValue="curl">
           <SnippetHeader>
             <SnippetTabsList>
-              <SnippetTabsTrigger value="curl">curl</SnippetTabsTrigger>
-              <SnippetTabsTrigger value="node">node.js</SnippetTabsTrigger>
+              <SnippetTabsTrigger value="curl">
+                <CurlIcon />
+                <span>curl</span>
+              </SnippetTabsTrigger>
+              <SnippetTabsTrigger value="node">
+                <JavaScriptIcon />
+                <span>node.js</span>
+              </SnippetTabsTrigger>
             </SnippetTabsList>
             <SnippetCopyButton value={curlExample} />
           </SnippetHeader>

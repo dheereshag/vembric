@@ -11,6 +11,7 @@ import {
   webhookPayloadExample,
   webhookVerifyExample,
 } from "@/constants/code-snippets";
+import { JavaScriptIcon, JsonIcon } from "@/components/api-doc/icons";
 
 const payloadExample = webhookPayloadExample;
 const verifyExample = webhookVerifyExample;
@@ -65,7 +66,10 @@ export default function WebhooksPage() {
         <Snippet defaultValue="json">
           <SnippetHeader>
             <SnippetTabsList>
-              <SnippetTabsTrigger value="json">payload</SnippetTabsTrigger>
+              <SnippetTabsTrigger value="json">
+                <JsonIcon />
+                <span>payload</span>
+              </SnippetTabsTrigger>
             </SnippetTabsList>
             <SnippetCopyButton value={payloadExample} />
           </SnippetHeader>
@@ -84,7 +88,10 @@ export default function WebhooksPage() {
         <Snippet defaultValue="node">
           <SnippetHeader>
             <SnippetTabsList>
-              <SnippetTabsTrigger value="node">node.js</SnippetTabsTrigger>
+              <SnippetTabsTrigger value="node">
+                <JavaScriptIcon />
+                <span>node.js</span>
+              </SnippetTabsTrigger>
             </SnippetTabsList>
             <SnippetCopyButton value={verifyExample} />
           </SnippetHeader>

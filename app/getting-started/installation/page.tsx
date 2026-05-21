@@ -7,6 +7,14 @@ import {
 } from "@/components/kibo-ui/snippet";
 import { brand } from "@/constants/brand";
 import { installCommands } from "@/constants/code-snippets";
+import {
+  NpmIcon,
+  YarnIcon,
+  PnpmIcon,
+  PythonIcon,
+  RubygemsIcon,
+  GoIcon,
+} from "@/components/api-doc/icons";
 
 export default function InstallationPage() {
   return (
@@ -21,9 +29,18 @@ export default function InstallationPage() {
         <Snippet defaultValue="npm">
           <SnippetHeader>
             <SnippetTabsList>
-              <SnippetTabsTrigger value="npm">npm</SnippetTabsTrigger>
-              <SnippetTabsTrigger value="yarn">yarn</SnippetTabsTrigger>
-              <SnippetTabsTrigger value="pnpm">pnpm</SnippetTabsTrigger>
+              <SnippetTabsTrigger value="npm">
+                <NpmIcon />
+                <span>npm</span>
+              </SnippetTabsTrigger>
+              <SnippetTabsTrigger value="yarn">
+                <YarnIcon />
+                <span>yarn</span>
+              </SnippetTabsTrigger>
+              <SnippetTabsTrigger value="pnpm">
+                <PnpmIcon />
+                <span>pnpm</span>
+              </SnippetTabsTrigger>
             </SnippetTabsList>
             <SnippetCopyButton value={installCommands.npm} />
           </SnippetHeader>
@@ -43,7 +60,10 @@ export default function InstallationPage() {
         <Snippet defaultValue="pip">
           <SnippetHeader>
             <SnippetTabsList>
-              <SnippetTabsTrigger value="pip">pip</SnippetTabsTrigger>
+              <SnippetTabsTrigger value="pip">
+                <PythonIcon />
+                <span>pip</span>
+              </SnippetTabsTrigger>
             </SnippetTabsList>
             <SnippetCopyButton value={installCommands.pip} />
           </SnippetHeader>
@@ -57,7 +77,10 @@ export default function InstallationPage() {
         <Snippet defaultValue="gem">
           <SnippetHeader>
             <SnippetTabsList>
-              <SnippetTabsTrigger value="gem">gem</SnippetTabsTrigger>
+              <SnippetTabsTrigger value="gem">
+                <RubygemsIcon />
+                <span>gem</span>
+              </SnippetTabsTrigger>
             </SnippetTabsList>
             <SnippetCopyButton value={installCommands.gem} />
           </SnippetHeader>
@@ -71,7 +94,10 @@ export default function InstallationPage() {
         <Snippet defaultValue="go">
           <SnippetHeader>
             <SnippetTabsList>
-              <SnippetTabsTrigger value="go">go</SnippetTabsTrigger>
+              <SnippetTabsTrigger value="go">
+                <GoIcon />
+                <span>go</span>
+              </SnippetTabsTrigger>
             </SnippetTabsList>
             <SnippetCopyButton value={installCommands.go} />
           </SnippetHeader>
