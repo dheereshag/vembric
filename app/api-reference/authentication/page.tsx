@@ -6,15 +6,23 @@ import {
   Snippet, SnippetCopyButton, SnippetHeader,
   SnippetTabsContent, SnippetTabsList, SnippetTabsTrigger,
 } from "@/components/kibo-ui/snippet";
+import type { ReactNode } from "react";
 import { authKeyTypes } from "@/constants/api-reference";
 import { brand } from "@/constants/brand";
-import { authCurlExample, authNodeExample } from "@/constants/code-snippets";
+import {
+  authenticationExamples,
+  type AuthSnippetExample,
+} from "@/constants/code-snippets";
 import { CurlIcon, JavaScriptIcon } from "@/components/api-doc/icons";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 
-const curlExample = authCurlExample;
-const nodeExample = authNodeExample;
+const authSnippetIcons: Record<AuthSnippetExample["value"], ReactNode> = {
+  curl: <CurlIcon />,
+  node: <JavaScriptIcon />,
+};
+
+const defaultExample = authenticationExamples[0];
 
 export default function AuthenticationPage() {
   return (
@@ -37,40 +45,30 @@ export default function AuthenticationPage() {
           </code>{" "}
           header.
         </p>
-        <Snippet defaultValue="curl">
+        <Snippet defaultValue={defaultExample.value}>
           <SnippetHeader>
             <SnippetTabsList>
-              <SnippetTabsTrigger value="curl">
-                <CurlIcon />
-                <span>curl</span>
-              </SnippetTabsTrigger>
-              <SnippetTabsTrigger value="node">
-                <JavaScriptIcon />
-                <span>node.js</span>
-              </SnippetTabsTrigger>
+              {authenticationExamples.map((example) => (
+                <SnippetTabsTrigger key={example.value} value={example.value}>
+                  {authSnippetIcons[example.value]}
+                  <span>{example.label}</span>
+                </SnippetTabsTrigger>
+              ))}
             </SnippetTabsList>
-            <SnippetCopyButton value={curlExample} />
+            <SnippetCopyButton value={defaultExample.code} />
           </SnippetHeader>
-          <SnippetTabsContent value="curl">
-            <SyntaxHighlighter
-              language="bash"
-              style={vscDarkPlus}
-              wrapLongLines
-              className="rounded-md text-sm"
-            >
-              {curlExample}
-            </SyntaxHighlighter>
-          </SnippetTabsContent>
-          <SnippetTabsContent value="node">
-            <SyntaxHighlighter
-              language="javascript"
-              style={vscDarkPlus}
-              wrapLongLines
-              className="rounded-md text-sm"
-            >
-              {nodeExample}
-            </SyntaxHighlighter>
-          </SnippetTabsContent>
+          {authenticationExamples.map((example) => (
+            <SnippetTabsContent key={example.value} value={example.value}>
+              <SyntaxHighlighter
+                language={example.language}
+                style={vscDarkPlus}
+                wrapLongLines
+                className="rounded-md text-sm"
+              >
+                {example.code}
+              </SyntaxHighlighter>
+            </SnippetTabsContent>
+          ))}
         </Snippet>
       </DocSection>
 

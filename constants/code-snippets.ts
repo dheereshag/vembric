@@ -20,6 +20,28 @@ export const authNodeExample = `import ${brand.sdk.importName} from '${brand.sdk
 
 const client = new ${brand.sdk.importName}({ apiKey: 'YOUR_API_KEY' });`;
 
+export type AuthSnippetExample = {
+  value: string;
+  label: string;
+  language: string;
+  code: string;
+};
+
+export const authenticationExamples: AuthSnippetExample[] = [
+  {
+    value: "curl",
+    label: "curl",
+    language: "bash",
+    code: authCurlExample,
+  },
+  {
+    value: "node",
+    label: "Node.js",
+    language: "javascript",
+    code: authNodeExample,
+  },
+];
+
 export const quickStartNodeExample = `import ${brand.sdk.importName} from '${brand.sdk.npm}';
 
 const client = new ${brand.sdk.importName}({ apiKey: 'YOUR_API_KEY' });
