@@ -5,6 +5,7 @@ import {
   Snippet, SnippetCopyButton, SnippetHeader,
   SnippetTabsContent, SnippetTabsList, SnippetTabsTrigger,
 } from "@/components/kibo-ui/snippet";
+import type { ReactNode } from "react";
 import { brand } from "@/constants/brand";
 import {
   authCurlExample,
@@ -14,6 +15,41 @@ import {
 import { CurlIcon, JavaScriptIcon, JsonIcon } from "@/components/api-doc/icons";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
+
+type QuickStartSnippet = {
+  value: string;
+  label: string;
+  icon: ReactNode;
+  language: string;
+  code: string;
+};
+
+const firstRequestSnippets: QuickStartSnippet[] = [
+  {
+    value: "curl",
+    label: "curl",
+    icon: <CurlIcon />,
+    language: "bash",
+    code: authCurlExample,
+  },
+  {
+    value: "node",
+    label: "node.js",
+    icon: <JavaScriptIcon />,
+    language: "javascript",
+    code: quickStartNodeExample,
+  },
+];
+
+const responseSnippets: QuickStartSnippet[] = [
+  {
+    value: "json",
+    label: "response",
+    icon: <JsonIcon />,
+    language: "json",
+    code: quickStartResponse,
+  },
+];
 
 export default function QuickStartPage() {
   return (
@@ -41,40 +77,30 @@ export default function QuickStartPage() {
         <p className="text-sm leading-relaxed mb-4">
           Fetch a list of games from the API.
         </p>
-        <Snippet defaultValue="curl">
+        <Snippet defaultValue={firstRequestSnippets[0].value}>
           <SnippetHeader>
             <SnippetTabsList>
-              <SnippetTabsTrigger value="curl">
-                <CurlIcon />
-                <span>curl</span>
-              </SnippetTabsTrigger>
-              <SnippetTabsTrigger value="node">
-                <JavaScriptIcon />
-                <span>node.js</span>
-              </SnippetTabsTrigger>
+              {firstRequestSnippets.map((snippet) => (
+                <SnippetTabsTrigger key={snippet.value} value={snippet.value}>
+                  {snippet.icon}
+                  <span>{snippet.label}</span>
+                </SnippetTabsTrigger>
+              ))}
             </SnippetTabsList>
-            <SnippetCopyButton value={authCurlExample} />
+            <SnippetCopyButton value={firstRequestSnippets[0].code} />
           </SnippetHeader>
-          <SnippetTabsContent value="curl">
-            <SyntaxHighlighter
-              language="bash"
-              style={vscDarkPlus}
-              wrapLongLines
-              className="rounded-md text-sm"
-            >
-              {authCurlExample}
-            </SyntaxHighlighter>
-          </SnippetTabsContent>
-          <SnippetTabsContent value="node">
-            <SyntaxHighlighter
-              language="javascript"
-              style={vscDarkPlus}
-              wrapLongLines
-              className="rounded-md text-sm"
-            >
-              {quickStartNodeExample}
-            </SyntaxHighlighter>
-          </SnippetTabsContent>
+          {firstRequestSnippets.map((snippet) => (
+            <SnippetTabsContent key={snippet.value} value={snippet.value}>
+              <SyntaxHighlighter
+                language={snippet.language}
+                style={vscDarkPlus}
+                wrapLongLines
+                className="rounded-md text-sm"
+              >
+                {snippet.code}
+              </SyntaxHighlighter>
+            </SnippetTabsContent>
+          ))}
         </Snippet>
       </DocSection>
 
@@ -82,26 +108,30 @@ export default function QuickStartPage() {
         <p className="text-sm leading-relaxed mb-4">
           A successful response looks like this:
         </p>
-        <Snippet defaultValue="json">
+        <Snippet defaultValue={responseSnippets[0].value}>
           <SnippetHeader>
             <SnippetTabsList>
-              <SnippetTabsTrigger value="json">
-                <JsonIcon />
-                <span>response</span>
-              </SnippetTabsTrigger>
+              {responseSnippets.map((snippet) => (
+                <SnippetTabsTrigger key={snippet.value} value={snippet.value}>
+                  {snippet.icon}
+                  <span>{snippet.label}</span>
+                </SnippetTabsTrigger>
+              ))}
             </SnippetTabsList>
-            <SnippetCopyButton value={quickStartResponse} />
+            <SnippetCopyButton value={responseSnippets[0].code} />
           </SnippetHeader>
-          <SnippetTabsContent value="json">
-            <SyntaxHighlighter
-              language="json"
-              style={vscDarkPlus}
-              wrapLongLines
-              className="rounded-md text-sm"
-            >
-              {quickStartResponse}
-            </SyntaxHighlighter>
-          </SnippetTabsContent>
+          {responseSnippets.map((snippet) => (
+            <SnippetTabsContent key={snippet.value} value={snippet.value}>
+              <SyntaxHighlighter
+                language={snippet.language}
+                style={vscDarkPlus}
+                wrapLongLines
+                className="rounded-md text-sm"
+              >
+                {snippet.code}
+              </SyntaxHighlighter>
+            </SnippetTabsContent>
+          ))}
         </Snippet>
       </DocSection>
     </div>
