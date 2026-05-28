@@ -1,7 +1,10 @@
 import { cn } from "@/lib/utils";
 import type { HTMLAttributes } from "react";
 
-interface DocSectionProps extends HTMLAttributes<HTMLElement> {
+interface DocSectionProps extends Omit<
+  HTMLAttributes<HTMLElement>,
+  "title" | "children"
+> {
   title: React.ReactNode;
   children: React.ReactNode;
 }
