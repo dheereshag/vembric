@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { fontSans, fontMono } from "@/lib/fonts";
+import { fontSans, fontMono, snippetFont } from "@/lib/fonts";
 import { AppSidebar } from "@/components/app-sidebar";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar"; // ✅ context >
 import "./globals.css";
@@ -18,11 +18,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
-      <head>
-
-      </head>
+      <head></head>
       <body
-        className={`${fontSans.variable} ${fontMono.variable} font-sans antialiased`}
+        className={`${fontSans.variable} ${fontMono.variable} ${snippetFont.variable} font-sans antialiased`}
       >
         <SidebarProvider>
           <AppSidebar />

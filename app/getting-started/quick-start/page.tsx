@@ -96,6 +96,8 @@ export default function QuickStartPage() {
                 style={vscDarkPlus}
                 wrapLongLines
                 className="rounded-md text-sm"
+                customStyle={{ fontFamily: "var(--font-snippet)" }}
+                codeTagProps={{ style: { fontFamily: "var(--font-snippet)" } }}
               >
                 {snippet.code}
               </SyntaxHighlighter>
@@ -127,6 +129,8 @@ export default function QuickStartPage() {
                 style={vscDarkPlus}
                 wrapLongLines
                 className="rounded-md text-sm"
+                customStyle={{ fontFamily: "var(--font-snippet)" }}
+                codeTagProps={{ style: { fontFamily: "var(--font-snippet)" } }}
               >
                 {snippet.code}
               </SyntaxHighlighter>

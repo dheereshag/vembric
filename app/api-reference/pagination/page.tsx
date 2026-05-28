@@ -92,6 +92,8 @@ export default function PaginationPage() {
               style={vscDarkPlus}
               wrapLongLines
               className="rounded-md text-sm"
+              customStyle={{ fontFamily: "var(--font-snippet)" }}
+              codeTagProps={{ style: { fontFamily: "var(--font-snippet)" } }}
             >
               {paginationCurlExample}
             </SyntaxHighlighter>
@@ -102,6 +104,8 @@ export default function PaginationPage() {
               style={vscDarkPlus}
               wrapLongLines
               className="rounded-md text-sm"
+              customStyle={{ fontFamily: "var(--font-snippet)" }}
+              codeTagProps={{ style: { fontFamily: "var(--font-snippet)" } }}
             >
               {paginationResponseExample}
             </SyntaxHighlighter>

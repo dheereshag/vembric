@@ -81,6 +81,8 @@ export default function WebhooksPage() {
               style={vscDarkPlus}
               wrapLongLines
               className="rounded-md text-sm"
+              customStyle={{ fontFamily: "var(--font-snippet)" }}
+              codeTagProps={{ style: { fontFamily: "var(--font-snippet)" } }}
             >
               {payloadExample}
             </SyntaxHighlighter>
@@ -112,6 +114,8 @@ export default function WebhooksPage() {
               style={vscDarkPlus}
               wrapLongLines
               className="rounded-md text-sm"
+              customStyle={{ fontFamily: "var(--font-snippet)" }}
+              codeTagProps={{ style: { fontFamily: "var(--font-snippet)" } }}
             >
               {verifyExample}
             </SyntaxHighlighter>

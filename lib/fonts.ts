@@ -1,4 +1,4 @@
-import { JetBrains_Mono } from "next/font/google";
+import { Geist_Mono, JetBrains_Mono } from "next/font/google";
 
 export const fontSans = JetBrains_Mono({
   variable: "--font-sans",
@@ -20,6 +20,20 @@ export const fontMono = JetBrains_Mono({
   subsets: ["latin"],
   display: "swap",
   weight: ["300", "400", "500", "600", "700"],
+  fallback: [
+    "SFMono-Regular",
+    "Consolas",
+    "Liberation Mono",
+    "Menlo",
+    "Courier",
+    "monospace",
+  ],
+});
+
+export const snippetFont = Geist_Mono({
+  variable: "--font-snippet",
+  subsets: ["latin"],
+  display: "swap",
   fallback: [
     "SFMono-Regular",
     "Consolas",

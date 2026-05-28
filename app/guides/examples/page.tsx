@@ -44,6 +44,8 @@ export default function ExamplesPage() {
               style={vscDarkPlus}
               wrapLongLines
               className="rounded-md text-sm"
+              customStyle={{ fontFamily: "var(--font-snippet)" }}
+              codeTagProps={{ style: { fontFamily: "var(--font-snippet)" } }}
             >
               {listGames}
             </SyntaxHighlighter>
@@ -68,6 +70,8 @@ export default function ExamplesPage() {
               style={vscDarkPlus}
               wrapLongLines
               className="rounded-md text-sm"
+              customStyle={{ fontFamily: "var(--font-snippet)" }}
+              codeTagProps={{ style: { fontFamily: "var(--font-snippet)" } }}
             >
               {createOrder}
             </SyntaxHighlighter>
@@ -92,6 +96,8 @@ export default function ExamplesPage() {
               style={vscDarkPlus}
               wrapLongLines
               className="rounded-md text-sm"
+              customStyle={{ fontFamily: "var(--font-snippet)" }}
+              codeTagProps={{ style: { fontFamily: "var(--font-snippet)" } }}
             >
               {webhookHandler}
             </SyntaxHighlighter>

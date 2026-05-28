@@ -64,6 +64,8 @@ export default function AuthenticationPage() {
                 style={vscDarkPlus}
                 wrapLongLines
                 className="rounded-md text-sm"
+                customStyle={{ fontFamily: "var(--font-snippet)" }}
+                codeTagProps={{ style: { fontFamily: "var(--font-snippet)" } }}
               >
                 {example.code}
               </SyntaxHighlighter>

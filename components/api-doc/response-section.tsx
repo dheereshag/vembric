@@ -49,6 +49,8 @@ export function ResponseSection({ response }: ResponseSectionProps) {
               style={vscDarkPlus}
               wrapLongLines
               className="rounded-md text-sm"
+              customStyle={{ fontFamily: "var(--font-snippet)" }}
+              codeTagProps={{ style: { fontFamily: "var(--font-snippet)" } }}
             >
               {formatted}
             </SyntaxHighlighter>
