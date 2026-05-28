@@ -57,14 +57,14 @@ export default function PaginationPage() {
             <span className="col-span-2">type</span>
             <span className="col-span-7">description</span>
           </div>
-          {paginationParams.map(([p, t, d]) => (
-            <div key={p} className="grid grid-cols-12 px-4 py-3 items-start">
-              <code className="col-span-3 text-xs">{p}</code>
+          {paginationParams.map(({ name, type, description }) => (
+            <div key={name} className="grid grid-cols-12 px-4 py-3 items-start">
+              <code className="col-span-3 text-xs">{name}</code>
               <span className="col-span-2 text-muted-foreground text-xs">
-                {t}
+                {type}
               </span>
               <span className="col-span-7 text-muted-foreground text-xs">
-                {d}
+                {description}
               </span>
             </div>
           ))}

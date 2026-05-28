@@ -1,5 +1,7 @@
 import { Geist_Mono, JetBrains_Mono } from "next/font/google";
 
+// next/font requires fully static call arguments (no spreading) when using Turbopack.
+// Both variables use the same JetBrains Mono face; Next.js deduplicates the network request.
 export const fontSans = JetBrains_Mono({
   variable: "--font-sans",
   subsets: ["latin"],
@@ -43,8 +45,3 @@ export const snippetFont = Geist_Mono({
     "monospace",
   ],
 });
-
-// Legacy exports for backward compatibility
-export const geistSans = fontSans;
-export const geistMono = fontMono;
-export const inter = fontSans;

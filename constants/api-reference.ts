@@ -18,30 +18,67 @@ export const methodColors: Record<string, string> = {
   DELETE: "text-red-400",
 };
 
-export const authKeyTypes: [string, string][] = [
-  ["test_", "Sandbox key — no real data affected"],
-  ["live_", "Production key — use with care"],
+export type AuthKeyType = {
+  prefix: string;
+  description: string;
+};
+
+export const authKeyTypes: AuthKeyType[] = [
+  { prefix: "test_", description: "Sandbox key — no real data affected" },
+  { prefix: "live_", description: "Production key — use with care" },
 ];
 
-export const paginationParams: [string, string, string][] = [
-  ["limit",  "integer", "Number of items per page (default 20, max 100)"],
-  ["cursor", "string",  "Cursor returned from the previous response"],
+export type PaginationParam = {
+  name: string;
+  type: string;
+  description: string;
+};
+
+export const paginationParams: PaginationParam[] = [
+  {
+    name: "limit",
+    type: "integer",
+    description: "Number of items per page (default 20, max 100)",
+  },
+  {
+    name: "cursor",
+    type: "string",
+    description: "Cursor returned from the previous response",
+  },
 ];
 
-export const rateLimitPlans: [string, string, string][] = [
-  ["Free",       "60",   "10,000"],
-  ["Pro",        "300",  "100,000"],
-  ["Enterprise", "1000", "Unlimited"],
+export type RateLimitPlan = {
+  plan: string;
+  requestsPerMinute: string;
+  requestsPerDay: string;
+};
+
+export const rateLimitPlans: RateLimitPlan[] = [
+  { plan: "Free", requestsPerMinute: "60", requestsPerDay: "10,000" },
+  { plan: "Pro", requestsPerMinute: "300", requestsPerDay: "100,000" },
+  {
+    plan: "Enterprise",
+    requestsPerMinute: "1000",
+    requestsPerDay: "Unlimited",
+  },
 ];
 
-export const statusCodes: [string, string][] = [
-  ["200", "OK — request succeeded"],
-  ["201", "Created — resource created"],
-  ["400", "Bad Request — malformed syntax"],
-  ["401", "Unauthorized — invalid or missing API key"],
-  ["403", "Forbidden — valid key but insufficient permissions"],
-  ["404", "Not Found — resource does not exist"],
-  ["422", "Unprocessable Entity — validation error"],
-  ["429", "Too Many Requests — rate limit exceeded"],
-  ["500", "Internal Server Error — try again later"],
+export type StatusCode = {
+  code: string;
+  meaning: string;
+};
+
+export const statusCodes: StatusCode[] = [
+  { code: "200", meaning: "OK — request succeeded" },
+  { code: "201", meaning: "Created — resource created" },
+  { code: "400", meaning: "Bad Request — malformed syntax" },
+  { code: "401", meaning: "Unauthorized — invalid or missing API key" },
+  {
+    code: "403",
+    meaning: "Forbidden — valid key but insufficient permissions",
+  },
+  { code: "404", meaning: "Not Found — resource does not exist" },
+  { code: "422", meaning: "Unprocessable Entity — validation error" },
+  { code: "429", meaning: "Too Many Requests — rate limit exceeded" },
+  { code: "500", meaning: "Internal Server Error — try again later" },
 ];

@@ -11,6 +11,10 @@ export {
   paginationParams,
   rateLimitPlans,
   statusCodes,
+  type AuthKeyType,
+  type PaginationParam,
+  type RateLimitPlan,
+  type StatusCode,
 } from "./api-reference";
 export {
   services,

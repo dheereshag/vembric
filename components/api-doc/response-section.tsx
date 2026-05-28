@@ -35,13 +35,7 @@ export function ResponseSection({ response }: ResponseSectionProps) {
                 <span>response</span>
               </SnippetTabsTrigger>
             </SnippetTabsList>
-            <SnippetCopyButton
-              value={formatted}
-              onCopy={() => console.log(`Copied "${formatted}" to clipboard`)}
-              onError={() =>
-                console.error(`Failed to copy "${formatted}" to clipboard`)
-              }
-            />
+            <SnippetCopyButton value={formatted} />
           </SnippetHeader>
           <SnippetTabsContent value="json">
             <SyntaxHighlighter

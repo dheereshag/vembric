@@ -56,7 +56,7 @@ export default function ErrorHandlingPage() {
             <span className="col-span-2">code</span>
             <span className="col-span-10">meaning</span>
           </div>
-          {statusCodes.map(([code, meaning]) => (
+          {statusCodes.map(({ code, meaning }) => (
             <div key={code} className="grid grid-cols-12 px-4 py-3 items-start">
               <code className="col-span-2 text-xs">{code}</code>
               <span className="col-span-10 text-muted-foreground text-xs">

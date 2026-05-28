@@ -10,7 +10,7 @@ export function ArrowList({ items, className }: ArrowListProps) {
   return (
     <ul className={cn("space-y-2 text-sm font-mono", className)}>
       {items.map((item, i) => (
-        <li key={i}>
+        <li key={typeof item === "string" ? item : i}>
           <span className="text-muted-foreground">→</span> {item}
         </li>
       ))}

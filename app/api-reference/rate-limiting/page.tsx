@@ -21,14 +21,14 @@ export default function RateLimitingPage() {
             <span className="col-span-4">requests / min</span>
             <span className="col-span-4">requests / day</span>
           </div>
-          {rateLimitPlans.map(([plan, rpm, rpd]) => (
+          {rateLimitPlans.map(({ plan, requestsPerMinute, requestsPerDay }) => (
             <div key={plan} className="grid grid-cols-12 px-4 py-3 items-start">
               <span className="col-span-4 text-xs">{plan}</span>
               <span className="col-span-4 text-muted-foreground text-xs">
-                {rpm}
+                {requestsPerMinute}
               </span>
               <span className="col-span-4 text-muted-foreground text-xs">
-                {rpd}
+                {requestsPerDay}
               </span>
             </div>
           ))}

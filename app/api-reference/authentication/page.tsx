@@ -2,10 +2,6 @@ import { PageHeader } from "@/components/doc/page-header";
 import { DocSection } from "@/components/doc/doc-section";
 import { ArrowList } from "@/components/doc/arrow-list";
 import { InfoBox } from "@/components/doc/info-box";
-import {
-  Snippet, SnippetCopyButton, SnippetHeader,
-  SnippetTabsContent, SnippetTabsList, SnippetTabsTrigger,
-} from "@/components/kibo-ui/snippet";
 import type { ReactNode } from "react";
 import { authKeyTypes } from "@/constants/api-reference";
 import { brand } from "@/constants/brand";
@@ -14,15 +10,12 @@ import {
   type AuthSnippetExample,
 } from "@/constants/code-snippets";
 import { CurlIcon, JavaScriptIcon } from "@/components/api-doc/icons";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { AuthenticationSnippet } from "@/components/authentication-snippet";
 
 const authSnippetIcons: Record<AuthSnippetExample["value"], ReactNode> = {
   curl: <CurlIcon />,
   node: <JavaScriptIcon />,
 };
-
-const defaultExample = authenticationExamples[0];
 
 export default function AuthenticationPage() {
   return (
@@ -45,33 +38,10 @@ export default function AuthenticationPage() {
           </code>{" "}
           header.
         </p>
-        <Snippet defaultValue={defaultExample.value}>
-          <SnippetHeader>
-            <SnippetTabsList>
-              {authenticationExamples.map((example) => (
-                <SnippetTabsTrigger key={example.value} value={example.value}>
-                  {authSnippetIcons[example.value]}
-                  <span>{example.label}</span>
-                </SnippetTabsTrigger>
-              ))}
-            </SnippetTabsList>
-            <SnippetCopyButton value={defaultExample.code} />
-          </SnippetHeader>
-          {authenticationExamples.map((example) => (
-            <SnippetTabsContent key={example.value} value={example.value}>
-              <SyntaxHighlighter
-                language={example.language}
-                style={vscDarkPlus}
-                wrapLongLines
-                className="rounded-md text-sm"
-                customStyle={{ fontFamily: "var(--font-snippet)" }}
-                codeTagProps={{ style: { fontFamily: "var(--font-snippet)" } }}
-              >
-                {example.code}
-              </SyntaxHighlighter>
-            </SnippetTabsContent>
-          ))}
-        </Snippet>
+        <AuthenticationSnippet
+          examples={authenticationExamples}
+          icons={authSnippetIcons}
+        />
       </DocSection>
 
       <DocSection title="key types">
@@ -80,11 +50,14 @@ export default function AuthenticationPage() {
             <span className="col-span-4">type</span>
             <span className="col-span-8">description</span>
           </div>
-          {authKeyTypes.map(([k, v]) => (
-            <div key={k} className="grid grid-cols-12 px-4 py-3 items-start">
-              <code className="col-span-4 text-xs">{k}</code>
+          {authKeyTypes.map(({ prefix, description }) => (
+            <div
+              key={prefix}
+              className="grid grid-cols-12 px-4 py-3 items-start"
+            >
+              <code className="col-span-4 text-xs">{prefix}</code>
               <span className="col-span-8 text-muted-foreground text-xs">
-                {v}
+                {description}
               </span>
             </div>
           ))}

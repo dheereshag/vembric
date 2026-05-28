@@ -84,19 +84,7 @@ export function CodeSnippetSection({
                 </SnippetTabsTrigger>
               ))}
             </SnippetTabsList>
-            {activeCommand && (
-              <SnippetCopyButton
-                onCopy={() =>
-                  console.log(`Copied "${activeCommand.code}" to clipboard`)
-                }
-                onError={() =>
-                  console.error(
-                    `Failed to copy "${activeCommand.code}" to clipboard`,
-                  )
-                }
-                value={activeCommand.code}
-              />
-            )}
+            {activeCommand && <SnippetCopyButton value={activeCommand.code} />}
           </SnippetHeader>
           {commands.map((command) => (
             <SnippetTabsContent key={command.label} value={command.label}>

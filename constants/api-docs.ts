@@ -7,12 +7,6 @@ type ModelField = {
   description: string;
 };
 
-type OptionalAttribute = {
-  name: string;
-  type: string;
-  description: string;
-};
-
 export type ApiActionDoc = {
   key: string;
   slug: string;
@@ -21,7 +15,7 @@ export type ApiActionDoc = {
   method: RequestType;
   endpoint: string;
   model: ModelField[];
-  optionalAttributes?: OptionalAttribute[];
+  optionalAttributes?: ModelField[];
   curl: string;
   js: string;
   response: unknown;
@@ -42,7 +36,7 @@ const buildCrudActions = (resource: {
   updatePayload: Record<string, unknown>;
   sampleEntity: Record<string, unknown>;
 }) => {
-  const endpointBase = `/v1/${resource.key}`;
+  const endpointBase = `/${brand.apiVersion}/${resource.key}`;
   const id = `${resource.singular}_xyz123`;
   const entityPath = `${endpointBase}/${id}`;
 

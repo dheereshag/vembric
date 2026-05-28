@@ -14,7 +14,7 @@ import {
   siYarn,
 } from "simple-icons";
 
-const Icon = ({ path }: { path: string }) => (
+export const Icon = ({ path }: { path: string }) => (
   <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
     <path d={path} />
   </svg>

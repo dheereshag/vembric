@@ -2,6 +2,7 @@ import { PageHeader } from "@/components/doc/page-header";
 import { SdkCard } from "@/components/sdk-card";
 import { brand } from "@/constants/brand";
 import { sdks } from "@/constants/sdks";
+import { Icon } from "@/components/api-doc/icons";
 
 export default function SDKPage() {
   return (
@@ -18,11 +19,7 @@ export default function SDKPage() {
             key={sdk.name}
             name={sdk.name}
             description={sdk.description}
-            icon={
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
-                <path d={sdk.iconPath} />
-              </svg>
-            }
+            icon={<Icon path={sdk.iconPath} />}
           />
         ))}
       </div>
