@@ -7,7 +7,7 @@ import {
   SnippetTabsContent, SnippetTabsList, SnippetTabsTrigger,
 } from "@/components/kibo-ui/snippet";
 import { statusCodes } from "@/constants/api-reference";
-import { brand } from "@/constants/brand";
+import { errorHandlingContent } from "@/constants/page-content";
 import { errorResponseExample } from "@/constants/code-snippets";
 import { JsonIcon } from "@/components/api-doc/icons";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
@@ -21,7 +21,7 @@ export default function ErrorHandlingPage() {
       <PageHeader
         path="// api-reference / error-handling"
         title="Error Handling"
-        description={`Understand ${brand.name} error responses and how to handle them gracefully.`}
+        description={errorHandlingContent.header.description}
       />
 
       <DocSection title="error format">
@@ -68,15 +68,9 @@ export default function ErrorHandlingPage() {
       </DocSection>
 
       <DocSection title="retry strategy" className="mb-0">
-        <ArrowList
-          items={[
-            "Always retry on 429 — respect the Retry-After header",
-            "Retry 500 / 503 with exponential backoff (3 attempts max)",
-            "Never retry 400, 401, 403, 404, or 422 — fix the request first",
-          ]}
-        />
+        <ArrowList items={errorHandlingContent.retryStrategy.items} />
         <InfoBox className="mt-4">
-          // log the error.code field for easier debugging and support tickets
+          {errorHandlingContent.retryStrategy.infoBox}
         </InfoBox>
       </DocSection>
     </div>

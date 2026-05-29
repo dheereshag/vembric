@@ -6,7 +6,7 @@ import {
   SnippetTabsContent, SnippetTabsList, SnippetTabsTrigger,
 } from "@/components/kibo-ui/snippet";
 import type { ReactNode } from "react";
-import { brand } from "@/constants/brand";
+import { quickStartContent } from "@/constants/page-content";
 import {
   authCurlExample,
   quickStartNodeExample,
@@ -57,25 +57,23 @@ export default function QuickStartPage() {
       <PageHeader
         path="// getting-started / quick-start"
         title="Quick Start"
-        description={`Get up and running with the ${brand.name} API in under 5 minutes.`}
+        description={quickStartContent.header.description}
       />
 
       <DocSection title="step 1 — get your api key">
         <p className="text-sm leading-relaxed mb-4">
-          Log into the {brand.name} dashboard and navigate to{" "}
+          {quickStartContent.step1.prefix}{" "}
           <code className="font-mono bg-muted px-1.5 py-0.5 text-xs">
-            {brand.dashboardSettingsPath}
+            {quickStartContent.step1.settingsPath}
           </code>{" "}
-          to generate your key.
+          {quickStartContent.step1.suffix}
         </p>
-        <InfoBox>
-          // keep your API key secret — never expose it in client-side code
-        </InfoBox>
+        <InfoBox>{quickStartContent.step1.infoBox}</InfoBox>
       </DocSection>
 
       <DocSection title="step 2 — make your first request">
         <p className="text-sm leading-relaxed mb-4">
-          Fetch a list of games from the API.
+          {quickStartContent.step2.body}
         </p>
         <Snippet defaultValue={firstRequestSnippets[0].value}>
           <SnippetHeader>
@@ -108,7 +106,7 @@ export default function QuickStartPage() {
 
       <DocSection title="step 3 — read the response" className="mb-0">
         <p className="text-sm leading-relaxed mb-4">
-          A successful response looks like this:
+          {quickStartContent.step3.body}
         </p>
         <Snippet defaultValue={responseSnippets[0].value}>
           <SnippetHeader>

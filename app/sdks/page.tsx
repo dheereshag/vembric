@@ -1,6 +1,6 @@
 import { PageHeader } from "@/components/doc/page-header";
 import { SdkCard } from "@/components/sdk-card";
-import { brand } from "@/constants/brand";
+import { sdksContent } from "@/constants/page-content";
 import { sdks } from "@/constants/sdks";
 import { Icon } from "@/components/api-doc/icons";
 
@@ -9,8 +9,8 @@ export default function SDKPage() {
     <div className="p-6">
       <PageHeader
         path="// sdks"
-        title={`${brand.name} SDKs`}
-        description="Use our official SDKs to integrate faster with the API."
+        title={sdksContent.header.title}
+        description={sdksContent.header.description}
       />
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

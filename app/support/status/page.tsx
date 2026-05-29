@@ -2,7 +2,7 @@ import { PageHeader } from "@/components/doc/page-header";
 import { DocSection } from "@/components/doc/doc-section";
 import { InfoBox } from "@/components/doc/info-box";
 import { services, statusColor } from "@/constants/support";
-import { brand } from "@/constants/brand";
+import { statusContent } from "@/constants/page-content";
 
 export default function StatusPage() {
   return (
@@ -10,7 +10,7 @@ export default function StatusPage() {
       <PageHeader
         path="// support / status"
         title="Status"
-        description={`Current operational status of ${brand.name} services.`}
+        description={statusContent.header.description}
       />
 
       <DocSection title="services">
@@ -41,9 +41,7 @@ export default function StatusPage() {
         </p>
       </DocSection>
 
-      <InfoBox className="mt-6">
-        // subscribe to status updates at {brand.statusUrl}
-      </InfoBox>
+      <InfoBox className="mt-6">{statusContent.infoBox}</InfoBox>
     </div>
   );
 }

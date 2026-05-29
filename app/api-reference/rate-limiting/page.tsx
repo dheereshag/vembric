@@ -3,7 +3,7 @@ import { DocSection } from "@/components/doc/doc-section";
 import { ArrowList } from "@/components/doc/arrow-list";
 import { InfoBox } from "@/components/doc/info-box";
 import { rateLimitPlans } from "@/constants/api-reference";
-import { brand } from "@/constants/brand";
+import { rateLimitingContent } from "@/constants/page-content";
 
 export default function RateLimitingPage() {
   return (
@@ -11,7 +11,7 @@ export default function RateLimitingPage() {
       <PageHeader
         path="// api-reference / rate-limiting"
         title="Rate Limiting"
-        description={`Understand how ${brand.name} enforces request limits to ensure fair usage.`}
+        description={rateLimitingContent.header.description}
       />
 
       <DocSection title="limits by plan">
@@ -37,47 +37,21 @@ export default function RateLimitingPage() {
 
       <DocSection title="response headers">
         <ArrowList
-          items={[
+          items={rateLimitingContent.responseHeaders.map((h) => (
             <>
               <code className="font-mono bg-muted px-1.5 py-0.5 text-xs">
-                X-RateLimit-Limit
+                {h.header}
               </code>{" "}
-              — your total limit
-            </>,
-            <>
-              <code className="font-mono bg-muted px-1.5 py-0.5 text-xs">
-                X-RateLimit-Remaining
-              </code>{" "}
-              — requests left in window
-            </>,
-            <>
-              <code className="font-mono bg-muted px-1.5 py-0.5 text-xs">
-                X-RateLimit-Reset
-              </code>{" "}
-              — unix timestamp when window resets
-            </>,
-            <>
-              <code className="font-mono bg-muted px-1.5 py-0.5 text-xs">
-                Retry-After
-              </code>{" "}
-              — seconds to wait after a 429
-            </>,
-          ]}
+              — {h.description}
+            </>
+          ))}
         />
       </DocSection>
 
       <DocSection title="handling 429 errors" className="mb-0">
-        <ArrowList
-          items={[
-            "Check the Retry-After header and wait the specified seconds",
-            "Implement exponential backoff with jitter",
-            "Cache responses where possible to avoid redundant requests",
-            "Consider upgrading your plan for higher limits",
-          ]}
-        />
+        <ArrowList items={rateLimitingContent.handling429.items} />
         <InfoBox className="mt-4">
-          // bursting slightly above the limit may be tolerated; sustained
-          over-limit traffic will result in a 429
+          {rateLimitingContent.handling429.infoBox}
         </InfoBox>
       </DocSection>
     </div>

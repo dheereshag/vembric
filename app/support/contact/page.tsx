@@ -2,7 +2,7 @@ import { PageHeader } from "@/components/doc/page-header";
 import { DocSection } from "@/components/doc/doc-section";
 import { ArrowList } from "@/components/doc/arrow-list";
 import { contactResponseTimes } from "@/constants/support";
-import { brand } from "@/constants/brand";
+import { contactContent, type ContactChannel } from "@/constants/page-content";
 
 export default function ContactPage() {
   return (
@@ -10,34 +10,24 @@ export default function ContactPage() {
       <PageHeader
         path="// support / contact"
         title="Contact"
-        description={`Get in touch with the ${brand.name} team.`}
+        description={contactContent.header.description}
       />
 
       <DocSection title="channels">
         <ArrowList
-          items={[
-            <>
-              Email —{" "}
-              <a
-                href={`mailto:${brand.supportEmail}`}
-                className="underline underline-offset-4"
-              >
-                {brand.supportEmail}
-              </a>
-            </>,
-            <>
-              GitHub —{" "}
-              <a
-                href={brand.githubUrl}
-                className="underline underline-offset-4"
-              >
-                {brand.githubDisplay}
-              </a>{" "}
-              (open an issue or discussion)
-            </>,
-            "Dashboard — submit a support ticket from the Help menu",
-            "Discord — join the community server for real-time help",
-          ]}
+          items={contactContent.channels.map((channel: ContactChannel) =>
+            channel.type === "link" ? (
+              <>
+                {channel.prefix}{" "}
+                <a href={channel.href} className="underline underline-offset-4">
+                  {channel.display}
+                </a>
+                {channel.suffix ? ` ${channel.suffix}` : ""}
+              </>
+            ) : (
+              channel.text
+            ),
+          )}
         />
       </DocSection>
 

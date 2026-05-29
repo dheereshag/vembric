@@ -3,6 +3,7 @@ import { DocSection } from "@/components/doc/doc-section";
 import { InfoBox } from "@/components/doc/info-box";
 import { endpoints, methodColors } from "@/constants/api-reference";
 import { brand } from "@/constants/brand";
+import { endpointsContent } from "@/constants/page-content";
 
 export default function EndpointsPage() {
   return (
@@ -10,7 +11,7 @@ export default function EndpointsPage() {
       <PageHeader
         path="// api-reference / endpoints"
         title="Endpoints"
-        description="Complete reference for all available API endpoints."
+        description={endpointsContent.header.description}
       />
 
       <DocSection title="base url">
@@ -54,9 +55,7 @@ export default function EndpointsPage() {
         </p>
       </DocSection>
 
-      <InfoBox className="mt-6">
-        // all endpoints require a valid Bearer token — see Authentication
-      </InfoBox>
+      <InfoBox className="mt-6">{endpointsContent.infoBox}</InfoBox>
     </div>
   );
 }

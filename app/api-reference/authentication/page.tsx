@@ -5,6 +5,7 @@ import { InfoBox } from "@/components/doc/info-box";
 import type { ReactNode } from "react";
 import { authKeyTypes } from "@/constants/api-reference";
 import { brand } from "@/constants/brand";
+import { authenticationContent } from "@/constants/page-content";
 import {
   authenticationExamples,
   type AuthSnippetExample,
@@ -23,20 +24,12 @@ export default function AuthenticationPage() {
       <PageHeader
         path="// api-reference / authentication"
         title="Authentication"
-        description="Secure your API requests using Bearer tokens."
+        description={authenticationContent.header.description}
       />
 
       <DocSection title="bearer tokens">
         <p className="text-sm leading-relaxed mb-4">
-          All API requests must include your API key as a{" "}
-          <code className="font-mono bg-muted px-1.5 py-0.5 text-xs">
-            Bearer
-          </code>{" "}
-          token in the{" "}
-          <code className="font-mono bg-muted px-1.5 py-0.5 text-xs">
-            Authorization
-          </code>{" "}
-          header.
+          {authenticationContent.bearerTokens.body}
         </p>
         <AuthenticationSnippet
           examples={authenticationExamples}
@@ -65,20 +58,10 @@ export default function AuthenticationPage() {
       </DocSection>
 
       <DocSection title="security best practices" className="mb-0">
-        <ArrowList
-          items={[
-            "Never expose keys in client-side code",
-            "Rotate keys regularly",
-            "Use environment variables to store keys",
-            "Restrict key permissions to required scopes only",
-          ]}
-        />
+        <ArrowList items={authenticationContent.securityBestPractices.items} />
       </DocSection>
 
-      <InfoBox className="mt-6">
-        // keys can be managed from the {brand.name} dashboard under{" "}
-        {brand.dashboardSettingsPath}
-      </InfoBox>
+      <InfoBox className="mt-6">{authenticationContent.infoBox}</InfoBox>
     </div>
   );
 }

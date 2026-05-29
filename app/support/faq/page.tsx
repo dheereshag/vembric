@@ -2,7 +2,7 @@ import { PageHeader } from "@/components/doc/page-header";
 import { DocSection } from "@/components/doc/doc-section";
 import { InfoBox } from "@/components/doc/info-box";
 import { faqs } from "@/constants/support";
-import { brand } from "@/constants/brand";
+import { faqContent } from "@/constants/page-content";
 
 export default function FAQPage() {
   return (
@@ -10,7 +10,7 @@ export default function FAQPage() {
       <PageHeader
         path="// support / faq"
         title="FAQ"
-        description={`Answers to the most common questions about the ${brand.name} API.`}
+        description={faqContent.header.description}
       />
 
       {faqs.map(({ q, a }, i) => (
@@ -19,10 +19,7 @@ export default function FAQPage() {
         </DocSection>
       ))}
 
-      <InfoBox>
-        // still stuck? reach out via the Contact page or open a ticket in the
-        dashboard
-      </InfoBox>
+      <InfoBox>{faqContent.infoBox}</InfoBox>
     </div>
   );
 }

@@ -8,6 +8,7 @@ import {
 import type { ReactNode } from "react";
 import { brand } from "@/constants/brand";
 import { installCommands } from "@/constants/code-snippets";
+import { installationContent } from "@/constants/page-content";
 import {
   NpmIcon,
   YarnIcon,
@@ -73,7 +74,7 @@ export default function InstallationPage() {
       <PageHeader
         path="// getting-started / installation"
         title="Installation"
-        description={`Install the official ${brand.name} SDK for your language of choice.`}
+        description={installationContent.header.description}
       />
 
       {installationSections.map((section) => (

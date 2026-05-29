@@ -12,7 +12,7 @@ import {
   examplesCreateOrder,
   examplesWebhookHandler,
 } from "@/constants/code-snippets";
-import { brand } from "@/constants/brand";
+import { examplesContent } from "@/constants/page-content";
 
 const listGames = examplesListGames;
 const createOrder = examplesCreateOrder;
@@ -24,7 +24,7 @@ export default function ExamplesPage() {
       <PageHeader
         path="// guides / examples"
         title="Examples"
-        description={`Real-world code snippets for common ${brand.name} integration scenarios.`}
+        description={examplesContent.header.description}
       />
 
       <DocSection title="list games">

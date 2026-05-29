@@ -25,3 +25,4 @@ export {
 } from "./support";
 export { brand } from "./brand";
 export * from "./code-snippets";
+export * from "./page-content";
