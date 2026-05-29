@@ -4,7 +4,6 @@ import { ArrowList } from "@/components/doc/arrow-list";
 import { InfoBox } from "@/components/doc/info-box";
 import type { ReactNode } from "react";
 import { authKeyTypes } from "@/constants/api-reference";
-import { brand } from "@/constants/brand";
 import { authenticationContent } from "@/constants/page-content";
 import {
   authenticationExamples,

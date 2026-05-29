@@ -6,7 +6,6 @@ import {
   SnippetTabsContent, SnippetTabsList, SnippetTabsTrigger,
 } from "@/components/kibo-ui/snippet";
 import type { ReactNode } from "react";
-import { brand } from "@/constants/brand";
 import { installCommands } from "@/constants/code-snippets";
 import { installationContent } from "@/constants/page-content";
 import {

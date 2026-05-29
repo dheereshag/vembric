@@ -4,7 +4,7 @@ export function FeaturesGrid() {
   return (
     <div className="space-y-4">
       <h2 className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
-        // features
+        {"// features"}
       </h2>
       <div className="border divide-y sm:divide-y-0 sm:grid sm:grid-cols-3 sm:divide-x">
         {features.map(({ label, title, description }) => (
