@@ -101,7 +101,9 @@ export default function WebhooksPage() {
 
       <DocSection title="retry policy" className="mb-0">
         <ArrowList items={webhooksContent.retryPolicy.items} />
-        <InfoBox className="mt-4">{webhooksContent.retryPolicy.infoBox}</InfoBox>
+        <InfoBox className="mt-4">
+          {webhooksContent.retryPolicy.infoBox}
+        </InfoBox>
       </DocSection>
     </div>
   );
