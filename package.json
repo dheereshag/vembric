@@ -6,17 +6,7 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
-  },
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "@tailwindcss/oxide",
-      "sharp",
-      "unrs-resolver"
-    ],
-    "overrides": {
-      "typescript": "5.8.3"
-    }
+    "lint": "eslint ."
   },
   "dependencies": {
     "@radix-ui/react-avatar": "^1.1.11",
@@ -40,7 +30,6 @@
     "tailwind-merge": "^3.5.0"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3.3.5",
     "@tailwindcss/postcss": "^4.2.1",
     "@types/node": "^25.3.5",
     "@types/react": "^19.2.14",
