@@ -1,6 +1,14 @@
 import { PageHeader } from "@/components/doc/page-header";
 import { DocSection } from "@/components/doc/doc-section";
 import { ArrowList } from "@/components/doc/arrow-list";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 import { contactResponseTimes } from "@/constants/support";
 import { contactContent, type ContactChannel } from "@/constants/page-content";
 
@@ -32,20 +40,26 @@ export default function ContactPage() {
       </DocSection>
 
       <DocSection title="response times" className="mb-0">
-        <div className="border divide-y font-mono text-sm">
-          <div className="grid grid-cols-12 bg-muted/50 px-4 py-2 text-xs uppercase tracking-widest">
-            <span className="col-span-4">plan</span>
-            <span className="col-span-8">response sla</span>
-          </div>
-          {contactResponseTimes.map(([plan, sla]) => (
-            <div key={plan} className="grid grid-cols-12 px-4 py-3 items-start">
-              <span className="col-span-4 text-xs">{plan}</span>
-              <span className="col-span-8 text-muted-foreground text-xs">
-                {sla}
-              </span>
-            </div>
-          ))}
-        </div>
+        <Table className="border font-mono text-xs">
+          <TableHeader>
+            <TableRow className="bg-muted/50 uppercase tracking-widest text-muted-foreground hover:bg-muted/50">
+              <TableHead className="py-2 text-xs">Plan</TableHead>
+              <TableHead className="py-2 text-xs">Response SLA</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            {contactResponseTimes.map(([plan, sla]) => (
+              <TableRow key={plan}>
+                <TableCell className="py-3 align-top whitespace-nowrap">
+                  {plan}
+                </TableCell>
+                <TableCell className="py-3 align-top text-muted-foreground whitespace-normal">
+                  {sla}
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
       </DocSection>
     </div>
   );

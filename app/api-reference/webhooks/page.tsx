@@ -6,17 +6,13 @@ import {
   Snippet, SnippetCopyButton, SnippetHeader,
   SnippetTabsContent, SnippetTabsList, SnippetTabsTrigger,
 } from "@/components/kibo-ui/snippet";
+import { CodeBlock } from "@/components/code-block";
 import { webhooksContent } from "@/constants/page-content";
 import {
   webhookPayloadExample,
   webhookVerifyExample,
 } from "@/constants/code-snippets";
 import { JavaScriptIcon, JsonIcon } from "@/components/api-doc/icons";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
-
-const payloadExample = webhookPayloadExample;
-const verifyExample = webhookVerifyExample;
 
 export default function WebhooksPage() {
   return (
@@ -49,19 +45,10 @@ export default function WebhooksPage() {
                 <span>payload</span>
               </SnippetTabsTrigger>
             </SnippetTabsList>
-            <SnippetCopyButton value={payloadExample} />
+            <SnippetCopyButton value={webhookPayloadExample} />
           </SnippetHeader>
           <SnippetTabsContent value="json">
-            <SyntaxHighlighter
-              language="json"
-              style={vscDarkPlus}
-              wrapLongLines
-              className="rounded-md text-sm"
-              customStyle={{ fontFamily: "var(--font-snippet)" }}
-              codeTagProps={{ style: { fontFamily: "var(--font-snippet)" } }}
-            >
-              {payloadExample}
-            </SyntaxHighlighter>
+            <CodeBlock language="json" code={webhookPayloadExample} />
           </SnippetTabsContent>
         </Snippet>
       </DocSection>
@@ -82,19 +69,10 @@ export default function WebhooksPage() {
                 <span>node.js</span>
               </SnippetTabsTrigger>
             </SnippetTabsList>
-            <SnippetCopyButton value={verifyExample} />
+            <SnippetCopyButton value={webhookVerifyExample} />
           </SnippetHeader>
           <SnippetTabsContent value="node">
-            <SyntaxHighlighter
-              language="javascript"
-              style={vscDarkPlus}
-              wrapLongLines
-              className="rounded-md text-sm"
-              customStyle={{ fontFamily: "var(--font-snippet)" }}
-              codeTagProps={{ style: { fontFamily: "var(--font-snippet)" } }}
-            >
-              {verifyExample}
-            </SyntaxHighlighter>
+            <CodeBlock language="javascript" code={webhookVerifyExample} />
           </SnippetTabsContent>
         </Snippet>
       </DocSection>

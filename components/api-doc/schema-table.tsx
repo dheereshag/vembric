@@ -1,3 +1,12 @@
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+
 interface SchemaItem {
   name: string;
   type: string;
@@ -11,19 +20,29 @@ interface SchemaTableProps {
 
 export function SchemaTable({ items, nameHeader = "Field" }: SchemaTableProps) {
   return (
-    <div className="border divide-y font-mono text-sm">
-      <div className="grid grid-cols-12 bg-muted/50 px-4 py-2 text-xs uppercase tracking-widest text-muted-foreground">
-        <span className="col-span-4">{nameHeader}</span>
-        <span className="col-span-3">Type</span>
-        <span className="col-span-5">Description</span>
-      </div>
-      {items.map((item) => (
-        <div key={item.name} className="grid grid-cols-12 px-4 py-3 items-start">
-          <code className="col-span-4 text-xs font-semibold">{item.name}</code>
-          <span className="col-span-3 text-xs text-muted-foreground">{item.type}</span>
-          <span className="col-span-5 text-xs text-muted-foreground">{item.description}</span>
-        </div>
-      ))}
-    </div>
+    <Table className="border font-mono text-xs">
+      <TableHeader>
+        <TableRow className="bg-muted/50 uppercase tracking-widest text-muted-foreground hover:bg-muted/50">
+          <TableHead className="py-2 text-xs">{nameHeader}</TableHead>
+          <TableHead className="py-2 text-xs">Type</TableHead>
+          <TableHead className="py-2 text-xs">Description</TableHead>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        {items.map((item) => (
+          <TableRow key={item.name}>
+            <TableCell className="py-3 align-top">
+              <code className="font-semibold">{item.name}</code>
+            </TableCell>
+            <TableCell className="py-3 align-top text-muted-foreground whitespace-nowrap">
+              {item.type}
+            </TableCell>
+            <TableCell className="py-3 align-top text-muted-foreground whitespace-normal">
+              {item.description}
+            </TableCell>
+          </TableRow>
+        ))}
+      </TableBody>
+    </Table>
   );
 }

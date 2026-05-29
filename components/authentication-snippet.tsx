@@ -9,8 +9,7 @@ import {
   SnippetTabsList,
   SnippetTabsTrigger,
 } from "@/components/kibo-ui/snippet";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { CodeBlock } from "@/components/code-block";
 import type { ReactNode } from "react";
 import type { AuthSnippetExample } from "@/constants/code-snippets";
 
@@ -38,16 +37,7 @@ export function AuthenticationSnippet({ examples, icons }: AuthenticationSnippet
       </SnippetHeader>
       {examples.map((example) => (
         <SnippetTabsContent key={example.value} value={example.value}>
-          <SyntaxHighlighter
-            language={example.language}
-            style={vscDarkPlus}
-            wrapLongLines
-            className="rounded-md text-sm"
-            customStyle={{ fontFamily: "var(--font-snippet)" }}
-            codeTagProps={{ style: { fontFamily: "var(--font-snippet)" } }}
-          >
-            {example.code}
-          </SyntaxHighlighter>
+          <CodeBlock language={example.language} code={example.code} />
         </SnippetTabsContent>
       ))}
     </Snippet>

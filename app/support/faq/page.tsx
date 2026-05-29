@@ -14,7 +14,7 @@ export default function FAQPage() {
       />
 
       {faqs.map(({ q, a }, i) => (
-        <DocSection key={i} title={`${String(i + 1).padStart(2, "0")}. ${q}`}>
+        <DocSection key={q} title={`${String(i + 1).padStart(2, "0")}. ${q}`}>
           <p className="text-sm leading-relaxed text-muted-foreground">{a}</p>
         </DocSection>
       ))}

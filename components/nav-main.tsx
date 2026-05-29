@@ -22,6 +22,7 @@ import Link from "next/link";
 import { getRequestTypeColorClass } from "@/lib/request-type";
 import { Badge } from "@/components/ui/badge";
 import { RequestType } from "@/constants";
+import { cn } from "@/lib/utils";
 
 
 export function NavMain({
@@ -72,10 +73,10 @@ export function NavMain({
                           <span>{subItem.title}</span>
                           {subItem.requestType && (
                             <Badge
-                              className={
-                                "rounded " +
-                                getRequestTypeColorClass(subItem.requestType)
-                              }
+                              className={cn(
+                                "rounded",
+                                getRequestTypeColorClass(subItem.requestType),
+                              )}
                             >
                               {subItem.requestType}
                             </Badge>

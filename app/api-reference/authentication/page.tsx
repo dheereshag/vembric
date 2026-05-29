@@ -3,6 +3,14 @@ import { DocSection } from "@/components/doc/doc-section";
 import { ArrowList } from "@/components/doc/arrow-list";
 import { InfoBox } from "@/components/doc/info-box";
 import type { ReactNode } from "react";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 import { authKeyTypes } from "@/constants/api-reference";
 import { authenticationContent } from "@/constants/page-content";
 import {
@@ -37,23 +45,26 @@ export default function AuthenticationPage() {
       </DocSection>
 
       <DocSection title="key types">
-        <div className="border divide-y font-mono text-sm">
-          <div className="grid grid-cols-12 bg-muted/50 px-4 py-2 text-xs uppercase tracking-widest">
-            <span className="col-span-4">type</span>
-            <span className="col-span-8">description</span>
-          </div>
-          {authKeyTypes.map(({ prefix, description }) => (
-            <div
-              key={prefix}
-              className="grid grid-cols-12 px-4 py-3 items-start"
-            >
-              <code className="col-span-4 text-xs">{prefix}</code>
-              <span className="col-span-8 text-muted-foreground text-xs">
-                {description}
-              </span>
-            </div>
-          ))}
-        </div>
+        <Table className="border font-mono text-xs">
+          <TableHeader>
+            <TableRow className="bg-muted/50 uppercase tracking-widest text-muted-foreground hover:bg-muted/50">
+              <TableHead className="py-2 text-xs">Type</TableHead>
+              <TableHead className="py-2 text-xs">Description</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            {authKeyTypes.map(({ prefix, description }) => (
+              <TableRow key={prefix}>
+                <TableCell className="py-3 align-top whitespace-nowrap">
+                  <code>{prefix}</code>
+                </TableCell>
+                <TableCell className="py-3 align-top text-muted-foreground whitespace-normal">
+                  {description}
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
       </DocSection>
 
       <DocSection title="security best practices" className="mb-0">

@@ -4,8 +4,7 @@ import { useMemo, useState } from 'react';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
 import { SchemaTable } from './schema-table';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { CodeBlock } from "@/components/code-block";
 import {
   Snippet,
   SnippetCopyButton,
@@ -88,16 +87,10 @@ export function CodeSnippetSection({
           </SnippetHeader>
           {commands.map((command) => (
             <SnippetTabsContent key={command.label} value={command.label}>
-              <SyntaxHighlighter
+              <CodeBlock
                 language={command.label === "curl" ? "bash" : "javascript"}
-                style={vscDarkPlus}
-                wrapLongLines
-                className="rounded-md text-sm"
-                customStyle={{ fontFamily: "var(--font-snippet)" }}
-                codeTagProps={{ style: { fontFamily: "var(--font-snippet)" } }}
-              >
-                {command.code}
-              </SyntaxHighlighter>
+                code={command.code}
+              />
             </SnippetTabsContent>
           ))}
         </Snippet>

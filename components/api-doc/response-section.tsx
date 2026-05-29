@@ -1,7 +1,6 @@
 "use client";
 
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { CodeBlock } from "@/components/code-block";
 import {
   Snippet,
   SnippetCopyButton,
@@ -38,16 +37,7 @@ export function ResponseSection({ response }: ResponseSectionProps) {
             <SnippetCopyButton value={formatted} />
           </SnippetHeader>
           <SnippetTabsContent value="json">
-            <SyntaxHighlighter
-              language="json"
-              style={vscDarkPlus}
-              wrapLongLines
-              className="rounded-md text-sm"
-              customStyle={{ fontFamily: "var(--font-snippet)" }}
-              codeTagProps={{ style: { fontFamily: "var(--font-snippet)" } }}
-            >
-              {formatted}
-            </SyntaxHighlighter>
+            <CodeBlock language="json" code={formatted} />
           </SnippetTabsContent>
         </Snippet>
       </section>

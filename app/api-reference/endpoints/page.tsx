@@ -1,6 +1,14 @@
 import { PageHeader } from "@/components/doc/page-header";
 import { DocSection } from "@/components/doc/doc-section";
 import { InfoBox } from "@/components/doc/info-box";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 import { endpoints, methodColors } from "@/constants/api-reference";
 import { brand } from "@/constants/brand";
 import { endpointsContent } from "@/constants/page-content";
@@ -21,36 +29,41 @@ export default function EndpointsPage() {
       </DocSection>
 
       <DocSection title="all endpoints">
-        <div className="border divide-y font-mono text-sm">
-          <div className="grid grid-cols-12 bg-muted/50 px-4 py-2 text-xs uppercase tracking-widest">
-            <span className="col-span-2">method</span>
-            <span className="col-span-5">path</span>
-            <span className="col-span-5">description</span>
-          </div>
-          {endpoints.map((ep) => (
-            <div
-              key={ep.path + ep.method}
-              className="grid grid-cols-12 px-4 py-3 items-start"
-            >
-              <span
-                className={`col-span-2 text-xs font-semibold ${methodColors[ep.method]}`}
-              >
-                {ep.method}
-              </span>
-              <code className="col-span-5 text-xs">{ep.path}</code>
-              <span className="col-span-5 text-muted-foreground text-xs">
-                {ep.desc}
-              </span>
-            </div>
-          ))}
-        </div>
+        <Table className="border font-mono text-xs">
+          <TableHeader>
+            <TableRow className="bg-muted/50 uppercase tracking-widest text-muted-foreground hover:bg-muted/50">
+              <TableHead className="py-2 text-xs">Method</TableHead>
+              <TableHead className="py-2 text-xs">Path</TableHead>
+              <TableHead className="py-2 text-xs">Description</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            {endpoints.map((ep) => (
+              <TableRow key={ep.path + ep.method}>
+                <TableCell
+                  className={`py-3 align-top font-semibold whitespace-nowrap ${methodColors[ep.method]}`}
+                >
+                  {ep.method}
+                </TableCell>
+                <TableCell className="py-3 align-top whitespace-nowrap">
+                  <code>{ep.path}</code>
+                </TableCell>
+                <TableCell className="py-3 align-top text-muted-foreground whitespace-normal">
+                  {ep.desc}
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
       </DocSection>
 
       <DocSection title="versioning" className="mb-0">
         <p className="text-sm leading-relaxed">
           The current stable version is{" "}
-          <code className="font-mono bg-muted px-1.5 py-0.5 text-xs">v1</code>.
-          Breaking changes will be released under a new version prefix with a
+          <code className="font-mono bg-muted px-1.5 py-0.5 text-xs">
+            {brand.apiVersion}
+          </code>
+          . Breaking changes will be released under a new version prefix with a
           deprecation notice.
         </p>
       </DocSection>

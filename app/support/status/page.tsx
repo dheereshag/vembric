@@ -1,6 +1,14 @@
 import { PageHeader } from "@/components/doc/page-header";
 import { DocSection } from "@/components/doc/doc-section";
 import { InfoBox } from "@/components/doc/info-box";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 import { services, statusColor } from "@/constants/support";
 import { statusContent } from "@/constants/page-content";
 
@@ -14,25 +22,26 @@ export default function StatusPage() {
       />
 
       <DocSection title="services">
-        <div className="border divide-y font-mono text-sm">
-          <div className="grid grid-cols-12 bg-muted/50 px-4 py-2 text-xs uppercase tracking-widest">
-            <span className="col-span-6">service</span>
-            <span className="col-span-6">status</span>
-          </div>
-          {services.map(({ name, status }) => (
-            <div
-              key={name}
-              className="grid grid-cols-12 px-4 py-3 items-center"
-            >
-              <span className="col-span-6 text-xs">{name}</span>
-              <span
-                className={`col-span-6 text-xs font-semibold ${statusColor[status]}`}
-              >
-                ● {status}
-              </span>
-            </div>
-          ))}
-        </div>
+        <Table className="border font-mono text-xs">
+          <TableHeader>
+            <TableRow className="bg-muted/50 uppercase tracking-widest text-muted-foreground hover:bg-muted/50">
+              <TableHead className="py-2 text-xs">Service</TableHead>
+              <TableHead className="py-2 text-xs">Status</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            {services.map(({ name, status }) => (
+              <TableRow key={name}>
+                <TableCell className="py-3 align-middle">{name}</TableCell>
+                <TableCell
+                  className={`py-3 align-middle font-semibold ${statusColor[status]}`}
+                >
+                  ● {status}
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
       </DocSection>
 
       <DocSection title="incident history" className="mb-0">

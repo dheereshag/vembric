@@ -6,14 +6,19 @@ import {
   Snippet, SnippetCopyButton, SnippetHeader,
   SnippetTabsContent, SnippetTabsList, SnippetTabsTrigger,
 } from "@/components/kibo-ui/snippet";
+import { CodeBlock } from "@/components/code-block";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 import { statusCodes } from "@/constants/api-reference";
 import { errorHandlingContent } from "@/constants/page-content";
 import { errorResponseExample } from "@/constants/code-snippets";
 import { JsonIcon } from "@/components/api-doc/icons";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
-
-const errorExample = errorResponseExample;
 
 export default function ErrorHandlingPage() {
   return (
@@ -33,38 +38,35 @@ export default function ErrorHandlingPage() {
                 <span>response</span>
               </SnippetTabsTrigger>
             </SnippetTabsList>
-            <SnippetCopyButton value={errorExample} />
+            <SnippetCopyButton value={errorResponseExample} />
           </SnippetHeader>
           <SnippetTabsContent value="json">
-            <SyntaxHighlighter
-              language="json"
-              style={vscDarkPlus}
-              wrapLongLines
-              className="rounded-md text-sm"
-              customStyle={{ fontFamily: "var(--font-snippet)" }}
-              codeTagProps={{ style: { fontFamily: "var(--font-snippet)" } }}
-            >
-              {errorExample}
-            </SyntaxHighlighter>
+            <CodeBlock language="json" code={errorResponseExample} />
           </SnippetTabsContent>
         </Snippet>
       </DocSection>
 
       <DocSection title="status codes">
-        <div className="border divide-y font-mono text-sm">
-          <div className="grid grid-cols-12 bg-muted/50 px-4 py-2 text-xs uppercase tracking-widest">
-            <span className="col-span-2">code</span>
-            <span className="col-span-10">meaning</span>
-          </div>
-          {statusCodes.map(({ code, meaning }) => (
-            <div key={code} className="grid grid-cols-12 px-4 py-3 items-start">
-              <code className="col-span-2 text-xs">{code}</code>
-              <span className="col-span-10 text-muted-foreground text-xs">
-                {meaning}
-              </span>
-            </div>
-          ))}
-        </div>
+        <Table className="border font-mono text-xs">
+          <TableHeader>
+            <TableRow className="bg-muted/50 uppercase tracking-widest text-muted-foreground hover:bg-muted/50">
+              <TableHead className="py-2 text-xs">Code</TableHead>
+              <TableHead className="py-2 text-xs">Meaning</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            {statusCodes.map(({ code, meaning }) => (
+              <TableRow key={code}>
+                <TableCell className="py-3 align-top whitespace-nowrap">
+                  <code>{code}</code>
+                </TableCell>
+                <TableCell className="py-3 align-top text-muted-foreground whitespace-normal">
+                  {meaning}
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
       </DocSection>
 
       <DocSection title="retry strategy" className="mb-0">

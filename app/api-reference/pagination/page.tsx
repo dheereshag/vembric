@@ -6,6 +6,8 @@ import {
   Snippet, SnippetCopyButton, SnippetHeader,
   SnippetTabsContent, SnippetTabsList, SnippetTabsTrigger,
 } from "@/components/kibo-ui/snippet";
+import { SchemaTable } from "@/components/api-doc/schema-table";
+import { CodeBlock } from "@/components/code-block";
 import { paginationParams } from "@/constants/api-reference";
 import { paginationContent } from "@/constants/page-content";
 import {
@@ -13,8 +15,6 @@ import {
   paginationResponseExample,
 } from "@/constants/code-snippets";
 import { CurlIcon, JsonIcon } from "@/components/api-doc/icons";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 
 export default function PaginationPage() {
   return (
@@ -33,24 +33,7 @@ export default function PaginationPage() {
       </DocSection>
 
       <DocSection title="query parameters">
-        <div className="border divide-y font-mono text-sm">
-          <div className="grid grid-cols-12 bg-muted/50 px-4 py-2 text-xs uppercase tracking-widest">
-            <span className="col-span-3">param</span>
-            <span className="col-span-2">type</span>
-            <span className="col-span-7">description</span>
-          </div>
-          {paginationParams.map(({ name, type, description }) => (
-            <div key={name} className="grid grid-cols-12 px-4 py-3 items-start">
-              <code className="col-span-3 text-xs">{name}</code>
-              <span className="col-span-2 text-muted-foreground text-xs">
-                {type}
-              </span>
-              <span className="col-span-7 text-muted-foreground text-xs">
-                {description}
-              </span>
-            </div>
-          ))}
-        </div>
+        <SchemaTable items={paginationParams} nameHeader="Param" />
       </DocSection>
 
       <DocSection title="example">
@@ -69,28 +52,10 @@ export default function PaginationPage() {
             <SnippetCopyButton value={paginationCurlExample} />
           </SnippetHeader>
           <SnippetTabsContent value="curl">
-            <SyntaxHighlighter
-              language="bash"
-              style={vscDarkPlus}
-              wrapLongLines
-              className="rounded-md text-sm"
-              customStyle={{ fontFamily: "var(--font-snippet)" }}
-              codeTagProps={{ style: { fontFamily: "var(--font-snippet)" } }}
-            >
-              {paginationCurlExample}
-            </SyntaxHighlighter>
+            <CodeBlock language="bash" code={paginationCurlExample} />
           </SnippetTabsContent>
           <SnippetTabsContent value="response">
-            <SyntaxHighlighter
-              language="json"
-              style={vscDarkPlus}
-              wrapLongLines
-              className="rounded-md text-sm"
-              customStyle={{ fontFamily: "var(--font-snippet)" }}
-              codeTagProps={{ style: { fontFamily: "var(--font-snippet)" } }}
-            >
-              {paginationResponseExample}
-            </SyntaxHighlighter>
+            <CodeBlock language="json" code={paginationResponseExample} />
           </SnippetTabsContent>
         </Snippet>
       </DocSection>

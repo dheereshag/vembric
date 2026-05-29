@@ -2,6 +2,14 @@ import { PageHeader } from "@/components/doc/page-header";
 import { DocSection } from "@/components/doc/doc-section";
 import { ArrowList } from "@/components/doc/arrow-list";
 import { InfoBox } from "@/components/doc/info-box";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 import { rateLimitPlans } from "@/constants/api-reference";
 import { rateLimitingContent } from "@/constants/page-content";
 
@@ -15,24 +23,30 @@ export default function RateLimitingPage() {
       />
 
       <DocSection title="limits by plan">
-        <div className="border divide-y font-mono text-sm">
-          <div className="grid grid-cols-12 bg-muted/50 px-4 py-2 text-xs uppercase tracking-widest">
-            <span className="col-span-4">plan</span>
-            <span className="col-span-4">requests / min</span>
-            <span className="col-span-4">requests / day</span>
-          </div>
-          {rateLimitPlans.map(({ plan, requestsPerMinute, requestsPerDay }) => (
-            <div key={plan} className="grid grid-cols-12 px-4 py-3 items-start">
-              <span className="col-span-4 text-xs">{plan}</span>
-              <span className="col-span-4 text-muted-foreground text-xs">
-                {requestsPerMinute}
-              </span>
-              <span className="col-span-4 text-muted-foreground text-xs">
-                {requestsPerDay}
-              </span>
-            </div>
-          ))}
-        </div>
+        <Table className="border font-mono text-xs">
+          <TableHeader>
+            <TableRow className="bg-muted/50 uppercase tracking-widest text-muted-foreground hover:bg-muted/50">
+              <TableHead className="py-2 text-xs">Plan</TableHead>
+              <TableHead className="py-2 text-xs">Requests / Min</TableHead>
+              <TableHead className="py-2 text-xs">Requests / Day</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            {rateLimitPlans.map(
+              ({ plan, requestsPerMinute, requestsPerDay }) => (
+                <TableRow key={plan}>
+                  <TableCell className="py-3 align-top">{plan}</TableCell>
+                  <TableCell className="py-3 align-top text-muted-foreground">
+                    {requestsPerMinute}
+                  </TableCell>
+                  <TableCell className="py-3 align-top text-muted-foreground">
+                    {requestsPerDay}
+                  </TableCell>
+                </TableRow>
+              ),
+            )}
+          </TableBody>
+        </Table>
       </DocSection>
 
       <DocSection title="response headers">
