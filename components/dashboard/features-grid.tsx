@@ -2,7 +2,7 @@ import { features } from "@/constants/features";
 
 export function FeaturesGrid() {
   return (
-    <div className="space-y-4">
+    <section aria-label="features" className="space-y-4">
       <h2 className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
         {"// features"}
       </h2>
@@ -19,6 +19,6 @@ export function FeaturesGrid() {
           </div>
         ))}
       </div>
-    </div>
+    </section>
   );
 }

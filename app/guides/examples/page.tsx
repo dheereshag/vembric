@@ -5,18 +5,13 @@ import {
   SnippetTabsContent, SnippetTabsList, SnippetTabsTrigger,
 } from "@/components/kibo-ui/snippet";
 import { JavaScriptIcon } from "@/components/api-doc/icons";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { CodeBlock } from "@/components/code-block";
 import {
   examplesListGames,
   examplesCreateOrder,
   examplesWebhookHandler,
 } from "@/constants/code-snippets";
 import { examplesContent } from "@/constants/page-content";
-
-const listGames = examplesListGames;
-const createOrder = examplesCreateOrder;
-const webhookHandler = examplesWebhookHandler;
 
 export default function ExamplesPage() {
   return (
@@ -36,19 +31,10 @@ export default function ExamplesPage() {
                 <span>node.js</span>
               </SnippetTabsTrigger>
             </SnippetTabsList>
-            <SnippetCopyButton value={listGames} />
+            <SnippetCopyButton value={examplesListGames} />
           </SnippetHeader>
           <SnippetTabsContent value="node">
-            <SyntaxHighlighter
-              language="javascript"
-              style={vscDarkPlus}
-              wrapLongLines
-              className="rounded-md text-sm"
-              customStyle={{ fontFamily: "var(--font-snippet)" }}
-              codeTagProps={{ style: { fontFamily: "var(--font-snippet)" } }}
-            >
-              {listGames}
-            </SyntaxHighlighter>
+            <CodeBlock language="javascript" code={examplesListGames} />
           </SnippetTabsContent>
         </Snippet>
       </DocSection>
@@ -62,19 +48,10 @@ export default function ExamplesPage() {
                 <span>node.js</span>
               </SnippetTabsTrigger>
             </SnippetTabsList>
-            <SnippetCopyButton value={createOrder} />
+            <SnippetCopyButton value={examplesCreateOrder} />
           </SnippetHeader>
           <SnippetTabsContent value="node">
-            <SyntaxHighlighter
-              language="javascript"
-              style={vscDarkPlus}
-              wrapLongLines
-              className="rounded-md text-sm"
-              customStyle={{ fontFamily: "var(--font-snippet)" }}
-              codeTagProps={{ style: { fontFamily: "var(--font-snippet)" } }}
-            >
-              {createOrder}
-            </SyntaxHighlighter>
+            <CodeBlock language="javascript" code={examplesCreateOrder} />
           </SnippetTabsContent>
         </Snippet>
       </DocSection>
@@ -88,19 +65,10 @@ export default function ExamplesPage() {
                 <span>node.js (express)</span>
               </SnippetTabsTrigger>
             </SnippetTabsList>
-            <SnippetCopyButton value={webhookHandler} />
+            <SnippetCopyButton value={examplesWebhookHandler} />
           </SnippetHeader>
           <SnippetTabsContent value="node">
-            <SyntaxHighlighter
-              language="javascript"
-              style={vscDarkPlus}
-              wrapLongLines
-              className="rounded-md text-sm"
-              customStyle={{ fontFamily: "var(--font-snippet)" }}
-              codeTagProps={{ style: { fontFamily: "var(--font-snippet)" } }}
-            >
-              {webhookHandler}
-            </SyntaxHighlighter>
+            <CodeBlock language="javascript" code={examplesWebhookHandler} />
           </SnippetTabsContent>
         </Snippet>
       </DocSection>

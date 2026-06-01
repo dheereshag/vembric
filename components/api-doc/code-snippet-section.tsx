@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
 import { SchemaTable } from './schema-table';
@@ -34,13 +34,10 @@ export function CodeSnippetSection({
   curl,
   js,
 }: CodeSnippetSectionProps) {
-  const commands = useMemo(
-    () => [
-      { label: 'curl', icon: CurlIcon, code: curl },
-      { label: 'javascript', icon: JavaScriptIcon, code: js },
-    ],
-    [curl, js],
-  );
+  const commands = [
+    { label: 'curl', icon: CurlIcon, code: curl },
+    { label: 'javascript', icon: JavaScriptIcon, code: js },
+  ];
 
   const [value, setValue] = useState(commands[0].label);
   const activeCommand = commands.find((command) => command.label === value);

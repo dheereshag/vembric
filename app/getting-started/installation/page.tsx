@@ -8,8 +8,7 @@ import {
 import type { ReactNode } from "react";
 import { installCommands } from "@/constants/code-snippets";
 import { installationContent } from "@/constants/page-content";
-import {
-  NpmIcon,
+import { NpmIcon,
   YarnIcon,
   PnpmIcon,
   PythonIcon,
@@ -18,8 +17,7 @@ import {
   GoIcon,
   NodejsIcon,
 } from "@/components/api-doc/icons";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { CodeBlock } from "@/components/code-block";
 
 type InstallCommandKey = keyof typeof installCommands;
 
@@ -102,18 +100,7 @@ export default function InstallationPage() {
             </SnippetHeader>
             {section.tabs.map((tab) => (
               <SnippetTabsContent key={tab.value} value={tab.value}>
-                <SyntaxHighlighter
-                  language="bash"
-                  style={vscDarkPlus}
-                  wrapLongLines
-                  className="rounded-md text-sm"
-                  customStyle={{ fontFamily: "var(--font-snippet)" }}
-                  codeTagProps={{
-                    style: { fontFamily: "var(--font-snippet)" },
-                  }}
-                >
-                  {installCommands[tab.value]}
-                </SyntaxHighlighter>
+                <CodeBlock language="bash" code={installCommands[tab.value]} />
               </SnippetTabsContent>
             ))}
           </Snippet>

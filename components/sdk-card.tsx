@@ -20,7 +20,7 @@ export function SdkCard({ name, description, icon, href = "#" }: SdkCardProps) {
           href={href}
           className="font-mono text-xs underline underline-offset-4"
         >
-          → Read more
+          <span aria-hidden="true">→ </span>Read more
         </Link>
       </div>
     </div>

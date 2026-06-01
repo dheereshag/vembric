@@ -4,7 +4,6 @@ import { usePathname } from "next/navigation";
 import {
   Breadcrumb,
   BreadcrumbItem,
-  BreadcrumbLink,
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
@@ -44,9 +43,9 @@ export function AppHeader() {
             {sectionTitle && (
               <>
                 <BreadcrumbItem className="hidden md:block">
-                  <BreadcrumbLink href="#" className="font-mono text-xs">
+                  <span className="font-mono text-xs text-muted-foreground">
                     {sectionTitle}
-                  </BreadcrumbLink>
+                  </span>
                 </BreadcrumbItem>
                 <BreadcrumbSeparator className="hidden md:block" />
               </>

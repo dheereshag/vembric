@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { PageHeader } from "@/components/doc/page-header";
 import { DocSection } from "@/components/doc/doc-section";
 import { ArrowList } from "@/components/doc/arrow-list";
@@ -34,9 +35,9 @@ export default function IntroductionPage() {
           {introductionContent.nextSteps.links.map((link, i) => (
             <li key={link.href}>
               <span className="text-muted-foreground">{i + 1}.</span>{" "}
-              <a href={link.href} className="underline underline-offset-4">
+              <Link href={link.href} className="underline underline-offset-4">
                 {link.label}
-              </a>{" "}
+              </Link>{" "}
               — {link.description}
             </li>
           ))}

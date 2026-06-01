@@ -13,8 +13,7 @@ import {
   quickStartResponse,
 } from "@/constants/code-snippets";
 import { CurlIcon, JavaScriptIcon, JsonIcon } from "@/components/api-doc/icons";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { CodeBlock } from "@/components/code-block";
 
 type QuickStartSnippet = {
   value: string;
@@ -89,16 +88,7 @@ export default function QuickStartPage() {
           </SnippetHeader>
           {firstRequestSnippets.map((snippet) => (
             <SnippetTabsContent key={snippet.value} value={snippet.value}>
-              <SyntaxHighlighter
-                language={snippet.language}
-                style={vscDarkPlus}
-                wrapLongLines
-                className="rounded-md text-sm"
-                customStyle={{ fontFamily: "var(--font-snippet)" }}
-                codeTagProps={{ style: { fontFamily: "var(--font-snippet)" } }}
-              >
-                {snippet.code}
-              </SyntaxHighlighter>
+              <CodeBlock language={snippet.language} code={snippet.code} />
             </SnippetTabsContent>
           ))}
         </Snippet>
@@ -122,16 +112,7 @@ export default function QuickStartPage() {
           </SnippetHeader>
           {responseSnippets.map((snippet) => (
             <SnippetTabsContent key={snippet.value} value={snippet.value}>
-              <SyntaxHighlighter
-                language={snippet.language}
-                style={vscDarkPlus}
-                wrapLongLines
-                className="rounded-md text-sm"
-                customStyle={{ fontFamily: "var(--font-snippet)" }}
-                codeTagProps={{ style: { fontFamily: "var(--font-snippet)" } }}
-              >
-                {snippet.code}
-              </SyntaxHighlighter>
+              <CodeBlock language={snippet.language} code={snippet.code} />
             </SnippetTabsContent>
           ))}
         </Snippet>

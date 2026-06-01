@@ -24,22 +24,25 @@ import { Badge } from "@/components/ui/badge";
 import { RequestType } from "@/constants";
 import { cn } from "@/lib/utils";
 
+export interface NavSubItem {
+  title: string;
+  url: string;
+  requestType?: RequestType;
+}
+
+export interface NavItem {
+  title: string;
+  url: string;
+  icon?: LucideIcon;
+  isActive?: boolean;
+  items?: NavSubItem[];
+}
 
 export function NavMain({
   items,
   label,
 }: {
-  items: {
-    title: string;
-    url: string;
-    icon?: LucideIcon;
-    isActive?: boolean;
-    items?: {
-      title: string;
-      url: string;
-      requestType?: RequestType;
-    }[];
-  }[];
+  items: NavItem[];
   label: string;
 }) {
   return (

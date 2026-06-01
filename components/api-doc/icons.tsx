@@ -15,7 +15,14 @@ import {
 } from "simple-icons";
 
 export const Icon = ({ path }: { path: string }) => (
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+  <svg
+    width="18"
+    height="18"
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    aria-hidden="true"
+    focusable="false"
+  >
     <path d={path} />
   </svg>
 );
