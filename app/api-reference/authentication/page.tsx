@@ -2,7 +2,7 @@ import { PageHeader } from "@/components/doc/page-header";
 import { DocSection } from "@/components/doc/doc-section";
 import { ArrowList } from "@/components/doc/arrow-list";
 import { InfoBox } from "@/components/doc/info-box";
-import type { ReactNode } from "react";
+
 import {
   Table,
   TableBody,
@@ -15,15 +15,8 @@ import { authKeyTypes } from "@/constants/api-reference";
 import { authenticationContent } from "@/constants/page-content";
 import {
   authenticationExamples,
-  type AuthSnippetExample,
 } from "@/constants/code-snippets";
-import { CurlIcon, JavaScriptIcon } from "@/components/api-doc/icons";
 import { AuthenticationSnippet } from "@/components/authentication-snippet";
-
-const authSnippetIcons: Record<AuthSnippetExample["value"], ReactNode> = {
-  curl: <CurlIcon />,
-  node: <JavaScriptIcon />,
-};
 
 export default function AuthenticationPage() {
   return (
@@ -40,7 +33,6 @@ export default function AuthenticationPage() {
         </p>
         <AuthenticationSnippet
           examples={authenticationExamples}
-          icons={authSnippetIcons}
         />
       </DocSection>
 

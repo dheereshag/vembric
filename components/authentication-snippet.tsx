@@ -12,13 +12,18 @@ import {
 import { CodeBlock } from "@/components/code-block";
 import type { ReactNode } from "react";
 import type { AuthSnippetExample } from "@/constants/code-snippets";
+import { CurlIcon, JavaScriptIcon } from "@/components/api-doc/icons";
 
 interface AuthenticationSnippetProps {
   examples: AuthSnippetExample[];
-  icons: Record<string, ReactNode>;
 }
 
-export function AuthenticationSnippet({ examples, icons }: AuthenticationSnippetProps) {
+const authSnippetIcons: Record<string, ReactNode> = {
+  curl: <CurlIcon />,
+  node: <JavaScriptIcon />,
+};
+
+export function AuthenticationSnippet({ examples }: AuthenticationSnippetProps) {
   const [activeValue, setActiveValue] = useState(examples[0].value);
   const activeExample = examples.find((e) => e.value === activeValue) ?? examples[0];
 
@@ -28,7 +33,7 @@ export function AuthenticationSnippet({ examples, icons }: AuthenticationSnippet
         <SnippetTabsList>
           {examples.map((example) => (
             <SnippetTabsTrigger key={example.value} value={example.value}>
-              {icons[example.value]}
+              {authSnippetIcons[example.value]}
               <span>{example.label}</span>
             </SnippetTabsTrigger>
           ))}
