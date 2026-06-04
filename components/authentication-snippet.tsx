@@ -14,6 +14,8 @@ import type { ReactNode } from "react";
 import type { AuthSnippetExample } from "@/constants/code-snippets";
 import { CurlIcon, JavaScriptIcon } from "@/components/api-doc/icons";
 
+import { useApiVersionStore } from "@/hooks/use-api-version-store";
+
 interface AuthenticationSnippetProps {
   examples: AuthSnippetExample[];
 }
@@ -24,8 +26,13 @@ const authSnippetIcons: Record<string, ReactNode> = {
 };
 
 export function AuthenticationSnippet({ examples }: AuthenticationSnippetProps) {
+  const version = useApiVersionStore((state) => state.version);
   const [activeValue, setActiveValue] = useState(examples[0].value);
   const activeExample = examples.find((e) => e.value === activeValue) ?? examples[0];
+
+  const getCode = (code: string) => {
+    return code.replaceAll("/v1", `/${version}`);
+  };
 
   return (
     <Snippet value={activeValue} onValueChange={setActiveValue}>
@@ -38,11 +45,11 @@ export function AuthenticationSnippet({ examples }: AuthenticationSnippetProps) 
             </SnippetTabsTrigger>
           ))}
         </SnippetTabsList>
-        <SnippetCopyButton value={activeExample.code} />
+        <SnippetCopyButton value={getCode(activeExample.code)} />
       </SnippetHeader>
       {examples.map((example) => (
         <SnippetTabsContent key={example.value} value={example.value}>
-          <CodeBlock language={example.language} code={example.code} />
+          <CodeBlock language={example.language} code={getCode(example.code)} />
         </SnippetTabsContent>
       ))}
     </Snippet>

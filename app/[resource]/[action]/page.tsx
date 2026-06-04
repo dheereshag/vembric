@@ -28,5 +28,11 @@ export default async function ResourceActionPage({
     notFound();
   }
 
-  return <ApiDocPage data={data} />;
+  return (
+    <ApiDocPage
+      resourceKey={resource}
+      actionSlug={action}
+      initialData={data}
+    />
+  );
 }

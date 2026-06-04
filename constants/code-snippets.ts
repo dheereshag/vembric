@@ -48,7 +48,7 @@ const client = new ${brand.sdk.importName}({ apiKey: 'YOUR_API_KEY' });
 const games = await client.games.list();
 console.log(games);`;
 
-export const quickStartResponse = `{
+export const quickStartResponseV1 = `{
   "data": [
     { "id": "gm_01", "title": "Chess", "status": "active" },
     { "id": "gm_02", "title": "Poker", "status": "active" }
@@ -56,6 +56,17 @@ export const quickStartResponse = `{
   "next_cursor": "cursor_xyz",
   "has_more": true
 }`;
+
+export const quickStartResponseV2 = `{
+  "data": [
+    { "id": "gm_01", "title": "Chess", "status": "active", "rating": 4.5, "price": 9.99 },
+    { "id": "gm_02", "title": "Poker", "status": "active", "rating": 4.7, "price": 14.99 }
+  ],
+  "next_cursor": "cursor_xyz",
+  "has_more": true
+}`;
+
+export const quickStartResponse = quickStartResponseV1;
 
 // ── Pagination ───────────────────────────────────────────────────────────────
 

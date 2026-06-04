@@ -1,3 +1,5 @@
+"use client";
+
 import { PageHeader } from "@/components/doc/page-header";
 import { DocSection } from "@/components/doc/doc-section";
 import { InfoBox } from "@/components/doc/info-box";
@@ -10,10 +12,13 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { endpoints, methodColors } from "@/constants/api-reference";
-import { brand } from "@/constants/brand";
 import { endpointsContent } from "@/constants/page-content";
+import { useApiVersionStore } from "@/hooks/use-api-version-store";
 
 export default function EndpointsPage() {
+  const version = useApiVersionStore((state) => state.version);
+  const apiBaseUrl = `https://api.vembric.io/${version}`;
+
   return (
     <div className="p-6">
       <PageHeader
@@ -24,7 +29,7 @@ export default function EndpointsPage() {
 
       <DocSection title="base url">
         <div className="border p-4 bg-muted/30">
-          <code className="font-mono text-sm">{brand.apiBaseUrl}</code>
+          <code className="font-mono text-sm">{apiBaseUrl}</code>
         </div>
       </DocSection>
 
@@ -46,7 +51,7 @@ export default function EndpointsPage() {
                   {ep.method}
                 </TableCell>
                 <TableCell className="py-3 align-top whitespace-nowrap">
-                  <code>{ep.path}</code>
+                  <code>/{version}{ep.path}</code>
                 </TableCell>
                 <TableCell className="py-3 align-top text-muted-foreground whitespace-normal">
                   {ep.desc}
@@ -59,9 +64,9 @@ export default function EndpointsPage() {
 
       <DocSection title="versioning" className="mb-0">
         <p className="text-sm leading-relaxed">
-          The current stable version is{" "}
+          The current active version is{" "}
           <code className="font-mono bg-muted px-1.5 py-0.5 text-xs">
-            {brand.apiVersion}
+            {version}
           </code>
           . Breaking changes will be released under a new version prefix with a
           deprecation notice.

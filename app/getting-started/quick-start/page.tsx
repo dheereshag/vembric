@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import { PageHeader } from "@/components/doc/page-header";
 import { DocSection } from "@/components/doc/doc-section";
 import { InfoBox } from "@/components/doc/info-box";
@@ -10,10 +13,12 @@ import { quickStartContent } from "@/constants/page-content";
 import {
   authCurlExample,
   quickStartNodeExample,
-  quickStartResponse,
+  quickStartResponseV1,
+  quickStartResponseV2,
 } from "@/constants/code-snippets";
 import { CurlIcon, JavaScriptIcon, JsonIcon } from "@/components/api-doc/icons";
 import { CodeBlock } from "@/components/code-block";
+import { useApiVersionStore } from "@/hooks/use-api-version-store";
 
 type QuickStartSnippet = {
   value: string;
@@ -23,34 +28,45 @@ type QuickStartSnippet = {
   code: string;
 };
 
-const firstRequestSnippets: QuickStartSnippet[] = [
-  {
-    value: "curl",
-    label: "curl",
-    icon: <CurlIcon />,
-    language: "bash",
-    code: authCurlExample,
-  },
-  {
-    value: "node",
-    label: "node.js",
-    icon: <JavaScriptIcon />,
-    language: "javascript",
-    code: quickStartNodeExample,
-  },
-];
-
-const responseSnippets: QuickStartSnippet[] = [
-  {
-    value: "json",
-    label: "response",
-    icon: <JsonIcon />,
-    language: "json",
-    code: quickStartResponse,
-  },
-];
-
 export default function QuickStartPage() {
+  const version = useApiVersionStore((state) => state.version);
+  const [requestTab, setRequestTab] = useState("curl");
+
+  const getCode = (code: string) => {
+    return code.replaceAll("/v1", `/${version}`);
+  };
+
+  const responseJson = version === "v2" ? quickStartResponseV2 : quickStartResponseV1;
+
+  const firstRequestSnippets: QuickStartSnippet[] = [
+    {
+      value: "curl",
+      label: "curl",
+      icon: <CurlIcon />,
+      language: "bash",
+      code: getCode(authCurlExample),
+    },
+    {
+      value: "node",
+      label: "node.js",
+      icon: <JavaScriptIcon />,
+      language: "javascript",
+      code: getCode(quickStartNodeExample),
+    },
+  ];
+
+  const responseSnippets: QuickStartSnippet[] = [
+    {
+      value: "json",
+      label: "response",
+      icon: <JsonIcon />,
+      language: "json",
+      code: responseJson,
+    },
+  ];
+
+  const activeRequest = firstRequestSnippets.find((s) => s.value === requestTab) ?? firstRequestSnippets[0];
+
   return (
     <div className="p-6">
       <PageHeader
@@ -74,7 +90,7 @@ export default function QuickStartPage() {
         <p className="text-sm leading-relaxed mb-4">
           {quickStartContent.step2.body}
         </p>
-        <Snippet defaultValue={firstRequestSnippets[0].value}>
+        <Snippet value={requestTab} onValueChange={setRequestTab}>
           <SnippetHeader>
             <SnippetTabsList>
               {firstRequestSnippets.map((snippet) => (
@@ -84,7 +100,7 @@ export default function QuickStartPage() {
                 </SnippetTabsTrigger>
               ))}
             </SnippetTabsList>
-            <SnippetCopyButton value={firstRequestSnippets[0].code} />
+            <SnippetCopyButton value={activeRequest.code} />
           </SnippetHeader>
           {firstRequestSnippets.map((snippet) => (
             <SnippetTabsContent key={snippet.value} value={snippet.value}>

@@ -1,6 +1,6 @@
 export { RequestType } from "./enums";
 export { sidebarData } from "./sidebar-data";
-export { getActionDoc, resourceDocs } from "./api-docs";
+export { getActionDoc, resourceDocs, getActionDocForVersion } from "./api-docs";
 export { features } from "./features";
 export { navCards } from "./nav-cards";
 export { sdks } from "./sdks";
