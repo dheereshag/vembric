@@ -69,6 +69,37 @@ To add a new endpoint resource (e.g., `customers` or `billing`):
 
 ---
 
+## Technical Interview Q&A (Cheat Sheet)
+
+If asked about this codebase during an interview, use these key architectural talking points:
+
+### 1. Why Next.js App Router with Static Generation (`generateStaticParams`)?
+- **Question**: Why did you choose Next.js static generation instead of standard dynamic SSR or client-side fetching?
+- **Answer**: API reference pages are read-heavy and require optimal load times, great search engine visibility (SEO), and low hosting costs. By utilizing `generateStaticParams` inside [app/[resource]/[action]/page.tsx](file:///Users/d/Downloads/vembric/app/%5Bresource%5D/%5Baction%5D/page.tsx), Next.js statically builds all combinations of resources and actions (e.g., `/games/list`, `/orders/create`) at compile time. This removes runtime database hits, permits static edge hosting (e.g., Vercel, Cloudflare Pages), and produces lightning-fast response times.
+
+### 2. How is state managed globally for version switching?
+- **Question**: How do you coordinate the API version switch across different page views and snippets?
+- **Answer**: I used **Zustand** combined with local storage state persistence. The global store defined in [use-api-version-store.ts](file:///Users/d/Downloads/vembric/hooks/use-api-version-store.ts) tracks if the user is looking at `v1` or `v2`. When [version-selector.tsx](file:///Users/d/Downloads/vembric/components/version-selector.tsx) updates this store:
+  - React components automatically re-render with the correct versioned attributes.
+  - The dynamic [ApiDocPage](file:///Users/d/Downloads/vembric/components/api-doc-page.tsx) automatically grabs the corresponding schema (`resourceDocsV1` vs `resourceDocsV2`).
+  - Code snippets globally reflect the correct URL prefix pathing without page refreshes.
+
+### 3. Why the "Content-as-Data" architecture in `constants/`?
+- **Question**: What are the trade-offs of organizing API copy and schemas inside static TypeScript files?
+- **Answer**: It separates presentation from raw data. The visual components in `components/` are entirely reusable, template-driven, and styling-centric. The data resides in a single, structured source of truth inside [constants/api-docs.ts](file:///Users/d/Downloads/vembric/constants/api-docs.ts). 
+  - **Pros**: Editing copy, updating endpoint tables, or adding new parameters is risk-free—there is no JSX/TSX layout code to break.
+  - **Scale**: It is database-ready. If we scale to thousands of endpoints, we can easily swap the local imports for a runtime fetch from an external database or headless CMS API with minimal refactoring.
+
+### 4. How did you style the application?
+- **Question**: Why Tailwind CSS v4 and shadcn/ui over a heavy UI theme library?
+- **Answer**: Tailwind CSS v4 has zero-runtime styling overhead, compiling utility classes straight into optimal CSS variables. Combining it with shadcn/ui primitives ([components/ui/](file:///Users/d/Downloads/vembric/components/ui)) guarantees WAI-ARIA compliant accessibility (built on Radix UI) for interactive items like tabs, scroll areas, and sidebars, while giving us 100% control over design customizability.
+
+### 5. Why use the same font (JetBrains Mono) for both sans-serif and monospace text?
+- **Question**: Why is JetBrains Mono used for both headings and body text?
+- **Answer**: It reinforces the developer-centric, code-editor aesthetic of the documentation. By utilizing Next.js Font optimization in [fonts.ts](file:///Users/d/Downloads/vembric/lib/fonts.ts), we load the typeface once from Google Fonts and map it to both `--font-sans` and `--font-mono`. This yields a highly cohesive UI style and saves bandwidth by deduplicating font request payloads.
+
+---
+
 ## Development Commands
 
 Vembric uses **pnpm** as its package manager. **Do not use npm or yarn in this repository.**
