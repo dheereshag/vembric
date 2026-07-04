@@ -10,27 +10,24 @@ import {
   SidebarRail,
 } from "@/components/ui/sidebar";
 import { sidebarData } from "@/constants/";
-import { brand } from "@/constants/brand";
-import Link from "next/link";
-import Image from "next/image";
 import { VersionSelector } from "@/components/version-selector";
+import { Search } from "lucide-react";
+import { Input } from "@/components/ui/input";
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
-        <div className="flex flex-col gap-3 px-4 py-2">
-          <Link href="/" className="flex items-center gap-2">
-            <Image
-              src="/logo.svg"
-              alt={`${brand.name} Logo`}
-              width={32}
-              height={32}
-              className="size-8"
-            />
-            <span className="truncate font-mono font-bold">{brand.name}</span>
-          </Link>
+        <div className="flex flex-col gap-2.5 px-4 py-3">
           <VersionSelector />
+          <div className="relative w-full">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground/70 pointer-events-none" />
+            <Input
+              type="search"
+              placeholder="Search the docs..."
+              className="pl-9 h-9.5 text-xs font-mono bg-muted/20 border-border/60 hover:bg-muted/30 focus-visible:bg-background/50 focus-visible:border-ring/50 focus-visible:ring-0 focus-visible:ring-offset-0 w-full rounded-xl transition-all"
+            />
+          </div>
         </div>
       </SidebarHeader>
       <SidebarContent>
@@ -44,3 +41,4 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
     </Sidebar>
   );
 }
+

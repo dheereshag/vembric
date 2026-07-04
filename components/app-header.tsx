@@ -8,11 +8,9 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import { sidebarData } from "@/constants/";
-import { Search } from "lucide-react";
 
 export function AppHeader() {
   const pathname = usePathname();
@@ -58,23 +56,9 @@ export function AppHeader() {
             </BreadcrumbList>
           </Breadcrumb>
         </div>
-
-        {/* Center: search bar */}
-        <div className="flex flex-1 justify-center">
-          <div className="relative w-full max-w-sm">
-            <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 size-3.5 text-muted-foreground pointer-events-none" />
-            <Input
-              type="search"
-              placeholder="Search docs..."
-              className="pl-8 h-8 text-xs font-mono bg-muted/30 border-muted-foreground/20 focus-visible:bg-background w-full"
-            />
-          </div>
-        </div>
-
-        {/* Right: spacer to balance left side */}
-        <div className="shrink-0 w-[120px] hidden md:block" />
       </div>
     </header>
   );
 }
+
 
