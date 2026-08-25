@@ -61,13 +61,7 @@ export default function PaginationPage() {
       </DocSection>
 
       <DocSection title="best practices" className="mb-0">
-        <ArrowList
-          items={[
-            "Always check has_more before making another request",
-            "Store cursors temporarily — they may expire after 24 hours",
-            "Use a consistent limit per session for predictable UX",
-          ]}
-        />
+        <ArrowList items={paginationContent.bestPractices.items} />
       </DocSection>
     </div>
   );

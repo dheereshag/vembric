@@ -46,7 +46,7 @@ export default function StatusPage() {
 
       <DocSection title="incident history" className="mb-0">
         <p className="text-sm text-muted-foreground">
-          No incidents in the last 30 days. All systems nominal.
+          {statusContent.incidentHistory.body}
         </p>
       </DocSection>
 

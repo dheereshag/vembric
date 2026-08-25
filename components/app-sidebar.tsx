@@ -9,7 +9,7 @@ import {
   SidebarHeader,
   SidebarRail,
 } from "@/components/ui/sidebar";
-import { sidebarData } from "@/constants/";
+import { sidebarData } from "@/constants";
 import { VersionSelector } from "@/components/version-selector";
 import { Search } from "lucide-react";
 import { Input } from "@/components/ui/input";

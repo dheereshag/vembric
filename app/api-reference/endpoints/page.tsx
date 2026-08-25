@@ -13,11 +13,12 @@ import {
 } from "@/components/ui/table";
 import { endpoints, methodColors } from "@/constants/api-reference";
 import { endpointsContent } from "@/constants/page-content";
+import { brand } from "@/constants/brand";
 import { useApiVersionStore } from "@/hooks/use-api-version-store";
 
 export default function EndpointsPage() {
   const version = useApiVersionStore((state) => state.version);
-  const apiBaseUrl = `https://api.vembric.io/${version}`;
+  const apiBaseUrl = brand.apiBaseUrl.replace(`/${brand.apiVersion}`, `/${version}`);
 
   return (
     <div className="p-6">

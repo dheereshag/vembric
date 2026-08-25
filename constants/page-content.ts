@@ -68,6 +68,9 @@ export const installationContent = {
   header: {
     description: "Install the official Vembric SDK for your language of choice.",
   },
+  requirements: {
+    items: ["Node.js v18+", "Python 3.8+", "Ruby 3.0+", "Go 1.21+"],
+  },
 };
 
 // ── Authentication ────────────────────────────────────────────────────────────
@@ -115,6 +118,13 @@ export const paginationContent = {
     body: "List endpoints return a data array, a next_cursor string, and a has_more boolean. Pass cursor as a query param to fetch the next page.",
     infoBox:
       "// cursor values are opaque strings — do not parse or construct them manually",
+  },
+  bestPractices: {
+    items: [
+      "Always check has_more before making another request",
+      "Store cursors temporarily — they may expire after 24 hours",
+      "Use a consistent limit per session for predictable UX",
+    ],
   },
 };
 

@@ -108,9 +108,7 @@ export default function InstallationPage() {
       ))}
 
       <DocSection title="requirements" className="mb-0">
-        <ArrowList
-          items={["Node.js v18+", "Python 3.8+", "Ruby 3.0+", "Go 1.21+"]}
-        />
+        <ArrowList items={installationContent.requirements.items} />
       </DocSection>
     </div>
   );
