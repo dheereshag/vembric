@@ -20,9 +20,7 @@ export function ApiDocPage({ resourceKey, actionSlug, initialData }: ApiDocPageP
 
   return (
     <ScrollArea className="p-6">
-      <h1 className="font-mono text-3xl font-bold tracking-tight mb-2">
-        {data.title}
-      </h1>
+      <h1 className="font-mono text-3xl font-bold tracking-tight mb-2">{data.title}</h1>
       <p className="text-muted-foreground max-w-3xl">{data.description}</p>
 
       <ModelSection model={data.model} />

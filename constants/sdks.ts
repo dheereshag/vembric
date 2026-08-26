@@ -1,4 +1,4 @@
-import { siNodedotjs, siPython, siPhp, siRuby, siGo } from 'simple-icons';
+import { siNodedotjs, siPython, siPhp, siRuby, siGo } from "simple-icons";
 
 export type SdkItem = {
   name: string;

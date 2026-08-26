@@ -1,11 +1,4 @@
-import {
-  BookOpen,
-  Bot,
-  Gamepad2,
-  Package,
-  Settings2,
-  SquareTerminal,
-} from "lucide-react";
+import { BookOpen, Bot, Gamepad2, Package, Settings2, SquareTerminal } from "lucide-react";
 import { resourceDocs } from "./api-docs";
 
 const resourceIcons = {

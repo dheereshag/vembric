@@ -7,14 +7,7 @@ export const fontSans = JetBrains_Mono({
   subsets: ["latin"],
   display: "swap",
   weight: ["300", "400", "500", "600", "700"],
-  fallback: [
-    "SFMono-Regular",
-    "Consolas",
-    "Liberation Mono",
-    "Menlo",
-    "Courier",
-    "monospace",
-  ],
+  fallback: ["SFMono-Regular", "Consolas", "Liberation Mono", "Menlo", "Courier", "monospace"],
 });
 
 export const fontMono = JetBrains_Mono({
@@ -22,26 +15,12 @@ export const fontMono = JetBrains_Mono({
   subsets: ["latin"],
   display: "swap",
   weight: ["300", "400", "500", "600", "700"],
-  fallback: [
-    "SFMono-Regular",
-    "Consolas",
-    "Liberation Mono",
-    "Menlo",
-    "Courier",
-    "monospace",
-  ],
+  fallback: ["SFMono-Regular", "Consolas", "Liberation Mono", "Menlo", "Courier", "monospace"],
 });
 
 export const snippetFont = Geist_Mono({
   variable: "--font-snippet",
   subsets: ["latin"],
   display: "swap",
-  fallback: [
-    "SFMono-Regular",
-    "Consolas",
-    "Liberation Mono",
-    "Menlo",
-    "Courier",
-    "monospace",
-  ],
+  fallback: ["SFMono-Regular", "Consolas", "Liberation Mono", "Menlo", "Courier", "monospace"],
 });

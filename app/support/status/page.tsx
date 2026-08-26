@@ -33,9 +33,7 @@ export default function StatusPage() {
             {services.map(({ name, status }) => (
               <TableRow key={name}>
                 <TableCell className="py-3 align-middle">{name}</TableCell>
-                <TableCell
-                  className={`py-3 align-middle font-semibold ${statusColor[status]}`}
-                >
+                <TableCell className={`py-3 align-middle font-semibold ${statusColor[status]}`}>
                   ● {status}
                 </TableCell>
               </TableRow>
@@ -45,9 +43,7 @@ export default function StatusPage() {
       </DocSection>
 
       <DocSection title="incident history" className="mb-0">
-        <p className="text-sm text-muted-foreground">
-          {statusContent.incidentHistory.body}
-        </p>
+        <p className="text-sm text-muted-foreground">{statusContent.incidentHistory.body}</p>
       </DocSection>
 
       <InfoBox className="mt-6">{statusContent.infoBox}</InfoBox>

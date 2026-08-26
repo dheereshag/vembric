@@ -3,17 +3,18 @@ import { DocSection } from "@/components/doc/doc-section";
 import { ArrowList } from "@/components/doc/arrow-list";
 import { InfoBox } from "@/components/doc/info-box";
 import {
-  Snippet, SnippetCopyButton, SnippetHeader,
-  SnippetTabsContent, SnippetTabsList, SnippetTabsTrigger,
+  Snippet,
+  SnippetCopyButton,
+  SnippetHeader,
+  SnippetTabsContent,
+  SnippetTabsList,
+  SnippetTabsTrigger,
 } from "@/components/kibo-ui/snippet";
 import { SchemaTable } from "@/components/api-doc/schema-table";
 import { CodeBlock } from "@/components/code-block";
 import { paginationParams } from "@/constants/api-reference";
 import { paginationContent } from "@/constants/page-content";
-import {
-  paginationCurlExample,
-  paginationResponseExample,
-} from "@/constants/code-snippets";
+import { paginationCurlExample, paginationResponseExample } from "@/constants/code-snippets";
 import { CurlIcon, JsonIcon } from "@/components/api-doc/icons";
 
 export default function PaginationPage() {
@@ -26,9 +27,7 @@ export default function PaginationPage() {
       />
 
       <DocSection title="how it works">
-        <p className="text-sm leading-relaxed mb-4">
-          {paginationContent.howItWorks.body}
-        </p>
+        <p className="text-sm leading-relaxed mb-4">{paginationContent.howItWorks.body}</p>
         <InfoBox>{paginationContent.howItWorks.infoBox}</InfoBox>
       </DocSection>
 

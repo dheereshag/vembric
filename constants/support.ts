@@ -68,10 +68,7 @@ export const releases = [
   {
     version: "v1.2.0",
     date: "2023-10-01",
-    changes: [
-      "Orders API — create, update, cancel",
-      "PHP and Ruby SDKs released",
-    ],
+    changes: ["Orders API — create, update, cancel", "PHP and Ruby SDKs released"],
   },
 ];
 

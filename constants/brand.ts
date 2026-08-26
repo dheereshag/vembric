@@ -1,8 +1,7 @@
 export const brand = {
   name: "Vembric",
   appTitle: "Vembric - API Documentation Template",
-  appDescription:
-    "A modern, beautiful template for API documentation built with Next.js",
+  appDescription: "A modern, beautiful template for API documentation built with Next.js",
   version: "beta v0.1.0",
   apiVersion: "v1",
   apiBaseUrl: "https://api.vembric.io/v1",

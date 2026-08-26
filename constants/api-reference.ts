@@ -1,20 +1,20 @@
 export const endpoints = [
-  { method: "GET",    path: "/games",       desc: "List all games" },
-  { method: "GET",    path: "/games/:id",   desc: "Retrieve a game" },
-  { method: "POST",   path: "/games",       desc: "Create a game" },
-  { method: "PATCH",  path: "/games/:id",   desc: "Update a game" },
-  { method: "DELETE", path: "/games/:id",   desc: "Delete a game" },
-  { method: "GET",    path: "/orders",      desc: "List all orders" },
-  { method: "GET",    path: "/orders/:id",  desc: "Retrieve an order" },
-  { method: "POST",   path: "/orders",      desc: "Create an order" },
-  { method: "PATCH",  path: "/orders/:id",  desc: "Update an order" },
-  { method: "DELETE", path: "/orders/:id",  desc: "Cancel an order" },
+  { method: "GET", path: "/games", desc: "List all games" },
+  { method: "GET", path: "/games/:id", desc: "Retrieve a game" },
+  { method: "POST", path: "/games", desc: "Create a game" },
+  { method: "PATCH", path: "/games/:id", desc: "Update a game" },
+  { method: "DELETE", path: "/games/:id", desc: "Delete a game" },
+  { method: "GET", path: "/orders", desc: "List all orders" },
+  { method: "GET", path: "/orders/:id", desc: "Retrieve an order" },
+  { method: "POST", path: "/orders", desc: "Create an order" },
+  { method: "PATCH", path: "/orders/:id", desc: "Update an order" },
+  { method: "DELETE", path: "/orders/:id", desc: "Cancel an order" },
 ];
 
 export const methodColors: Record<string, string> = {
-  GET:    "text-green-400",
-  POST:   "text-blue-400",
-  PATCH:  "text-yellow-400",
+  GET: "text-green-400",
+  POST: "text-blue-400",
+  PATCH: "text-yellow-400",
   DELETE: "text-red-400",
 };
 

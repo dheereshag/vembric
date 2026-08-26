@@ -41,9 +41,7 @@ export function AppHeader() {
               {sectionTitle && (
                 <>
                   <BreadcrumbItem className="hidden md:block">
-                    <span className="font-mono text-xs text-muted-foreground">
-                      {sectionTitle}
-                    </span>
+                    <span className="font-mono text-xs text-muted-foreground">{sectionTitle}</span>
                   </BreadcrumbItem>
                   <BreadcrumbSeparator className="hidden md:block" />
                 </>
@@ -60,5 +58,3 @@ export function AppHeader() {
     </header>
   );
 }
-
-

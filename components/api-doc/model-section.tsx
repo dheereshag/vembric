@@ -1,10 +1,10 @@
-import { Separator } from '@/components/ui/separator';
-import type { ApiActionDoc } from '@/constants/api-docs';
-import { DocSection } from '@/components/doc/doc-section';
-import { SchemaTable } from './schema-table';
+import { Separator } from "@/components/ui/separator";
+import type { ApiActionDoc } from "@/constants/api-docs";
+import { DocSection } from "@/components/doc/doc-section";
+import { SchemaTable } from "./schema-table";
 
 type ModelSectionProps = {
-  model: ApiActionDoc['model'];
+  model: ApiActionDoc["model"];
 };
 
 export function ModelSection({ model }: ModelSectionProps) {

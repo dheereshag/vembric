@@ -3,8 +3,12 @@ import { DocSection } from "@/components/doc/doc-section";
 import { ArrowList } from "@/components/doc/arrow-list";
 import { InfoBox } from "@/components/doc/info-box";
 import {
-  Snippet, SnippetCopyButton, SnippetHeader,
-  SnippetTabsContent, SnippetTabsList, SnippetTabsTrigger,
+  Snippet,
+  SnippetCopyButton,
+  SnippetHeader,
+  SnippetTabsContent,
+  SnippetTabsList,
+  SnippetTabsTrigger,
 } from "@/components/kibo-ui/snippet";
 import { CodeBlock } from "@/components/code-block";
 import {
@@ -71,9 +75,7 @@ export default function ErrorHandlingPage() {
 
       <DocSection title="retry strategy" className="mb-0">
         <ArrowList items={errorHandlingContent.retryStrategy.items} />
-        <InfoBox className="mt-4">
-          {errorHandlingContent.retryStrategy.infoBox}
-        </InfoBox>
+        <InfoBox className="mt-4">{errorHandlingContent.retryStrategy.infoBox}</InfoBox>
       </DocSection>
     </div>
   );

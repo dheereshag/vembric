@@ -1,8 +1,12 @@
 import { PageHeader } from "@/components/doc/page-header";
 import { DocSection } from "@/components/doc/doc-section";
 import {
-  Snippet, SnippetCopyButton, SnippetHeader,
-  SnippetTabsContent, SnippetTabsList, SnippetTabsTrigger,
+  Snippet,
+  SnippetCopyButton,
+  SnippetHeader,
+  SnippetTabsContent,
+  SnippetTabsList,
+  SnippetTabsTrigger,
 } from "@/components/kibo-ui/snippet";
 import { JavaScriptIcon } from "@/components/api-doc/icons";
 import { CodeBlock } from "@/components/code-block";

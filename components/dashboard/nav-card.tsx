@@ -9,27 +9,17 @@ interface NavCardProps {
   actionHref: string;
 }
 
-export function NavCard({
-  title,
-  description,
-  icon: Icon,
-  actionText,
-  actionHref,
-}: NavCardProps) {
+export function NavCard({ title, description, icon: Icon, actionText, actionHref }: NavCardProps) {
   return (
     <article className="border p-5 flex flex-col gap-4 hover:bg-muted/20 transition-colors">
       <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-muted-foreground">
         <Icon className="size-3.5" />
         <span>{title}</span>
       </div>
-      <p className="text-sm text-muted-foreground leading-relaxed flex-1">
-        {description}
-      </p>
-      <Link
-        href={actionHref}
-        className="font-mono text-xs underline underline-offset-4 self-start"
-      >
-        <span aria-hidden="true">→ </span>{actionText}
+      <p className="text-sm text-muted-foreground leading-relaxed flex-1">{description}</p>
+      <Link href={actionHref} className="font-mono text-xs underline underline-offset-4 self-start">
+        <span aria-hidden="true">→ </span>
+        {actionText}
       </Link>
     </article>
   );

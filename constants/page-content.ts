@@ -90,8 +90,7 @@ export const authenticationContent = {
       "Restrict key permissions to required scopes only",
     ],
   },
-  infoBox:
-    "// keys can be managed from the Vembric dashboard under Settings → API Keys",
+  infoBox: "// keys can be managed from the Vembric dashboard under Settings → API Keys",
 };
 
 // ── Endpoints ─────────────────────────────────────────────────────────────────
@@ -111,13 +110,11 @@ export const endpointsContent = {
 
 export const paginationContent = {
   header: {
-    description:
-      "Vembric uses cursor-based pagination for all list endpoints.",
+    description: "Vembric uses cursor-based pagination for all list endpoints.",
   },
   howItWorks: {
     body: "List endpoints return a data array, a next_cursor string, and a has_more boolean. Pass cursor as a query param to fetch the next page.",
-    infoBox:
-      "// cursor values are opaque strings — do not parse or construct them manually",
+    infoBox: "// cursor values are opaque strings — do not parse or construct them manually",
   },
   bestPractices: {
     items: [
@@ -134,8 +131,7 @@ export type WebhookEvent = { code: string; description: string };
 
 export const webhooksContent = {
   header: {
-    description:
-      "Receive real-time event notifications via HTTP POST callbacks.",
+    description: "Receive real-time event notifications via HTTP POST callbacks.",
   },
   supportedEvents: [
     { code: "order.created", description: "a new order was placed" },
@@ -164,8 +160,7 @@ export type ResponseHeader = { header: string; description: string };
 
 export const rateLimitingContent = {
   header: {
-    description:
-      "Understand how Vembric enforces request limits to ensure fair usage.",
+    description: "Understand how Vembric enforces request limits to ensure fair usage.",
   },
   responseHeaders: [
     { header: "X-RateLimit-Limit", description: "your total limit" },
@@ -192,8 +187,7 @@ export const rateLimitingContent = {
 
 export const errorHandlingContent = {
   header: {
-    description:
-      "Understand Vembric error responses and how to handle them gracefully.",
+    description: "Understand Vembric error responses and how to handle them gracefully.",
   },
   retryStrategy: {
     items: [
@@ -201,8 +195,7 @@ export const errorHandlingContent = {
       "Retry 500 / 503 with exponential backoff (3 attempts max)",
       "Never retry 400, 401, 403, 404, or 422 — fix the request first",
     ],
-    infoBox:
-      "// log the error.code field for easier debugging and support tickets",
+    infoBox: "// log the error.code field for easier debugging and support tickets",
   },
 };
 
@@ -210,8 +203,7 @@ export const errorHandlingContent = {
 
 export const bestPracticesContent = {
   header: {
-    description:
-      "Recommended patterns for building reliable integrations with the Vembric API.",
+    description: "Recommended patterns for building reliable integrations with the Vembric API.",
   },
   authentication: {
     items: [
@@ -249,8 +241,7 @@ export const bestPracticesContent = {
 
 export const examplesContent = {
   header: {
-    description:
-      "Real-world code snippets for common Vembric integration scenarios.",
+    description: "Real-world code snippets for common Vembric integration scenarios.",
   },
 };
 
@@ -258,11 +249,9 @@ export const examplesContent = {
 
 export const faqContent = {
   header: {
-    description:
-      "Answers to the most common questions about the Vembric API.",
+    description: "Answers to the most common questions about the Vembric API.",
   },
-  infoBox:
-    "// still stuck? reach out via the Contact page or open a ticket in the dashboard",
+  infoBox: "// still stuck? reach out via the Contact page or open a ticket in the dashboard",
 };
 
 // ── Changelog ─────────────────────────────────────────────────────────────────

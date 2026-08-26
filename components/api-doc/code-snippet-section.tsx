@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { Badge } from '@/components/ui/badge';
-import { Separator } from '@/components/ui/separator';
-import { SchemaTable } from './schema-table';
+import { useState } from "react";
+import { Badge } from "@/components/ui/badge";
+import { Separator } from "@/components/ui/separator";
+import { SchemaTable } from "./schema-table";
 import { CodeBlock } from "@/components/code-block";
 import {
   Snippet,
@@ -12,18 +12,18 @@ import {
   SnippetTabsContent,
   SnippetTabsList,
   SnippetTabsTrigger,
-} from '@/components/kibo-ui/snippet';
-import type { ApiActionDoc } from '@/constants/api-docs';
-import { getRequestTypeColorClass } from '@/lib/request-type';
-import { CurlIcon, JavaScriptIcon } from './icons';
+} from "@/components/kibo-ui/snippet";
+import type { ApiActionDoc } from "@/constants/api-docs";
+import { getRequestTypeColorClass } from "@/lib/request-type";
+import { CurlIcon, JavaScriptIcon } from "./icons";
 
 type CodeSnippetSectionProps = {
-  method: ApiActionDoc['method'];
-  endpoint: ApiActionDoc['endpoint'];
-  description: ApiActionDoc['description'];
-  optionalAttributes: ApiActionDoc['optionalAttributes'];
-  curl: ApiActionDoc['curl'];
-  js: ApiActionDoc['js'];
+  method: ApiActionDoc["method"];
+  endpoint: ApiActionDoc["endpoint"];
+  description: ApiActionDoc["description"];
+  optionalAttributes: ApiActionDoc["optionalAttributes"];
+  curl: ApiActionDoc["curl"];
+  js: ApiActionDoc["js"];
 };
 
 export function CodeSnippetSection({
@@ -35,8 +35,8 @@ export function CodeSnippetSection({
   js,
 }: CodeSnippetSectionProps) {
   const commands = [
-    { label: 'curl', icon: CurlIcon, code: curl },
-    { label: 'javascript', icon: JavaScriptIcon, code: js },
+    { label: "curl", icon: CurlIcon, code: curl },
+    { label: "javascript", icon: JavaScriptIcon, code: js },
   ];
 
   const [value, setValue] = useState(commands[0].label);
@@ -47,15 +47,10 @@ export function CodeSnippetSection({
       <Separator className="my-6" />
       <section>
         <div className="flex items-center gap-3 mb-2">
-          <Badge
-            variant="outline"
-            className={`rounded ${getRequestTypeColorClass(method)}`}
-          >
+          <Badge variant="outline" className={`rounded ${getRequestTypeColorClass(method)}`}>
             {method}
           </Badge>
-          <code className="text-sm font-mono bg-muted px-2 py-1">
-            {endpoint}
-          </code>
+          <code className="text-sm font-mono bg-muted px-2 py-1">{endpoint}</code>
         </div>
         <p className="text-muted-foreground mb-4">{description}</p>
 

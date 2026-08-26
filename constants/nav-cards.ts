@@ -19,16 +19,14 @@ export const navCards: NavCardItem[] = [
   },
   {
     title: "API Reference",
-    description:
-      "Browse endpoints, query parameters, and interactive request samples.",
+    description: "Browse endpoints, query parameters, and interactive request samples.",
     icon: Terminal,
     actionText: "Explore Endpoints",
     actionHref: "/games/list-all-games",
   },
   {
     title: "Client SDKs",
-    description:
-      "Integrate with official SDKs for Node.js, Python, Go, and more.",
+    description: "Integrate with official SDKs for Node.js, Python, Go, and more.",
     icon: Code2,
     actionText: "Download SDKs",
     actionHref: "/sdks",

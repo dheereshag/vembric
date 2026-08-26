@@ -3,15 +3,16 @@ import { DocSection } from "@/components/doc/doc-section";
 import { ArrowList } from "@/components/doc/arrow-list";
 import { InfoBox } from "@/components/doc/info-box";
 import {
-  Snippet, SnippetCopyButton, SnippetHeader,
-  SnippetTabsContent, SnippetTabsList, SnippetTabsTrigger,
+  Snippet,
+  SnippetCopyButton,
+  SnippetHeader,
+  SnippetTabsContent,
+  SnippetTabsList,
+  SnippetTabsTrigger,
 } from "@/components/kibo-ui/snippet";
 import { CodeBlock } from "@/components/code-block";
 import { webhooksContent } from "@/constants/page-content";
-import {
-  webhookPayloadExample,
-  webhookVerifyExample,
-} from "@/constants/code-snippets";
+import { webhookPayloadExample, webhookVerifyExample } from "@/constants/code-snippets";
 import { JavaScriptIcon, JsonIcon } from "@/components/api-doc/icons";
 
 export default function WebhooksPage() {
@@ -27,10 +28,8 @@ export default function WebhooksPage() {
         <ArrowList
           items={webhooksContent.supportedEvents.map((event) => (
             <>
-              <code className="font-mono bg-muted px-1.5 py-0.5 text-xs">
-                {event.code}
-              </code>{" "}
-              — {event.description}
+              <code className="font-mono bg-muted px-1.5 py-0.5 text-xs">{event.code}</code> —{" "}
+              {event.description}
             </>
           ))}
         />
@@ -79,9 +78,7 @@ export default function WebhooksPage() {
 
       <DocSection title="retry policy" className="mb-0">
         <ArrowList items={webhooksContent.retryPolicy.items} />
-        <InfoBox className="mt-4">
-          {webhooksContent.retryPolicy.infoBox}
-        </InfoBox>
+        <InfoBox className="mt-4">{webhooksContent.retryPolicy.infoBox}</InfoBox>
       </DocSection>
     </div>
   );

@@ -2,13 +2,18 @@ import { PageHeader } from "@/components/doc/page-header";
 import { DocSection } from "@/components/doc/doc-section";
 import { ArrowList } from "@/components/doc/arrow-list";
 import {
-  Snippet, SnippetCopyButton, SnippetHeader,
-  SnippetTabsContent, SnippetTabsList, SnippetTabsTrigger,
+  Snippet,
+  SnippetCopyButton,
+  SnippetHeader,
+  SnippetTabsContent,
+  SnippetTabsList,
+  SnippetTabsTrigger,
 } from "@/components/kibo-ui/snippet";
 import type { ReactNode } from "react";
 import { installCommands } from "@/constants/code-snippets";
 import { installationContent } from "@/constants/page-content";
-import { NpmIcon,
+import {
+  NpmIcon,
   YarnIcon,
   PnpmIcon,
   PythonIcon,
@@ -94,9 +99,7 @@ export default function InstallationPage() {
                   </SnippetTabsTrigger>
                 ))}
               </SnippetTabsList>
-              <SnippetCopyButton
-                value={installCommands[section.defaultValue]}
-              />
+              <SnippetCopyButton value={installCommands[section.defaultValue]} />
             </SnippetHeader>
             {section.tabs.map((tab) => (
               <SnippetTabsContent key={tab.value} value={tab.value}>

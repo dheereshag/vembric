@@ -16,13 +16,7 @@ export {
   type RateLimitPlan,
   type StatusCode,
 } from "./api-reference";
-export {
-  services,
-  statusColor,
-  faqs,
-  releases,
-  contactResponseTimes,
-} from "./support";
+export { services, statusColor, faqs, releases, contactResponseTimes } from "./support";
 export { brand } from "./brand";
 export * from "./code-snippets";
 export * from "./page-content";

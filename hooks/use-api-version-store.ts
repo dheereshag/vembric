@@ -16,6 +16,6 @@ export const useApiVersionStore = create<ApiVersionState>()(
     }),
     {
       name: "vembric-api-version",
-    }
-  )
+    },
+  ),
 );

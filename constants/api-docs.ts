@@ -1,4 +1,4 @@
-import { RequestType } from './enums';
+import { RequestType } from "./enums";
 import { brand } from "./brand";
 
 type ModelField = {
@@ -27,15 +27,18 @@ export type ResourceDoc = {
   actions: ApiActionDoc[];
 };
 
-const buildCrudActions = (resource: {
-  key: string;
-  title: string;
-  singular: string;
-  model: ModelField[];
-  createPayload: Record<string, unknown>;
-  updatePayload: Record<string, unknown>;
-  sampleEntity: Record<string, unknown>;
-}, apiVersion: string) => {
+const buildCrudActions = (
+  resource: {
+    key: string;
+    title: string;
+    singular: string;
+    model: ModelField[];
+    createPayload: Record<string, unknown>;
+    updatePayload: Record<string, unknown>;
+    sampleEntity: Record<string, unknown>;
+  },
+  apiVersion: string,
+) => {
   const endpointBase = `/${apiVersion}/${resource.key}`;
   const id = `${resource.singular}_xyz123`;
   const entityPath = `${endpointBase}/${id}`;
@@ -206,157 +209,173 @@ const buildCrudActions = (resource: {
 };
 
 const gameModelV1: ModelField[] = [
-  { name: 'id', type: 'string', description: 'Unique identifier for the game.' },
-  { name: 'name', type: 'string', description: 'Name of the game.' },
-  { name: 'genre', type: 'string', description: 'Genre of the game.' },
-  { name: 'release_date', type: 'string', description: 'Release date in ISO format.' },
-  { name: 'developer', type: 'string', description: 'Developer or studio name.' },
+  { name: "id", type: "string", description: "Unique identifier for the game." },
+  { name: "name", type: "string", description: "Name of the game." },
+  { name: "genre", type: "string", description: "Genre of the game." },
+  { name: "release_date", type: "string", description: "Release date in ISO format." },
+  { name: "developer", type: "string", description: "Developer or studio name." },
 ];
 
 const gameModelV2: ModelField[] = [
-  { name: 'id', type: 'string', description: 'Unique identifier for the game.' },
-  { name: 'name', type: 'string', description: 'Name of the game.' },
-  { name: 'genre', type: 'string', description: 'Genre of the game.' },
-  { name: 'release_date', type: 'string', description: 'Release date in ISO format.' },
-  { name: 'developer', type: 'string', description: 'Developer or studio name.' },
-  { name: 'rating', type: 'float', description: 'Average user rating (0.0 to 5.0).' },
-  { name: 'price', type: 'decimal', description: 'Price of the game in USD.' },
+  { name: "id", type: "string", description: "Unique identifier for the game." },
+  { name: "name", type: "string", description: "Name of the game." },
+  { name: "genre", type: "string", description: "Genre of the game." },
+  { name: "release_date", type: "string", description: "Release date in ISO format." },
+  { name: "developer", type: "string", description: "Developer or studio name." },
+  { name: "rating", type: "float", description: "Average user rating (0.0 to 5.0)." },
+  { name: "price", type: "decimal", description: "Price of the game in USD." },
 ];
 
 const orderModelV1: ModelField[] = [
-  { name: 'id', type: 'string', description: 'Unique identifier for the order.' },
-  { name: 'game_id', type: 'string', description: 'ID of the purchased game.' },
-  { name: 'customer_id', type: 'string', description: 'ID of the customer.' },
-  { name: 'quantity', type: 'integer', description: 'Number of copies ordered.' },
-  { name: 'status', type: 'string', description: 'Current order status.' },
-  { name: 'created_at', type: 'string', description: 'Order creation timestamp.' },
+  { name: "id", type: "string", description: "Unique identifier for the order." },
+  { name: "game_id", type: "string", description: "ID of the purchased game." },
+  { name: "customer_id", type: "string", description: "ID of the customer." },
+  { name: "quantity", type: "integer", description: "Number of copies ordered." },
+  { name: "status", type: "string", description: "Current order status." },
+  { name: "created_at", type: "string", description: "Order creation timestamp." },
 ];
 
 const orderModelV2: ModelField[] = [
-  { name: 'id', type: 'string', description: 'Unique identifier for the order.' },
-  { name: 'game_id', type: 'string', description: 'ID of the purchased game.' },
-  { name: 'customer_id', type: 'string', description: 'ID of the customer.' },
-  { name: 'quantity', type: 'integer', description: 'Number of copies ordered.' },
-  { name: 'status', type: 'string', description: 'Current order status.' },
-  { name: 'created_at', type: 'string', description: 'Order creation timestamp.' },
-  { name: 'payment_method', type: 'string', description: 'Payment method used (e.g. credit_card, paypal).' },
-  { name: 'total_amount', type: 'decimal', description: 'Total order value in USD.' },
+  { name: "id", type: "string", description: "Unique identifier for the order." },
+  { name: "game_id", type: "string", description: "ID of the purchased game." },
+  { name: "customer_id", type: "string", description: "ID of the customer." },
+  { name: "quantity", type: "integer", description: "Number of copies ordered." },
+  { name: "status", type: "string", description: "Current order status." },
+  { name: "created_at", type: "string", description: "Order creation timestamp." },
+  {
+    name: "payment_method",
+    type: "string",
+    description: "Payment method used (e.g. credit_card, paypal).",
+  },
+  { name: "total_amount", type: "decimal", description: "Total order value in USD." },
 ];
 
 export const resourceDocsV1: ResourceDoc[] = [
   {
-    key: 'games',
-    title: 'Games',
-    actions: buildCrudActions({
-      key: 'games',
-      title: 'Games',
-      singular: 'game',
-      model: gameModelV1,
-      createPayload: {
-        name: 'Puzzle Hero',
-        genre: 'Puzzle',
-        release_date: '2023-11-01',
-        developer: 'Logic Labs',
+    key: "games",
+    title: "Games",
+    actions: buildCrudActions(
+      {
+        key: "games",
+        title: "Games",
+        singular: "game",
+        model: gameModelV1,
+        createPayload: {
+          name: "Puzzle Hero",
+          genre: "Puzzle",
+          release_date: "2023-11-01",
+          developer: "Logic Labs",
+        },
+        updatePayload: {
+          name: "Puzzle Hero Remastered",
+        },
+        sampleEntity: {
+          id: "game_xyz123",
+          name: "Puzzle Hero",
+          genre: "Puzzle",
+          release_date: "2023-11-01",
+          developer: "Logic Labs",
+        },
       },
-      updatePayload: {
-        name: 'Puzzle Hero Remastered',
-      },
-      sampleEntity: {
-        id: 'game_xyz123',
-        name: 'Puzzle Hero',
-        genre: 'Puzzle',
-        release_date: '2023-11-01',
-        developer: 'Logic Labs',
-      },
-    }, "v1"),
+      "v1",
+    ),
   },
   {
-    key: 'orders',
-    title: 'Orders',
-    actions: buildCrudActions({
-      key: 'orders',
-      title: 'Orders',
-      singular: 'order',
-      model: orderModelV1,
-      createPayload: {
-        game_id: 'game_xyz123',
-        customer_id: 'customer_1001',
-        quantity: 2,
+    key: "orders",
+    title: "Orders",
+    actions: buildCrudActions(
+      {
+        key: "orders",
+        title: "Orders",
+        singular: "order",
+        model: orderModelV1,
+        createPayload: {
+          game_id: "game_xyz123",
+          customer_id: "customer_1001",
+          quantity: 2,
+        },
+        updatePayload: {
+          status: "shipped",
+        },
+        sampleEntity: {
+          id: "order_xyz123",
+          game_id: "game_xyz123",
+          customer_id: "customer_1001",
+          quantity: 2,
+          status: "placed",
+          created_at: "2025-08-03T10:00:00Z",
+        },
       },
-      updatePayload: {
-        status: 'shipped',
-      },
-      sampleEntity: {
-        id: 'order_xyz123',
-        game_id: 'game_xyz123',
-        customer_id: 'customer_1001',
-        quantity: 2,
-        status: 'placed',
-        created_at: '2025-08-03T10:00:00Z',
-      },
-    }, "v1"),
+      "v1",
+    ),
   },
 ];
 
 export const resourceDocsV2: ResourceDoc[] = [
   {
-    key: 'games',
-    title: 'Games',
-    actions: buildCrudActions({
-      key: 'games',
-      title: 'Games',
-      singular: 'game',
-      model: gameModelV2,
-      createPayload: {
-        name: 'Puzzle Hero',
-        genre: 'Puzzle',
-        release_date: '2023-11-01',
-        developer: 'Logic Labs',
-        price: 19.99,
+    key: "games",
+    title: "Games",
+    actions: buildCrudActions(
+      {
+        key: "games",
+        title: "Games",
+        singular: "game",
+        model: gameModelV2,
+        createPayload: {
+          name: "Puzzle Hero",
+          genre: "Puzzle",
+          release_date: "2023-11-01",
+          developer: "Logic Labs",
+          price: 19.99,
+        },
+        updatePayload: {
+          name: "Puzzle Hero Remastered",
+          price: 24.99,
+        },
+        sampleEntity: {
+          id: "game_xyz123",
+          name: "Puzzle Hero",
+          genre: "Puzzle",
+          release_date: "2023-11-01",
+          developer: "Logic Labs",
+          rating: 4.8,
+          price: 19.99,
+        },
       },
-      updatePayload: {
-        name: 'Puzzle Hero Remastered',
-        price: 24.99,
-      },
-      sampleEntity: {
-        id: 'game_xyz123',
-        name: 'Puzzle Hero',
-        genre: 'Puzzle',
-        release_date: '2023-11-01',
-        developer: 'Logic Labs',
-        rating: 4.8,
-        price: 19.99,
-      },
-    }, "v2"),
+      "v2",
+    ),
   },
   {
-    key: 'orders',
-    title: 'Orders',
-    actions: buildCrudActions({
-      key: 'orders',
-      title: 'Orders',
-      singular: 'order',
-      model: orderModelV2,
-      createPayload: {
-        game_id: 'game_xyz123',
-        customer_id: 'customer_1001',
-        quantity: 2,
-        payment_method: 'credit_card',
+    key: "orders",
+    title: "Orders",
+    actions: buildCrudActions(
+      {
+        key: "orders",
+        title: "Orders",
+        singular: "order",
+        model: orderModelV2,
+        createPayload: {
+          game_id: "game_xyz123",
+          customer_id: "customer_1001",
+          quantity: 2,
+          payment_method: "credit_card",
+        },
+        updatePayload: {
+          status: "shipped",
+        },
+        sampleEntity: {
+          id: "order_xyz123",
+          game_id: "game_xyz123",
+          customer_id: "customer_1001",
+          quantity: 2,
+          status: "placed",
+          created_at: "2025-08-03T10:00:00Z",
+          payment_method: "credit_card",
+          total_amount: 39.98,
+        },
       },
-      updatePayload: {
-        status: 'shipped',
-      },
-      sampleEntity: {
-        id: 'order_xyz123',
-        game_id: 'game_xyz123',
-        customer_id: 'customer_1001',
-        quantity: 2,
-        status: 'placed',
-        created_at: '2025-08-03T10:00:00Z',
-        payment_method: 'credit_card',
-        total_amount: 39.98,
-      },
-    }, "v2"),
+      "v2",
+    ),
   },
 ];
 
@@ -372,7 +391,11 @@ export const getActionDoc = (resourceKey: string, actionSlug: string) => {
   return resource.actions.find((action) => action.slug === actionSlug) ?? null;
 };
 
-export const getActionDocForVersion = (resourceKey: string, actionSlug: string, version: string) => {
+export const getActionDocForVersion = (
+  resourceKey: string,
+  actionSlug: string,
+  version: string,
+) => {
   const docs = version === "v2" ? resourceDocsV2 : resourceDocsV1;
   const resource = docs.find((item) => item.key === resourceKey);
 

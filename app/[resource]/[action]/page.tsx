@@ -1,6 +1,6 @@
-import { ApiDocPage } from '@/components/api-doc-page';
-import { getActionDoc, resourceDocs } from '@/constants';
-import { notFound } from 'next/navigation';
+import { ApiDocPage } from "@/components/api-doc-page";
+import { getActionDoc, resourceDocs } from "@/constants";
+import { notFound } from "next/navigation";
 
 type PageParams = {
   resource: string;
@@ -16,11 +16,7 @@ export function generateStaticParams() {
   );
 }
 
-export default async function ResourceActionPage({
-  params,
-}: {
-  params: Promise<PageParams>;
-}) {
+export default async function ResourceActionPage({ params }: { params: Promise<PageParams> }) {
   const { resource, action } = await params;
   const data = getActionDoc(resource, action);
 
@@ -28,11 +24,5 @@ export default async function ResourceActionPage({
     notFound();
   }
 
-  return (
-    <ApiDocPage
-      resourceKey={resource}
-      actionSlug={action}
-      initialData={data}
-    />
-  );
+  return <ApiDocPage resourceKey={resource} actionSlug={action} initialData={data} />;
 }

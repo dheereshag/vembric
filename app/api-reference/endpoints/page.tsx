@@ -52,7 +52,10 @@ export default function EndpointsPage() {
                   {ep.method}
                 </TableCell>
                 <TableCell className="py-3 align-top whitespace-nowrap">
-                  <code>/{version}{ep.path}</code>
+                  <code>
+                    /{version}
+                    {ep.path}
+                  </code>
                 </TableCell>
                 <TableCell className="py-3 align-top text-muted-foreground whitespace-normal">
                   {ep.desc}
@@ -66,11 +69,8 @@ export default function EndpointsPage() {
       <DocSection title="versioning" className="mb-0">
         <p className="text-sm leading-relaxed">
           The current active version is{" "}
-          <code className="font-mono bg-muted px-1.5 py-0.5 text-xs">
-            {version}
-          </code>
-          . Breaking changes will be released under a new version prefix with a
-          deprecation notice.
+          <code className="font-mono bg-muted px-1.5 py-0.5 text-xs">{version}</code>. Breaking
+          changes will be released under a new version prefix with a deprecation notice.
         </p>
       </DocSection>
 

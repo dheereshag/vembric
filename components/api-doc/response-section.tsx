@@ -7,12 +7,12 @@ import {
   SnippetTabsList,
   SnippetTabsTrigger,
 } from "@/components/kibo-ui/snippet";
-import { Separator } from '@/components/ui/separator';
-import type { ApiActionDoc } from '@/constants/api-docs';
-import { JsonIcon } from './icons';
+import { Separator } from "@/components/ui/separator";
+import type { ApiActionDoc } from "@/constants/api-docs";
+import { JsonIcon } from "./icons";
 
 type ResponseSectionProps = {
-  response: ApiActionDoc['response'];
+  response: ApiActionDoc["response"];
 };
 
 export function ResponseSection({ response }: ResponseSectionProps) {
@@ -42,4 +42,3 @@ export function ResponseSection({ response }: ResponseSectionProps) {
     </>
   );
 }
-

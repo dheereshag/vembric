@@ -5,8 +5,12 @@ import { PageHeader } from "@/components/doc/page-header";
 import { DocSection } from "@/components/doc/doc-section";
 import { InfoBox } from "@/components/doc/info-box";
 import {
-  Snippet, SnippetCopyButton, SnippetHeader,
-  SnippetTabsContent, SnippetTabsList, SnippetTabsTrigger,
+  Snippet,
+  SnippetCopyButton,
+  SnippetHeader,
+  SnippetTabsContent,
+  SnippetTabsList,
+  SnippetTabsTrigger,
 } from "@/components/kibo-ui/snippet";
 import type { ReactNode } from "react";
 import { quickStartContent } from "@/constants/page-content";
@@ -65,7 +69,8 @@ export default function QuickStartPage() {
     },
   ];
 
-  const activeRequest = firstRequestSnippets.find((s) => s.value === requestTab) ?? firstRequestSnippets[0];
+  const activeRequest =
+    firstRequestSnippets.find((s) => s.value === requestTab) ?? firstRequestSnippets[0];
 
   return (
     <div className="p-6">
@@ -87,9 +92,7 @@ export default function QuickStartPage() {
       </DocSection>
 
       <DocSection title="step 2 — make your first request">
-        <p className="text-sm leading-relaxed mb-4">
-          {quickStartContent.step2.body}
-        </p>
+        <p className="text-sm leading-relaxed mb-4">{quickStartContent.step2.body}</p>
         <Snippet value={requestTab} onValueChange={setRequestTab}>
           <SnippetHeader>
             <SnippetTabsList>
@@ -111,9 +114,7 @@ export default function QuickStartPage() {
       </DocSection>
 
       <DocSection title="step 3 — read the response" className="mb-0">
-        <p className="text-sm leading-relaxed mb-4">
-          {quickStartContent.step3.body}
-        </p>
+        <p className="text-sm leading-relaxed mb-4">{quickStartContent.step3.body}</p>
         <Snippet defaultValue={responseSnippets[0].value}>
           <SnippetHeader>
             <SnippetTabsList>

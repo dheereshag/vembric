@@ -50,9 +50,7 @@ export default function ContactPage() {
           <TableBody>
             {contactResponseTimes.map(([plan, sla]) => (
               <TableRow key={plan}>
-                <TableCell className="py-3 align-top whitespace-nowrap">
-                  {plan}
-                </TableCell>
+                <TableCell className="py-3 align-top whitespace-nowrap">{plan}</TableCell>
                 <TableCell className="py-3 align-top text-muted-foreground whitespace-normal">
                   {sla}
                 </TableCell>

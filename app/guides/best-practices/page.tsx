@@ -27,9 +27,7 @@ export default function BestPracticesPage() {
 
       <DocSection title="webhooks" className="mb-0">
         <ArrowList items={bestPracticesContent.webhooks.items} />
-        <InfoBox className="mt-4">
-          {bestPracticesContent.webhooks.infoBox}
-        </InfoBox>
+        <InfoBox className="mt-4">{bestPracticesContent.webhooks.infoBox}</InfoBox>
       </DocSection>
     </div>
   );

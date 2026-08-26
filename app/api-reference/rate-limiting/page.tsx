@@ -32,19 +32,17 @@ export default function RateLimitingPage() {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {rateLimitPlans.map(
-              ({ plan, requestsPerMinute, requestsPerDay }) => (
-                <TableRow key={plan}>
-                  <TableCell className="py-3 align-top">{plan}</TableCell>
-                  <TableCell className="py-3 align-top text-muted-foreground">
-                    {requestsPerMinute}
-                  </TableCell>
-                  <TableCell className="py-3 align-top text-muted-foreground">
-                    {requestsPerDay}
-                  </TableCell>
-                </TableRow>
-              ),
-            )}
+            {rateLimitPlans.map(({ plan, requestsPerMinute, requestsPerDay }) => (
+              <TableRow key={plan}>
+                <TableCell className="py-3 align-top">{plan}</TableCell>
+                <TableCell className="py-3 align-top text-muted-foreground">
+                  {requestsPerMinute}
+                </TableCell>
+                <TableCell className="py-3 align-top text-muted-foreground">
+                  {requestsPerDay}
+                </TableCell>
+              </TableRow>
+            ))}
           </TableBody>
         </Table>
       </DocSection>
@@ -53,10 +51,8 @@ export default function RateLimitingPage() {
         <ArrowList
           items={rateLimitingContent.responseHeaders.map((h) => (
             <>
-              <code className="font-mono bg-muted px-1.5 py-0.5 text-xs">
-                {h.header}
-              </code>{" "}
-              — {h.description}
+              <code className="font-mono bg-muted px-1.5 py-0.5 text-xs">{h.header}</code> —{" "}
+              {h.description}
             </>
           ))}
         />
@@ -64,9 +60,7 @@ export default function RateLimitingPage() {
 
       <DocSection title="handling 429 errors" className="mb-0">
         <ArrowList items={rateLimitingContent.handling429.items} />
-        <InfoBox className="mt-4">
-          {rateLimitingContent.handling429.infoBox}
-        </InfoBox>
+        <InfoBox className="mt-4">{rateLimitingContent.handling429.infoBox}</InfoBox>
       </DocSection>
     </div>
   );

@@ -13,9 +13,7 @@ import {
 } from "@/components/ui/table";
 import { authKeyTypes } from "@/constants/api-reference";
 import { authenticationContent } from "@/constants/page-content";
-import {
-  authenticationExamples,
-} from "@/constants/code-snippets";
+import { authenticationExamples } from "@/constants/code-snippets";
 import { AuthenticationSnippet } from "@/components/authentication-snippet";
 
 export default function AuthenticationPage() {
@@ -28,12 +26,8 @@ export default function AuthenticationPage() {
       />
 
       <DocSection title="bearer tokens">
-        <p className="text-sm leading-relaxed mb-4">
-          {authenticationContent.bearerTokens.body}
-        </p>
-        <AuthenticationSnippet
-          examples={authenticationExamples}
-        />
+        <p className="text-sm leading-relaxed mb-4">{authenticationContent.bearerTokens.body}</p>
+        <AuthenticationSnippet examples={authenticationExamples} />
       </DocSection>
 
       <DocSection title="key types">

@@ -27,16 +27,11 @@ export function VersionSelector() {
   }, []);
 
   if (!mounted) {
-    return (
-      <Skeleton className="h-[60px] w-full bg-input/30 rounded-xl" />
-    );
+    return <Skeleton className="h-[60px] w-full bg-input/30 rounded-xl" />;
   }
 
   return (
-    <Select
-      value={version}
-      onValueChange={(val) => setVersion(val as ApiVersion)}
-    >
+    <Select value={version} onValueChange={(val) => setVersion(val as ApiVersion)}>
       <SelectTrigger className="w-full h-auto p-2.5 bg-background border border-border/80 rounded-xl hover:bg-muted/10 transition-colors [&>span:last-child]:hidden focus:ring-0 focus:ring-offset-0">
         <div className="flex items-center gap-3 w-full text-left">
           <div className="flex size-10 items-center justify-center rounded-lg bg-blue-600 text-white shrink-0">
@@ -62,7 +57,11 @@ export function VersionSelector() {
           </span>
         </div>
       </SelectTrigger>
-      <SelectContent className="bg-popover border font-mono text-xs" position="popper" align="start">
+      <SelectContent
+        className="bg-popover border font-mono text-xs"
+        position="popper"
+        align="start"
+      >
         <SelectItem value="v1" className="cursor-pointer">
           v1 (Stable)
         </SelectItem>
@@ -73,4 +72,3 @@ export function VersionSelector() {
     </Select>
   );
 }
-

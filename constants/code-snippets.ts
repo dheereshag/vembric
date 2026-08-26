@@ -3,12 +3,12 @@ import { brand } from "./brand";
 // ── Installation commands ────────────────────────────────────────────────────
 
 export const installCommands = {
-  npm:  `npm install ${brand.sdk.npm}`,
+  npm: `npm install ${brand.sdk.npm}`,
   yarn: `yarn add ${brand.sdk.npm}`,
   pnpm: `pnpm add ${brand.sdk.npm}`,
-  pip:  `pip install ${brand.sdk.pip}`,
-  gem:  `gem install ${brand.sdk.gem}`,
-  go:   `go get ${brand.sdk.go}`,
+  pip: `pip install ${brand.sdk.pip}`,
+  gem: `gem install ${brand.sdk.gem}`,
+  go: `go get ${brand.sdk.go}`,
 };
 
 // ── Authentication / Quick Start ─────────────────────────────────────────────

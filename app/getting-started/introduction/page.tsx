@@ -15,9 +15,7 @@ export default function IntroductionPage() {
       />
 
       <DocSection title={introductionContent.whatIs.title}>
-        <p className="text-sm leading-relaxed">
-          {introductionContent.whatIs.body}
-        </p>
+        <p className="text-sm leading-relaxed">{introductionContent.whatIs.body}</p>
       </DocSection>
 
       <DocSection title="key features">
